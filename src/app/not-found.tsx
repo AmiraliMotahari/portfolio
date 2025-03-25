@@ -27,11 +27,11 @@ export default function NotFound() {
       </div>
       <div className="mt-4">
         <Link
-          href="/services"
+          href="/projects"
           className="inline-flex items-center text-sm text-muted-foreground hover:text-primary"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          View Our Services
+          View My Projects
         </Link>
       </div>
     </div>
