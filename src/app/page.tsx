@@ -1,12 +1,25 @@
 import About from "@/components/Home/About";
+import Contact from "@/components/Home/contact";
 import Hero from "@/components/Home/Hero";
+import LatestPosts from "@/components/Home/latest-posts";
+import Projects from "@/components/Home/projects";
+import { user } from "@/lib/data";
 
-export default function Home() {
+const Home = () => {
+  const {
+    personalInfo: { picture },
+    skills,
+    projects: topProjects,
+  } = user;
   return (
     <>
       <Hero />
-      <About userImageUrl=""/>
-      <div className="bg-red-400 w-full h-svh"></div>
+      <About userImageUrl={picture} skills={skills} />
+      <Projects topProjects={topProjects} />
+      <LatestPosts />
+      <Contact />
     </>
   );
-}
+};
+
+export default Home;

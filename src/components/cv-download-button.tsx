@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import {  useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { cvData } from "@/lib/data/cv-data";
@@ -250,7 +250,6 @@ export default function CVDownloadButton() {
     <Button
       onClick={generatePDF}
       disabled={isGenerating}
-      className="bg-neon-green hover:bg-neon-green/80 text-black"
     >
       {isGenerating ? (
         <span className="flex items-center">

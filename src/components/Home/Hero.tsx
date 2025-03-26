@@ -11,7 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { FileDown, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import CVDownloadButton from "../cv-download-button";
 
 const Hero = () => {
   return (
@@ -31,10 +32,7 @@ const Hero = () => {
             </CardDescription>
           </CardContent>
           <CardFooter className="w-full flex justify-center items-center gap-4">
-            <Button variant={"default"}>
-              <FileDown />
-              <span>Download CV</span>
-            </Button>
+            <CVDownloadButton />
             <Button asChild variant={"secondary"}>
               <Link href={"/contact"}>
                 <MessageCircle />

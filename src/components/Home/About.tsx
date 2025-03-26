@@ -5,13 +5,7 @@ import Image from "next/image";
 import { Code, Palette, Lightbulb, Rocket } from "lucide-react";
 import { defaultImage } from "@/lib/constants/images";
 
-const skills = [
-  { name: "JavaScript/TypeScript", level: 90 },
-  { name: "React & Next.js", level: 85 },
-  { name: "UI/UX Design", level: 75 },
-  { name: "Node.js", level: 80 },
-  { name: "Three.js/WebGL", level: 65 },
-];
+
 const abilities = [
   {
     icon: <Code className="h-8 w-8 text-neon-green" />,
@@ -66,9 +60,13 @@ const progressBarVariants: Variants = {
 
 type Props = {
   userImageUrl: string;
+  skills: {
+    name: string;
+    level: number;
+  }[];
 };
 
-export default function About({ userImageUrl }: Props) {
+export default function About({ userImageUrl, skills }: Props) {
   return (
     <section id="about" className="py-20 px-12">
       <div className="container mx-auto">
