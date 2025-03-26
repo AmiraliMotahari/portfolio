@@ -1,0 +1,1 @@
+export const defaultImage = "/assets/images/placeholder.svg";
