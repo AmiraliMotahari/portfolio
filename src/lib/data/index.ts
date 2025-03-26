@@ -14,6 +14,17 @@ export const personalInfo = {
   picture: "/assets/images/amirali-motahari.jpeg",
 };
 
+export const socials = [
+  {
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/in/amirali-motahari-252a651a7",
+  },
+  {
+    title: "GitHub",
+    href: "https://github.com/AmiraliMotahari",
+  },
+];
+
 export const skills = [
   { name: "JavaScript/TypeScript", level: 90 },
   { name: "React & Next.js", level: 85 },
@@ -165,4 +176,5 @@ export const user = {
   projects,
   certifications,
   languages,
+  socials
 };

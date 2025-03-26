@@ -5,14 +5,24 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { blogPosts } from "@/lib/data/blog-data";
 
-export default function LatestPosts() {
-  // Get the 3 most recent posts
-  const recentPosts = blogPosts.slice(0, 3);
+type Props = {
+  recentPosts: {
+    title: string;
+    slug: string;
+    date: string;
+    readingTime: number;
+    excerpt: string;
+    coverImage: string;
+    tags: string[];
+  }[];
+};
+
+export default function LatestPosts({recentPosts}: Props) {
+
 
   return (
-    <section className="py-20 bg-muted/10">
+    <section className="py-20 bg-muted/10 px-12">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"

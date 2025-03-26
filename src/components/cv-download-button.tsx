@@ -51,7 +51,7 @@ export default function CVDownloadButton() {
       doc.setFontSize(10);
       doc.setTextColor(lightGray);
       doc.text(`Email: ${cvData.personalInfo.email}`, 20, 40);
-      doc.text(`Phone: ${cvData.personalInfo.phone}`, 20, 45);
+      // doc.text(`Phone: ${cvData.personalInfo.phone}`, 20, 45);
       doc.text(`Location: ${cvData.personalInfo.location}`, 20, 50);
       doc.text(`Website: ${cvData.personalInfo.website}`, 20, 55);
 

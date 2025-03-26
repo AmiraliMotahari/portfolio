@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <section className="w-full h-svh ">
       <WarpBackground className="w-full h-full flex justify-center items-center">
-        <Card className="w-full h-full bg-black/30 backdrop-blur-sm">
+        <Card className="w-full h-full bg-background/30 backdrop-blur-sm">
           <CardHeader className="w-full">
             <CardTitle className="w-full text-center text-xl sm:text-2xl lg:text-4xl ">
               <h1>Amirali Motahari</h1>
@@ -35,8 +35,8 @@ const Hero = () => {
             <CVDownloadButton />
             <Button asChild variant={"secondary"}>
               <Link href={"/contact"}>
-                <MessageCircle />
                 <span>Contact Me</span>
+                <MessageCircle />
               </Link>
             </Button>
           </CardFooter>
