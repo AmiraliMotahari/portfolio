@@ -156,14 +156,3 @@
   }
 }
 
-/* .from-neon-green {
-  --tw-gradient-from: #4ade80 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(74 222 128 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.from-neon-green\/5 {
-  --tw-gradient-from: rgba(74, 222, 128, 0.05) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(74, 222, 128, 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-} */

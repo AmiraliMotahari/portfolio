@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import NavItem from "./NavItem";
 import { motion, TargetAndTransition } from "motion/react";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "../ModeToggle";
 
 type NavigationItem = {
   title: string;
@@ -79,6 +80,9 @@ const Navbar = ({ className }: Props) => {
             </li>
           );
         })}
+        <li>
+          <ModeToggle/>
+        </li>
       </ul>
     </motion.nav>
   );
