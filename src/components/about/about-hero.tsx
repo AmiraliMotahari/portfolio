@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import CVDownloadButton from "@/components/cv-download-button"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import CVDownloadButton from "@/components/cv-download-button";
+import { defaultImage } from "@/lib/constants/images";
 
-export default function AboutHero() {
+type Props = {
+  profilePicture: string;
+};
+
+export default function AboutHero({ profilePicture }: Props) {
   return (
     <section className="relative py-20 px-12 overflow-hidden">
       {/* Background elements */}
@@ -27,18 +32,23 @@ export default function AboutHero() {
             </h1>
 
             <p className="text-xl mb-8 text-muted-foreground">
-              I&apos;m a creative developer with a passion for building beautiful, functional, and accessible web
-              experiences. With over 5 years of experience in web development, I specialize in creating interactive
-              applications that combine cutting-edge technology with thoughtful design.
+              I&apos;m a creative developer with a passion for building
+              beautiful, functional, and accessible web experiences. With over 5
+              years of experience in web development, I specialize in creating
+              interactive applications that combine cutting-edge technology with
+              thoughtful design.
             </p>
 
             <p className="text-xl mb-8 text-muted-foreground">
-              My approach combines technical expertise with creative problem-solving, allowing me to deliver solutions
-              that not only meet requirements but exceed expectations.
+              My approach combines technical expertise with creative
+              problem-solving, allowing me to deliver solutions that not only
+              meet requirements but exceed expectations.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-neon-green hover:bg-neon-green/80 text-black">Contact Me</Button>
+              <Button className="bg-neon-green hover:bg-neon-green/80 text-black">
+                Contact Me
+              </Button>
               <CVDownloadButton />
             </div>
           </motion.div>
@@ -51,13 +61,13 @@ export default function AboutHero() {
           >
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-neon-green to-neon-red rounded-2xl blur-lg opacity-30 animate-pulse"></div>
-              <div className="glass-card p-1 rounded-2xl overflow-hidden relative">
+              <div className="glass-card rounded-2xl overflow-hidden relative">
                 <Image
-                  src="/placeholder.svg?height=600&width=600"
-                  alt="Profile"
+                  src={profilePicture || defaultImage}
+                  alt="Amirali Motahari"
                   width={600}
                   height={600}
-                  className="rounded-2xl w-full h-auto"
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -65,6 +75,5 @@ export default function AboutHero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

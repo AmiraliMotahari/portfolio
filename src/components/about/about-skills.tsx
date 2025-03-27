@@ -1,18 +1,16 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Code, Palette, Lightbulb, Rocket, Server, Globe, Lock, Cpu } from "lucide-react"
-
-const skills = [
-  { name: "JavaScript/TypeScript", level: 90 },
-  { name: "React & Next.js", level: 85 },
-  { name: "UI/UX Design", level: 75 },
-  { name: "Node.js", level: 80 },
-  { name: "Three.js/WebGL", level: 65 },
-  { name: "CSS/Tailwind", level: 85 },
-  { name: "Responsive Design", level: 90 },
-  { name: "Git/Version Control", level: 80 },
-]
+import { motion } from "framer-motion";
+import {
+  Code,
+  Palette,
+  Lightbulb,
+  Rocket,
+  Server,
+  Globe,
+  Lock,
+  Cpu,
+} from "lucide-react";
 
 const categories = [
   {
@@ -23,7 +21,13 @@ const categories = [
   {
     title: "UI/UX Design",
     icon: <Palette className="h-8 w-8 text-neon-green" />,
-    skills: ["Figma", "Adobe XD", "Responsive Design", "Wireframing", "Prototyping"],
+    skills: [
+      "Figma",
+      "Adobe XD",
+      "Responsive Design",
+      "Wireframing",
+      "Prototyping",
+    ],
   },
   {
     title: "Backend Development",
@@ -33,7 +37,13 @@ const categories = [
   {
     title: "Performance Optimization",
     icon: <Rocket className="h-8 w-8 text-neon-green" />,
-    skills: ["Lazy Loading", "Code Splitting", "Caching Strategies", "Image Optimization", "Core Web Vitals"],
+    skills: [
+      "Lazy Loading",
+      "Code Splitting",
+      "Caching Strategies",
+      "Image Optimization",
+      "Core Web Vitals",
+    ],
   },
   {
     title: "Global Deployment",
@@ -43,19 +53,37 @@ const categories = [
   {
     title: "Security",
     icon: <Lock className="h-8 w-8 text-neon-green" />,
-    skills: ["Authentication", "Authorization", "Data Encryption", "HTTPS", "Security Headers"],
+    skills: [
+      "Authentication",
+      "Authorization",
+      "Data Encryption",
+      "HTTPS",
+      "Security Headers",
+    ],
   },
   {
     title: "Problem Solving",
     icon: <Lightbulb className="h-8 w-8 text-neon-green" />,
-    skills: ["Algorithms", "Data Structures", "Debugging", "Performance Analysis", "Technical Documentation"],
+    skills: [
+      "Algorithms",
+      "Data Structures",
+      "Debugging",
+      "Performance Analysis",
+      "Technical Documentation",
+    ],
   },
   {
     title: "Emerging Technologies",
     icon: <Cpu className="h-8 w-8 text-neon-green" />,
-    skills: ["AI Integration", "WebAssembly", "Edge Computing", "Progressive Web Apps", "AR/VR Web Experiences"],
+    skills: [
+      "AI Integration",
+      "WebAssembly",
+      "Edge Computing",
+      "Progressive Web Apps",
+      "AR/VR Web Experiences",
+    ],
   },
-]
+];
 // Animation variants for the progress bar
 const progressBarVariants = {
   hidden: { width: 0 },
@@ -70,10 +98,15 @@ const progressBarVariants = {
       bounce: 0.5,
     },
   }),
-}
-export default function AboutSkills() {
+};
 
-
+type Props = {
+  skills: {
+    name: string;
+    level: number;
+  }[];
+};
+export default function AboutSkills({ skills }: Props) {
   return (
     <section className="py-20 px-12 bg-background/50">
       <div className="container mx-auto px-4">
@@ -89,7 +122,9 @@ export default function AboutSkills() {
 
         <div className="grid md:grid-cols-2 gap-12 mb-20">
           <div>
-            <h3 className="text-2xl font-semibold mb-8">Technical Proficiency</h3>
+            <h3 className="text-2xl font-semibold mb-8">
+              Technical Proficiency
+            </h3>
             <div className="space-y-6">
               {skills.map((skill, index) => (
                 <motion.div
@@ -139,11 +174,16 @@ export default function AboutSkills() {
                 >
                   <div className="flex items-center mb-4">
                     {category.icon}
-                    <h4 className="text-lg font-semibold ml-3">{category.title}</h4>
+                    <h4 className="text-lg font-semibold ml-3">
+                      {category.title}
+                    </h4>
                   </div>
                   <ul className="space-y-2">
                     {category.skills.map((skill) => (
-                      <li key={skill} className="text-muted-foreground flex items-center">
+                      <li
+                        key={skill}
+                        className="text-muted-foreground flex items-center"
+                      >
                         <span className="h-1.5 w-1.5 rounded-full bg-neon-green mr-2"></span>
                         {skill}
                       </li>
@@ -171,7 +211,10 @@ export default function AboutSkills() {
               </div>
               <ul className="space-y-2">
                 {category.skills.map((skill) => (
-                  <li key={skill} className="text-muted-foreground flex items-center">
+                  <li
+                    key={skill}
+                    className="text-muted-foreground flex items-center"
+                  >
                     <span className="h-1.5 w-1.5 rounded-full bg-neon-green mr-2"></span>
                     {skill}
                   </li>
@@ -182,6 +225,5 @@ export default function AboutSkills() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

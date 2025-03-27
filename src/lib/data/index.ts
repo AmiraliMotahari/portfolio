@@ -35,7 +35,7 @@ export const skills = [
   { name: "Accessibility", level: 70 },
 ];
 
-export const experience = [
+export const experiences = [
   {
     position: "Senior Frontend Developer",
     company: "Tech Innovations Inc.",
@@ -48,7 +48,9 @@ export const experience = [
       "Reduced load time by 40% through performance optimizations",
       "Implemented CI/CD pipeline reducing deployment time by 60%",
       "Mentored junior developers and led technical workshops",
+      "Developed component library used across multiple projects",
     ],
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL"],
   },
   {
     position: "Frontend Developer",
@@ -62,7 +64,9 @@ export const experience = [
       "Created interactive data visualizations for financial dashboard",
       "Built e-commerce platform with custom checkout flow",
       "Implemented design system used across multiple projects",
+      "Optimized website performance achieving 95+ Lighthouse scores",
     ],
+    technologies: ["JavaScript", "React", "SCSS", "Redux", "REST APIs"],
   },
   {
     position: "Web Developer Intern",
@@ -76,7 +80,9 @@ export const experience = [
       "Contributed to open-source projects",
       "Developed landing pages for marketing campaigns",
       "Created interactive prototypes for user testing",
+      "Assisted with UX research and user interviews",
     ],
+    technologies: ["HTML", "CSS", "JavaScript", "jQuery", "Bootstrap"],
   },
 ];
 
@@ -89,6 +95,18 @@ export const education = [
     endDate: "2017",
     description:
       "Focused on web technologies and human-computer interaction. Graduated with honors.",
+    courses: [
+      "Advanced Web Development",
+      "User Interface Design",
+      "Data Structures and Algorithms",
+      "Database Systems",
+      "Computer Networks",
+    ],
+    achievements: [
+      "Dean's List for Academic Excellence (2015-2017)",
+      "Best Final Year Project Award",
+      "Student Representative for Computer Science Department",
+    ],
   },
   {
     degree: "Web Development Bootcamp",
@@ -98,6 +116,37 @@ export const education = [
     endDate: "2017",
     description:
       "Intensive 12-week program focused on modern web development technologies and practices.",
+    courses: [
+      "Frontend Development with React",
+      "Backend Development with Node.js",
+      "Database Design and Implementation",
+      "RESTful API Development",
+      "Deployment and DevOps",
+    ],
+    achievements: [
+      "Top Student Award",
+      "Built a full-stack application that was featured in the academy showcase",
+    ],
+  },
+  {
+    degree: "UI/UX Design Certification",
+    institution: "Design Institute",
+    location: "Portland, OR",
+    startDate: "2018",
+    endDate: "2018",
+    description:
+      "Specialized training in user interface and experience design principles and methodologies.",
+    courses: [
+      "User Research and Testing",
+      "Interaction Design",
+      "Visual Design Principles",
+      "Prototyping and Wireframing",
+      "Accessibility in Design",
+    ],
+    achievements: [
+      "Portfolio selected for institute's annual exhibition",
+      "Mentored junior designers in program",
+    ],
   },
 ];
 
@@ -171,10 +220,10 @@ export const languages = [
 export const user = {
   personalInfo,
   skills,
-  experience,
+  experiences,
   education,
   projects,
   certifications,
   languages,
-  socials
+  socials,
 };

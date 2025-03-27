@@ -81,8 +81,8 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   /* New colors */
-  --neon-green: oklch(0.7243 0.1738 147.6);
-  --neon-red: oklch(0.6456 0.2597 28.2);
+  --neon-red: oklch(65.42% 0.2433 7.57);
+  --neon-green: oklch(90.09% 0.156839 187.7228);
 }
 
 .dark {

@@ -21,10 +21,10 @@ const Hero = () => {
       <WarpBackground className="w-full h-full flex justify-center items-center">
         <motion.div
           // className="glass-card p-6 text-center"
-          initial={{ opacity: 0, y: 100, scale: 0.5 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ scale: 0.25 }}
+          whileInView={{ scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, stiffness: 200 }}
         >
           <Card className="w-full h-full bg-background/30 backdrop-blur-sm">
             <CardHeader className="w-full">
