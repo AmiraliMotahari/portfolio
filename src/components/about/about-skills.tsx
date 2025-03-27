@@ -3,79 +3,79 @@
 import { motion } from "framer-motion"
 import { Code, Palette, Lightbulb, Rocket, Server, Globe, Lock, Cpu } from "lucide-react"
 
+const skills = [
+  { name: "JavaScript/TypeScript", level: 90 },
+  { name: "React & Next.js", level: 85 },
+  { name: "UI/UX Design", level: 75 },
+  { name: "Node.js", level: 80 },
+  { name: "Three.js/WebGL", level: 65 },
+  { name: "CSS/Tailwind", level: 85 },
+  { name: "Responsive Design", level: 90 },
+  { name: "Git/Version Control", level: 80 },
+]
+
+const categories = [
+  {
+    title: "Frontend Development",
+    icon: <Code className="h-8 w-8 text-neon-green" />,
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    title: "UI/UX Design",
+    icon: <Palette className="h-8 w-8 text-neon-green" />,
+    skills: ["Figma", "Adobe XD", "Responsive Design", "Wireframing", "Prototyping"],
+  },
+  {
+    title: "Backend Development",
+    icon: <Server className="h-8 w-8 text-neon-green" />,
+    skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"],
+  },
+  {
+    title: "Performance Optimization",
+    icon: <Rocket className="h-8 w-8 text-neon-green" />,
+    skills: ["Lazy Loading", "Code Splitting", "Caching Strategies", "Image Optimization", "Core Web Vitals"],
+  },
+  {
+    title: "Global Deployment",
+    icon: <Globe className="h-8 w-8 text-neon-green" />,
+    skills: ["Vercel", "Netlify", "AWS", "Docker", "CI/CD Pipelines"],
+  },
+  {
+    title: "Security",
+    icon: <Lock className="h-8 w-8 text-neon-green" />,
+    skills: ["Authentication", "Authorization", "Data Encryption", "HTTPS", "Security Headers"],
+  },
+  {
+    title: "Problem Solving",
+    icon: <Lightbulb className="h-8 w-8 text-neon-green" />,
+    skills: ["Algorithms", "Data Structures", "Debugging", "Performance Analysis", "Technical Documentation"],
+  },
+  {
+    title: "Emerging Technologies",
+    icon: <Cpu className="h-8 w-8 text-neon-green" />,
+    skills: ["AI Integration", "WebAssembly", "Edge Computing", "Progressive Web Apps", "AR/VR Web Experiences"],
+  },
+]
+// Animation variants for the progress bar
+const progressBarVariants = {
+  hidden: { width: 0 },
+  visible: (level: number) => ({
+    width: `${level}%`,
+    transition: {
+      duration: 1,
+      delay: 0.3,
+      type: "spring",
+      stiffness: 50,
+      damping: 10,
+      bounce: 0.5,
+    },
+  }),
+}
 export default function AboutSkills() {
-  const skills = [
-    { name: "JavaScript/TypeScript", level: 90 },
-    { name: "React & Next.js", level: 85 },
-    { name: "UI/UX Design", level: 75 },
-    { name: "Node.js", level: 80 },
-    { name: "Three.js/WebGL", level: 65 },
-    { name: "CSS/Tailwind", level: 85 },
-    { name: "Responsive Design", level: 90 },
-    { name: "Git/Version Control", level: 80 },
-  ]
 
-  const categories = [
-    {
-      title: "Frontend Development",
-      icon: <Code className="h-8 w-8 text-neon-green" />,
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    },
-    {
-      title: "UI/UX Design",
-      icon: <Palette className="h-8 w-8 text-neon-green" />,
-      skills: ["Figma", "Adobe XD", "Responsive Design", "Wireframing", "Prototyping"],
-    },
-    {
-      title: "Backend Development",
-      icon: <Server className="h-8 w-8 text-neon-green" />,
-      skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"],
-    },
-    {
-      title: "Performance Optimization",
-      icon: <Rocket className="h-8 w-8 text-neon-green" />,
-      skills: ["Lazy Loading", "Code Splitting", "Caching Strategies", "Image Optimization", "Core Web Vitals"],
-    },
-    {
-      title: "Global Deployment",
-      icon: <Globe className="h-8 w-8 text-neon-green" />,
-      skills: ["Vercel", "Netlify", "AWS", "Docker", "CI/CD Pipelines"],
-    },
-    {
-      title: "Security",
-      icon: <Lock className="h-8 w-8 text-neon-green" />,
-      skills: ["Authentication", "Authorization", "Data Encryption", "HTTPS", "Security Headers"],
-    },
-    {
-      title: "Problem Solving",
-      icon: <Lightbulb className="h-8 w-8 text-neon-green" />,
-      skills: ["Algorithms", "Data Structures", "Debugging", "Performance Analysis", "Technical Documentation"],
-    },
-    {
-      title: "Emerging Technologies",
-      icon: <Cpu className="h-8 w-8 text-neon-green" />,
-      skills: ["AI Integration", "WebAssembly", "Edge Computing", "Progressive Web Apps", "AR/VR Web Experiences"],
-    },
-  ]
-
-  // Animation variants for the progress bar
-  const progressBarVariants = {
-    hidden: { width: 0 },
-    visible: (level: number) => ({
-      width: `${level}%`,
-      transition: {
-        duration: 1,
-        delay: 0.3,
-        type: "spring",
-        stiffness: 50,
-        damping: 10,
-        bounce: 0.5,
-      },
-    }),
-  }
 
   return (
-    <section className="py-20 bg-background/50">
+    <section className="py-20 px-12 bg-background/50">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"

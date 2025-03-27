@@ -19,7 +19,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Blog`,
+    title: `${post.title}`,
     description: post.excerpt,
   };
 }

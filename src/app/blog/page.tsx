@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/data/blog-data";
 
 export const metadata = {
-  title: "Blog | Creative Developer Portfolio",
+  title: "Blog",
   description: "Thoughts, ideas, and tutorials on web development and design",
 };
 

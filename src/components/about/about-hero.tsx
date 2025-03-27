@@ -7,7 +7,7 @@ import CVDownloadButton from "@/components/cv-download-button"
 
 export default function AboutHero() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-20 px-12 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-green/20 rounded-full filter blur-3xl"></div>
@@ -27,7 +27,7 @@ export default function AboutHero() {
             </h1>
 
             <p className="text-xl mb-8 text-muted-foreground">
-              I'm a creative developer with a passion for building beautiful, functional, and accessible web
+              I&apos;m a creative developer with a passion for building beautiful, functional, and accessible web
               experiences. With over 5 years of experience in web development, I specialize in creating interactive
               applications that combine cutting-edge technology with thoughtful design.
             </p>

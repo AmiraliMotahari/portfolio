@@ -7,8 +7,10 @@ import { ModeToggle } from "../ModeToggle";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Logo from "../icons/logo";
+import { useIsMobile } from "@/hooks/use-mobile";
+import MobileNav from "./mobile-nav";
 
-type NavigationItem = {
+export type NavigationItem = {
   title: string;
   href: string;
 };
@@ -56,6 +58,8 @@ const transition = {
 };
 
 const Navbar = ({ className }: Props) => {
+  const isMobile = useIsMobile();
+
   return (
     <motion.nav
       initial={initialState} // Start above the viewport
@@ -64,11 +68,12 @@ const Navbar = ({ className }: Props) => {
       viewport={{ once: true }}
       className={cn(
         "w-fit border py-2 px-6 fixed left-1/2 top-3 -translate-x-1/2 rounded-full z-50 bg-background/30 backdrop-blur-sm",
+        isMobile && "w-full",
         className
       )}
     >
-      <ul className="w-full flex justify-center items-center gap-2 ">
-        <li className="flex justify-center items-center">
+      <ul className="w-full flex justify-center items-center gap-2">
+        <li className="flex justify-center items-center mr-auto">
           <Button
             asChild
             variant={"ghost"}
@@ -80,16 +85,23 @@ const Navbar = ({ className }: Props) => {
             </Link>
           </Button>
         </li>
-        {navigationList.map((item) => {
-          return (
-            <li key={`nav-item-${item.title}`}>
-              <NavItem href={item.href} title={item.title} />
-            </li>
-          );
-        })}
+        {isMobile
+          ? null
+          : navigationList.map((item) => {
+              return (
+                <li key={`nav-item-${item.title}`}>
+                  <NavItem href={item.href} title={item.title} />
+                </li>
+              );
+            })}
         <li>
           <ModeToggle />
         </li>
+        {isMobile ? (
+          <li className="flex justify-center items-center">
+            <MobileNav navigationList={navigationList} />
+          </li>
+        ) : null}
       </ul>
     </motion.nav>
   );
