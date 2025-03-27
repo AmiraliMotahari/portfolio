@@ -1,19 +1,14 @@
 "use client";
 
 import { motion } from "motion/react";
-
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Particles } from "../ui/particles";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { Globe } from "../ui/globe";
+import { Mail, MapPin } from "lucide-react";
+import { BorderBeam } from "../ui/border-beam";
 
 type Props = {
   contactData: {
@@ -35,7 +30,7 @@ export default function Contact({ contactData }: Props) {
   }, [resolvedTheme]);
 
   return (
-    <section className="py-20 px-12 relative">
+    <section className="py-20 px-12 relative ">
       <Particles
         className="absolute inset-0 z-0"
         quantity={100}
@@ -55,41 +50,54 @@ export default function Contact({ contactData }: Props) {
         </motion.h2>
 
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-lg mx-auto"
+          className="flex justify-center"
         >
-          <Card className="">
-            <CardHeader>
-              <CardTitle>
-                <h3 className="text-2xl font-semibold text-center">
-                  Contact Information
-                </h3>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground text-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 md:gap-12 border rounded-lg shadow bg-card relative">
+            <div className="flex flex-col justify-start items-start gap-4 max-w-md py-3 px-5 ">
+              <h3 className="text-2xl font-semibold">Contact Information</h3>
+              <p className="text-muted-foreground">
                 Feel free to reach out if you have any questions or want to work
                 together. I&apos;m always open to discussing new projects,
                 creative ideas, or opportunities to be part of your vision.
               </p>
-            </CardContent>
-            <CardFooter className="flex-col justify-center items-center gap-8">
-              <div className="flex flex-col justify-center items-center gap-4 text-center">
-                <a href={`mailto:${contactData.email}`}>{contactData.email}</a>
-                <address className="font-normal not-italic">
+              <div className="flex flex-col justify-start items-start gap-4 text-center ">
+                <a
+                  href={`mailto:${contactData.email}`}
+                  className="flex justify-items-start gap-2"
+                >
+                  <Mail className="text-neon-green" />
+                  {contactData.email}
+                </a>
+                <address className="font-normal not-italic flex justify-items-start gap-2">
+                  <MapPin className="text-neon-green" />
                   {contactData.location}
                 </address>
               </div>
-              <Button asChild variant={"default"}>
+              <Button asChild variant={"default"} className={"mt-3 w-full"}>
                 <Link href={"/contact"}>
                   <span>Contact Me</span>
                 </Link>
               </Button>
-            </CardFooter>
-          </Card>
+            </div>
+            <div className="size-[340px] relative">
+              <Globe className="inset-0" />
+            </div>
+            <BorderBeam
+              duration={6}
+              size={400}
+              className="from-transparent via-neon-green to-transparent"
+            />
+            <BorderBeam
+              duration={6}
+              delay={3}
+              size={400}
+              className="from-transparent via-neon-red to-transparent"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
