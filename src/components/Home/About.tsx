@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Code, Palette, Lightbulb, Rocket } from "lucide-react";
 import { defaultImage } from "@/lib/constants/images";
 
-
 const abilities = [
   {
     icon: <Code className="h-8 w-8 text-neon-green" />,

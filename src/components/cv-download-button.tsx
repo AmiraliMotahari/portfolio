@@ -1,6 +1,6 @@
 "use client";
 
-import {  useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { cvData } from "@/lib/data/cv-data";
@@ -182,6 +182,8 @@ export default function CVDownloadButton() {
       // Check if we need a new page for education
       if (yPos > 250) {
         doc.addPage();
+        doc.setFillColor(18, 18, 18);
+        doc.rect(0, 0, 210, 297, "F");
         yPos = 20;
       }
 
@@ -247,10 +249,7 @@ export default function CVDownloadButton() {
   };
 
   return (
-    <Button
-      onClick={generatePDF}
-      disabled={isGenerating}
-    >
+    <Button onClick={generatePDF} disabled={isGenerating}>
       {isGenerating ? (
         <span className="flex items-center">
           <svg

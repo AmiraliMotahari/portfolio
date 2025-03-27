@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Github, Heart, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
+import Logo from "./icons/logo";
 
 const currentYear = new Date().getFullYear();
 
@@ -20,7 +21,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="border-t py-8">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-12">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
           <div className="mb-4 md:mb-0">
@@ -28,7 +29,7 @@ export default function Footer() {
               href="/"
               className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"
             >
-              Portfolio
+              <Logo/>
             </Link>
           </div>
 

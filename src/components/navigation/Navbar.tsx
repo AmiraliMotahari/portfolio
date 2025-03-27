@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import NavItem from "./NavItem";
 import { motion, TargetAndTransition } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "../ModeToggle";
+import { Button } from "../ui/button";
+import Link from "next/link";
+import Logo from "../icons/logo";
 
 type NavigationItem = {
   title: string;
@@ -54,25 +56,30 @@ const transition = {
 };
 
 const Navbar = ({ className }: Props) => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
     <motion.nav
       initial={initialState} // Start above the viewport
       animate={finalState} // Animate to its original position
       transition={transition}
+      viewport={{ once: true }}
       className={cn(
         "w-fit border py-2 px-6 fixed left-1/2 top-3 -translate-x-1/2 rounded-full z-50 bg-background/30 backdrop-blur-sm",
         className
       )}
     >
       <ul className="w-full flex justify-center items-center gap-2 ">
+        <li className="flex justify-center items-center">
+          <Button
+            asChild
+            variant={"ghost"}
+            size={"icon"}
+            className="rounded-full"
+          >
+            <Link href={"/"}>
+              <Logo className="size-8" />
+            </Link>
+          </Button>
+        </li>
         {navigationList.map((item) => {
           return (
             <li key={`nav-item-${item.title}`}>
@@ -81,7 +88,7 @@ const Navbar = ({ className }: Props) => {
           );
         })}
         <li>
-          <ModeToggle/>
+          <ModeToggle />
         </li>
       </ul>
     </motion.nav>
