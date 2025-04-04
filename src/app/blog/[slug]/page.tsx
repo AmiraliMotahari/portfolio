@@ -8,9 +8,10 @@ import { blogPosts } from "@/lib/data/blog-data";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = blogPosts.find((post) => post.slug === params.slug);
+  const { slug } = await params;
+  const post = blogPosts.find((post) => post.slug === slug);
 
   if (!post) {
     return {
@@ -24,8 +25,13 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((post) => post.slug === params.slug);
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = blogPosts.find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
@@ -88,16 +94,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
             <h2>The Rise of AI-Assisted Development</h2>
             <p>
-              Artificial intelligence is no longer just a buzzword—it&apos;s becoming
-              an integral part of the development workflow. From code completion
-              to automated testing, AI tools are enhancing productivity and
-              enabling developers to focus on more creative aspects of their
-              work.
+              Artificial intelligence is no longer just a buzzword—it&apos;s
+              becoming an integral part of the development workflow. From code
+              completion to automated testing, AI tools are enhancing
+              productivity and enabling developers to focus on more creative
+              aspects of their work.
             </p>
             <p>
               Tools like GitHub Copilot and AI-powered code review systems are
-              just the beginning. We&apos;re seeing the emergence of systems that can
-              generate entire components from descriptions or mockups,
+              just the beginning. We&apos;re seeing the emergence of systems
+              that can generate entire components from descriptions or mockups,
               dramatically accelerating the development process.
             </p>
 

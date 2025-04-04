@@ -147,7 +147,7 @@ export default function CVDownloadButton() {
 
       yPos += 10;
 
-      for (const exp of cvData.experience) {
+      for (const exp of cvData.experiences) {
         doc.setFontSize(11);
         doc.setTextColor(neonGreen);
         doc.text(exp.position, 20, yPos);
