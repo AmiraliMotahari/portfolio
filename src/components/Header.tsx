@@ -6,7 +6,7 @@ import Navbar from "./navigation/Navbar";
 const Header = () => {
   return (
     <header>
-      <Navbar />
+      <Navbar/>
     </header>
   );
 };

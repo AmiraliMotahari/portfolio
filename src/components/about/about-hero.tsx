@@ -46,7 +46,7 @@ export default function AboutHero({ profilePicture }: Props) {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center items-center lg:justify-start">
-              <Button className="bg-neon-green hover:bg-neon-green/80 text-black">
+              <Button variant={"secondary"}>
                 Contact Me
               </Button>
               <CVDownloadButton />

@@ -67,7 +67,7 @@ const Navbar = ({ className }: Props) => {
       transition={transition}
       viewport={{ once: true }}
       className={cn(
-        "w-fit border py-2 px-6 fixed left-1/2 top-3 -translate-x-1/2 rounded-full z-50 bg-background/30 backdrop-blur-sm",
+        "w-fit max-w-11/12 border py-2 px-6 fixed left-1/2 top-3 -translate-x-1/2 rounded-full z-50 bg-background/30 backdrop-blur-sm",
         isMobile && "w-full",
         className
       )}
