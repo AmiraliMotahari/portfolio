@@ -1,6 +1,16 @@
 import { defaultImage } from "../constants/images";
+import {
+  CertificationsType,
+  EducationType,
+  ExperiencesType,
+  LanguagesType,
+  PersonalInfoType,
+  ProjectsType,
+  SkillsType,
+  SocialsType,
+} from "../types";
 
-export const personalInfo = {
+export const personalInfo: PersonalInfoType = {
   firstName: "Amirali",
   lastName: "Motahari",
   yearOfBirth: 2000,
@@ -14,7 +24,7 @@ export const personalInfo = {
   picture: "/assets/images/amirali-motahari.jpeg",
 };
 
-export const socials = [
+export const socials: SocialsType = [
   {
     title: "LinkedIn",
     href: "https://www.linkedin.com/in/amirali-motahari-252a651a7",
@@ -25,7 +35,7 @@ export const socials = [
   },
 ];
 
-export const skills = [
+export const skills: SkillsType = [
   { name: "JavaScript/TypeScript", level: 90 },
   { name: "React & Next.js", level: 85 },
   { name: "CSS/Tailwind", level: 100 },
@@ -35,7 +45,7 @@ export const skills = [
   { name: "Accessibility", level: 70 },
 ];
 
-export const experiences = [
+export const experiences: ExperiencesType = [
   {
     position: "Senior Frontend Developer",
     company: "Tech Innovations Inc.",
@@ -86,7 +96,7 @@ export const experiences = [
   },
 ];
 
-export const education = [
+export const education: EducationType = [
   {
     degree: "Bachelor of Science in Computer Science",
     institution: "University of Technology",
@@ -150,7 +160,7 @@ export const education = [
   },
 ];
 
-const projects = [
+const projects: ProjectsType = [
   {
     id: 1,
     title: "E-Commerce Platform",
@@ -197,7 +207,7 @@ const projects = [
   },
 ];
 
-export const certifications = [
+export const certifications: CertificationsType = [
   {
     name: "AWS Certified Developer",
     issuer: "Amazon Web Services",
@@ -212,7 +222,7 @@ export const certifications = [
   },
 ];
 
-export const languages = [
+export const languages: LanguagesType = [
   { name: "Persian", proficiency: "Native" },
   { name: "English", proficiency: "Advanced" },
 ];

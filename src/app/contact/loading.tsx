@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ContactLoading() {
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className="container mx-auto px-12 py-20">
       <Skeleton className="h-12 w-1/2 mx-auto mb-6 bg-muted/20" />
       <Skeleton className="h-6 w-3/4 mx-auto mb-16 bg-muted/20" />
 
@@ -46,10 +46,6 @@ export default function ContactLoading() {
             <Skeleton className="h-12 w-full bg-muted/20 rounded-md mt-4" />
           </div>
         </div>
-      </div>
-
-      <div className="mt-20">
-        <Skeleton className="h-80 w-full bg-muted/20 rounded-xl" />
       </div>
     </div>
   );
