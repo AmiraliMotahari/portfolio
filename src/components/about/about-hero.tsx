@@ -12,7 +12,7 @@ type Props = {
 
 export default function AboutHero({ profilePicture }: Props) {
   return (
-    <section className="relative py-20 px-12 overflow-hidden">
+    <section className="relative pt-32 pb-20 px-12 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-green/20 rounded-full filter blur-3xl"></div>
@@ -20,7 +20,7 @@ export default function AboutHero({ profilePicture }: Props) {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left">
           <motion.div
             className="lg:w-1/2"
             initial={{ opacity: 0, x: -50 }}
@@ -45,7 +45,7 @@ export default function AboutHero({ profilePicture }: Props) {
               meet requirements but exceed expectations.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center items-center lg:justify-start">
               <Button className="bg-neon-green hover:bg-neon-green/80 text-black">
                 Contact Me
               </Button>
@@ -54,7 +54,7 @@ export default function AboutHero({ profilePicture }: Props) {
           </motion.div>
 
           <motion.div
-            className="lg:w-1/2"
+            className="w-1/3 lg:w-1/2"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}

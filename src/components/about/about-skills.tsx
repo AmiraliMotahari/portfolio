@@ -19,36 +19,29 @@ const categories = [
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    title: "UI/UX Design",
+    title: "Design",
     icon: <Palette className="h-8 w-8 text-neon-green" />,
-    skills: [
-      "Figma",
-      "Adobe XD",
-      "Responsive Design",
-      "Wireframing",
-      "Prototyping",
-    ],
+    skills: ["Figma", "Adobe Illustrator", "Adobe Premiere"],
   },
   {
     title: "Backend Development",
     icon: <Server className="h-8 w-8 text-neon-green" />,
-    skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "REST APIs"],
+    skills: ["Node.js", "SQL", "PostgreSQL", "REST APIs"],
   },
   {
     title: "Performance Optimization",
     icon: <Rocket className="h-8 w-8 text-neon-green" />,
     skills: [
-      "Lazy Loading",
-      "Code Splitting",
       "Caching Strategies",
+      "Code Splitting",
+      "Lazy Loading",
       "Image Optimization",
-      "Core Web Vitals",
     ],
   },
   {
     title: "Global Deployment",
     icon: <Globe className="h-8 w-8 text-neon-green" />,
-    skills: ["Vercel", "Netlify", "AWS", "Docker", "CI/CD Pipelines"],
+    skills: ["Vercel", "Netlify", "AWS",],
   },
   {
     title: "Security",
@@ -77,7 +70,6 @@ const categories = [
     icon: <Cpu className="h-8 w-8 text-neon-green" />,
     skills: [
       "AI Integration",
-      "WebAssembly",
       "Edge Computing",
       "Progressive Web Apps",
       "AR/VR Web Experiences",
@@ -120,7 +112,7 @@ export default function AboutSkills({ skills }: Props) {
           Skills & Expertise
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="grid lg:grid-cols-2 gap-x-6 gap-y-12">
           <div>
             <h3 className="text-2xl font-semibold mb-8">
               Technical Proficiency
@@ -163,7 +155,7 @@ export default function AboutSkills({ skills }: Props) {
           <div>
             <h3 className="text-2xl font-semibold mb-8">Areas of Expertise</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {categories.slice(0, 4).map((category, index) => (
+              {categories.slice(0,4).map((category, index) => (
                 <motion.div
                   key={category.title}
                   className="glass-card p-6"
@@ -195,7 +187,7 @@ export default function AboutSkills({ skills }: Props) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
           {categories.slice(4).map((category, index) => (
             <motion.div
               key={category.title}

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { GraduationCap, Calendar, MapPin, Award, BookOpen } from "lucide-react";
 import { TracingBeam } from "../ui/tracing-beam";
+import GradientBackground from "../ui/gradient-background";
 
 type Props = {
   education: {
@@ -25,6 +26,8 @@ export default function EducationSection({ education }: Props) {
 
   return (
     <section className="py-20 bg-background/50 relative">
+      <GradientBackground />
+
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"

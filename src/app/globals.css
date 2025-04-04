@@ -45,6 +45,10 @@
   /* New Colors */
   --color-neon-green: var(--neon-green);
   --color-neon-red: var(--neon-red);
+
+  /* Animations */
+
+  /* Key Frames */
 }
 
 :root {
@@ -155,4 +159,3 @@
     @apply opacity-0 -translate-y-2.5 transition-all duration-300;
   }
 }
-
