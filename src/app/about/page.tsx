@@ -2,7 +2,6 @@ import AboutHero from "@/components/about/about-hero";
 import AboutSkills from "@/components/about/about-skills";
 import EducationSection from "@/components/about/education-section";
 import ExperienceTimeline from "@/components/about/experience-timeline";
-import Testimonials from "@/components/about/testimonials";
 import { user } from "@/lib/data";
 
 export const metadata = {
@@ -19,7 +18,6 @@ export default function AboutPage() {
       <AboutSkills skills={skills} />
       <EducationSection education={education} />
       <ExperienceTimeline experiences={experiences} />
-      <Testimonials />
     </div>
   );
 }
