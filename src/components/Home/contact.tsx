@@ -8,7 +8,6 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { Globe } from "../ui/globe";
 import { Mail, MapPin } from "lucide-react";
-import { BorderBeam } from "../ui/border-beam";
 
 type Props = {
   contactData: {
@@ -86,7 +85,8 @@ export default function Contact({ contactData }: Props) {
             <div className="size-[340px] relative">
               <Globe className="inset-0" />
             </div>
-            <BorderBeam
+            {/* Todo: fix */}
+            {/* <BorderBeam
               duration={6}
               size={400}
               className="from-transparent via-neon-green to-transparent"
@@ -96,7 +96,7 @@ export default function Contact({ contactData }: Props) {
               delay={3}
               size={400}
               className="from-transparent via-neon-red to-transparent"
-            />
+            /> */}
           </div>
         </motion.div>
       </div>

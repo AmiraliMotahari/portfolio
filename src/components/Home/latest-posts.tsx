@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Props = {
@@ -18,9 +18,7 @@ type Props = {
   }[];
 };
 
-export default function LatestPosts({recentPosts}: Props) {
-
-
+export default function LatestPosts({ recentPosts }: Props) {
   return (
     <section className="py-20 bg-muted/10 px-12">
       <div className="container mx-auto px-4">
@@ -93,7 +91,7 @@ export default function LatestPosts({recentPosts}: Props) {
               variant="outline"
               className="border-neon-green text-neon-green hover:bg-neon-green/10"
             >
-              View all articles <ArrowRight className="ml-2 h-4 w-4" />
+              View all articles <ChevronRight className="ml-2" size={16} />
             </Button>
           </Link>
         </div>
