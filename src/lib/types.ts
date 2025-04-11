@@ -76,3 +76,13 @@ export type UserType = {
   languages: LanguagesType;
   socials: SocialsType;
 };
+
+export type BlogPost = {
+  title: string;
+  slug: string;
+  date: string;
+  readingTime: number;
+  excerpt: string;
+  coverImage: string;
+  tags: string[];
+};

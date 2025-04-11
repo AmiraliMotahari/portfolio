@@ -240,7 +240,16 @@ export default function CVDownloadButton() {
       }
 
       // Save the PDF
-      doc.save(`${cvData.personalInfo.name.replace(/\s+/g, "_")}_CV.pdf`);
+      const pdfBlob = doc.output("blob");
+      const url = URL.createObjectURL(pdfBlob);
+      const link = document.createElement("a");
+      link.target = "_blank";
+      link.href = url;
+      link.download = `${cvData.personalInfo.name.replace(/\s+/g, "_")}_CV.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error generating PDF:", error);
     } finally {
