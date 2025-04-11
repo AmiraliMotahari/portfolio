@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react";
 
 export default function ProjectsHero() {
   return (
@@ -23,12 +23,12 @@ export default function ProjectsHero() {
           </h1>
 
           <p className="text-xl mb-8 text-muted-foreground">
-            A collection of my work spanning web development, design, and interactive experiences. Each project
-            represents a unique challenge and solution.
+            A collection of my work spanning web development, design, and
+            interactive experiences. Each project represents a unique challenge
+            and solution.
           </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

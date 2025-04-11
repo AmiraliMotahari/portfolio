@@ -1,7 +1,7 @@
 "use client";
 
 import { PersonalInfoType, SocialsType } from "@/lib/types";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Mail, MapPin } from "lucide-react";
 
 type Props = {

@@ -9,7 +9,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { Path, useFormContext } from "react-hook-form";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 import { TextareaHTMLAttributes } from "react";
 
 type TextareaWithLabelProps<S> = {

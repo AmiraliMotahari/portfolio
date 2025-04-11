@@ -11,8 +11,8 @@ import {
 
 import { Menu } from "lucide-react";
 import { NavigationItem } from "./Navbar";
-import Logo from "../icons/logo";
-import { Button } from "../ui/button";
+import Logo from "@/components/icons/logo";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 type Props = {

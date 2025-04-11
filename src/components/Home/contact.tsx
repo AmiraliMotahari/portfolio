@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Particles } from "../ui/particles";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { Globe } from "../ui/globe";
+import { Globe } from "@/components/ui/globe";
 import { Mail, MapPin } from "lucide-react";
 
 type Props = {

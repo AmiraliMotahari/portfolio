@@ -3,10 +3,10 @@
 import NavItem from "./NavItem";
 import { motion, TargetAndTransition } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "../ModeToggle";
-import { Button } from "../ui/button";
+import { ModeToggle } from "@/components/ModeToggle";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Logo from "../icons/logo";
+import Logo from "@/components/icons/logo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileNav from "./mobile-nav";
 

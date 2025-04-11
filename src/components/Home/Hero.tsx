@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { WarpBackground } from "../ui/warp-background";
+import { WarpBackground } from "@/components/ui/warp-background";
 import {
   Card,
   CardContent,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@/components/ui/card";
 import { MessageCircle } from "lucide-react";
-import CVDownloadButton from "../cv-download-button";
+import CVDownloadButton from "@/components/cv-download-button";
 import { motion } from "motion/react";
 
 const Hero = () => {

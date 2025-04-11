@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Github, Heart, Linkedin } from "lucide-react";
-import { Button } from "./ui/button";
-import Logo from "./icons/logo";
+import { Button } from "@/components/ui/button";
+import Logo from "@/components/icons/logo";
 
 const currentYear = new Date().getFullYear();
 
