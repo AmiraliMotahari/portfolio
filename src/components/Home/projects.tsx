@@ -50,7 +50,7 @@ const ProjectCard = ({
         <h3 className="text-xl font-bold mb-2">{project.title}</h3>
         <p className="text-muted-foreground mb-4">{project.description}</p>
       </div>
-      <div className="w-full flex gap-4 p-6 pt-0 mt-auto">
+      <div className="w-full flex flex-wrap gap-4 p-6 pt-0 mt-auto">
         <Button asChild variant={"ghost"}>
           <a
             href={project.demoUrl}
