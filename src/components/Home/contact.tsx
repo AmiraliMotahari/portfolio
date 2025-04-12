@@ -68,11 +68,11 @@ export default function Contact({ contactData }: Props) {
                   href={`mailto:${contactData.email}`}
                   className="flex justify-items-start gap-2"
                 >
-                  <Mail className="text-neon-green" />
+                  <Mail />
                   {contactData.email}
                 </a>
                 <address className="font-normal not-italic flex justify-items-start gap-2">
-                  <MapPin className="text-neon-green" />
+                  <MapPin />
                   {contactData.location}
                 </address>
               </div>
