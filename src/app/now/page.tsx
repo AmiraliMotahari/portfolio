@@ -18,23 +18,9 @@ export default function NowPage() {
         </h1>
 
         <div className="glass-card p-8 mb-12">
-          <p className="text-lg mb-6">
-            This is my now page - inspired by{" "}
-            <a
-              href="https://nownownow.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neon-green hover:text-neon-red transition-colors"
-            >
-              nownownow.com
-            </a>
-            . It&apos;s a snapshot of what I&apos;m focused on at this point in
-            my life.
-          </p>
-
           <div className="border-l-4 border-neon-green pl-4 italic mb-8">
             Last updated:{" "}
-            {new Date().toLocaleDateString("en-US", {
+            {new Date("2025-04-12").toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",
@@ -47,9 +33,8 @@ export default function NowPage() {
               <div>
                 <h2 className="text-xl font-semibold mb-2">Current Projects</h2>
                 <p>
-                  Working on a new SaaS application using Next.js and
-                  TypeScript. Exploring AI integration for enhanced user
-                  experiences.
+                  Managing multiple initiatives, including an e-commerce store
+                  and a tax management system using Next.js.
                 </p>
               </div>
             </div>
@@ -59,9 +44,9 @@ export default function NowPage() {
               <div>
                 <h2 className="text-xl font-semibold mb-2">Learning</h2>
                 <p>
-                  Diving deeper into WebGL and Three.js for creative web
-                  experiences. Also studying system design patterns for scalable
-                  applications.
+                  Currently pursuing a Master&apos;s degree in Artificial
+                  Intelligence. Actively developing skills in Next.js and
+                  expanding knowledge in digital marketing strategies
                 </p>
               </div>
             </div>
@@ -72,8 +57,7 @@ export default function NowPage() {
                 <h2 className="text-xl font-semibold mb-2">Listening To</h2>
                 <p>
                   Synthwave playlists while coding. Tech podcasts during
-                  commutes, particularly enjoying &quat;Syntax&quat; and
-                  &quat;Frontend Happy Hour&quat;.
+                  commutes.
                 </p>
               </div>
             </div>
@@ -105,8 +89,9 @@ export default function NowPage() {
               <div>
                 <h2 className="text-xl font-semibold mb-2">Future Plans</h2>
                 <p>
-                  Planning to launch my SaaS product in Q3. Looking to attend
-                  more tech conferences and connect with the community.
+                  Working toward completing my Master’s degree in Artificial
+                  Intelligence. I aim to combine my expertise in web development
+                  with AI to build smarter, more intuitive digital experiences.
                 </p>
               </div>
             </div>

@@ -7,7 +7,7 @@ import { user } from "@/lib/data";
 import { blogPosts } from "@/lib/data/blog-data";
 
 const Home = () => {
-  const { personalInfo, skills, projects, socials } = user;
+  const { personalInfo, projects, socials } = user;
 
   const topProjects = projects.slice(0, 3);
   const recentPosts = blogPosts.slice(0, 3);
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <About userImageUrl={personalInfo.picture} skills={skills} />
+      <About personalInfo={personalInfo} />
       <Projects topProjects={topProjects} />
       <LatestPosts recentPosts={recentPosts} />
       <Contact
