@@ -51,26 +51,30 @@ const ProjectCard = ({
         <p className="text-muted-foreground mb-4">{project.description}</p>
       </div>
       <div className="w-full flex flex-wrap gap-4 p-6 pt-0 mt-auto">
-        <Button asChild variant={"ghost"}>
-          <a
-            href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-sm"
-          >
-            <ExternalLink className="size-4 mr-1" /> Live Demo
-          </a>
-        </Button>
-        <Button asChild variant={"ghost"}>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-sm"
-          >
-            <Github className="size-4 mr-1" /> Source Code
-          </a>
-        </Button>
+        {project.demoUrl ? (
+          <Button asChild variant={"ghost"}>
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-sm"
+            >
+              <ExternalLink className="size-4 mr-1" /> Live Demo
+            </a>
+          </Button>
+        ) : null}
+        {project.githubUrl ? (
+          <Button asChild variant={"ghost"}>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-sm"
+            >
+              <Github className="size-4 mr-1" /> Source Code
+            </a>
+          </Button>
+        ) : null}
       </div>
     </motion.div>
   );

@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <div className="min-h-screen">
       {/* Hero Section Loading */}
-      <div className="min-h-screen flex flex-col justify-center items-center text-center py-20">
+      <div className="min-h-screen flex flex-col justify-center items-center text-center py-20 px-12">
         <div className="max-w-3xl px-4">
           <Skeleton className="h-16 w-3/4 mx-auto mb-6 bg-muted/20" />
           <Skeleton className="h-8 w-5/6 mx-auto mb-8 bg-muted/20" />
@@ -17,7 +17,7 @@ export default function Loading() {
       </div>
 
       {/* About Section Loading */}
-      <div className="py-20">
+      <div className="py-20 px-12">
         <div className="container mx-auto">
           <Skeleton className="h-12 w-1/3 mx-auto mb-16 bg-muted/20" />
 
@@ -45,7 +45,7 @@ export default function Loading() {
       </div>
 
       {/* Projects Section Loading */}
-      <div className="py-20">
+      <div className="py-20 px-12">
         <div className="container mx-auto">
           <Skeleton className="h-12 w-1/3 mx-auto mb-16 bg-muted/20" />
 

@@ -50,8 +50,9 @@ export type ProjectsType = {
   image: string;
   category: string;
   tags: string[];
-  demoUrl: string;
-  githubUrl: string;
+  demoUrl: string | null;
+  githubUrl: string | null;
+  featured: boolean;
 }[];
 
 export type CertificationsType = {
