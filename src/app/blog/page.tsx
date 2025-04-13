@@ -6,11 +6,36 @@ import { Badge } from "@/components/ui/badge";
 import { blogPosts } from "@/lib/data/blog-data";
 import { defaultImage } from "@/lib/constants/images";
 import { formatDate } from "@/lib/formatter";
+import BlogCardRegular from "@/components/cards/blog-card-regular";
 
+//todo: add image
 export const metadata = {
   title: "Blog",
   description: "Thoughts, ideas, and tutorials on web development and design",
+  openGraph: {
+    title: "Blog | Amirali Motahari",
+    description: "Thoughts, ideas, and tutorials on web development and design",
+    url: process.env.NEXT_PUBLIC_URL,
+    siteName: "Amirali Motahari",
+    images: [
+      // {
+      //   url: new URL(post.imageUrl, metadataBase), // Must be an absolute URL
+      //   width: 400,
+      //   height: 280,
+      // },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Amirali Motahari",
+    description: "Thoughts, ideas, and tutorials on web development and design",
+    // images: [`${new URL(post.imageUrl, metadataBase)}`],
+  },
 };
+
+//todo: add search and filter
 
 export default function BlogPage() {
   // Get all unique tags from blog posts
@@ -21,7 +46,9 @@ export default function BlogPage() {
   const featuredPost = blogPosts[0];
 
   // Rest of the posts
-  const regularPosts = blogPosts.slice(1);
+  const regularPosts = blogPosts
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(1);
 
   return (
     <div className="min-h-screen">
@@ -146,58 +173,7 @@ export default function BlogPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {regularPosts.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <article className="glass-card overflow-hidden h-full flex flex-col group hover:border-foreground transition-colors duration-300">
-                  <div className="relative">
-                    <Image
-                      src={post.coverImage || defaultImage}
-                      alt={post.title}
-                      width={600}
-                      height={400}
-                      className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                      {post.tags.slice(0, 1).map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="bg-background/70 backdrop-blur-sm text-xs"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                      {post.tags.length > 1 && (
-                        <Badge
-                          variant="secondary"
-                          className="bg-background/70 backdrop-blur-sm text-xs"
-                        >
-                          +{post.tags.length - 1}
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
-                  <div className="p-5 flex-grow flex flex-col">
-                    <div className="flex items-center text-xs text-muted-foreground mb-3">
-                      <Calendar className="h-3 w-3 mr-1" />
-                      <span>{formatDate(new Date(post.date))}</span>
-                      <span className="mx-2">•</span>
-                      <Clock className="h-3 w-3 mr-1" />
-                      <span>{post.readingTime} min read</span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-3 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex justify-end mt-auto">
-                      <span className="text-sm flex items-center group-hover:translate-x-1 transition-transform">
-                        Read more <ChevronRight className="ml-1 h-3 w-3" />
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              </Link>
+              <BlogCardRegular key={post.slug} post={post} />
             ))}
           </div>
         </div>

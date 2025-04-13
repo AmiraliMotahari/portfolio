@@ -4,7 +4,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Next.js 15: A Deep Dive into Its Latest Features",
     slug: "nextjs-15-deep-dive",
-    date: "2025-04-13",
+    date: "2025-04-10",
     readingTime: 8,
     excerpt:
       "Explore the ground breaking features of Next.js 15, including React 19 support, caching improvements, and the stabilization of Turbopack.",
@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Implementing Voice Search Optimization in Web Applications",
     slug: "voice-search-optimization-web-apps",
-    date: "2025-04-13",
+    date: "2025-04-11",
     readingTime: 8,
     excerpt:
       "Voice search is transforming the way users interact with the web. Learn how to optimize your React or Next.js app for the voice-first era.",
@@ -40,12 +40,73 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Mastering SEO in Next.js: A Comprehensive Guide",
     slug: "nextjs-seo-guide",
-    date: "2025-04-13",
+    date: "2025-04-12",
     readingTime: 10,
     excerpt:
       "Explore the essential SEO features in Next.js, including metadata management, Open Graph integration, structured data, and dynamic routing.",
     coverImage: "/assets/images/blog/nextjs-seo-guide.png",
     content: `<h3>Introduction</h3><p>Search Engine Optimization (SEO) is pivotal for enhancing the visibility and reach of web applications. Next.js, a powerful React framework, offers robust features to streamline SEO implementation, including metadata management, Open Graph integration, structured data, and more. This guide delves into these features, providing practical insights to optimize your Next.js applications effectively.<a target="_blank" rel="noopener" href="https://javascript.plainenglish.io/mastering-metadata-in-next-js-a-comprehensive-guide-to-seo-excellence-ab9c2cf0dc35">JavaScript in Plain English</a></p><hr><h3>🏷️ Understanding Metadata in Next.js</h3><p>Metadata plays a crucial role in SEO, providing search engines with information about your web pages. Next.js facilitates metadata management through its <code>metadata</code> object and <code>generateMetadata</code> function.<a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/api-reference/functions/generate-metadata">JavaScript in Plain English+2Next.js by Vercel - The React Framework+2Next.js by Vercel - The React Framework+2</a></p><h4>Static Metadata</h4><p>For static pages, you can export a <code>metadata</code> object directly:<a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/building-your-application/optimizing/metadata">Next.js by Vercel - The React Framework+1Stack Overflow+1</a></p><pre><code>// app/page.tsx export const metadata = {   title: 'Home Page',   description: 'Welcome to our homepage.', }; </code></pre><p></p><p>This approach is ideal for pages with content that doesn't change frequently.</p><h4>Dynamic Metadata with <code>generateMetadata</code></h4><p>For dynamic content, Next.js provides the <code>generateMetadata</code> function, allowing metadata generation based on route parameters or fetched data:<a target="_blank" rel="noopener" href="https://javascript.plainenglish.io/mastering-metadata-in-next-js-a-comprehensive-guide-to-seo-excellence-ab9c2cf0dc35">JavaScript in Plain English+1Stack Overflow+1</a></p><pre><code>// app/blog/[slug]/page.tsx export async function generateMetadata({ params }) {   const post = await getPost(params.slug);   return {     title: post.title,     description: post.excerpt,   }; } </code></pre><p></p><p>This dynamic approach ensures that each page has relevant metadata, enhancing SEO performance.</p><hr><h3>🌐 Enhancing Social Sharing with Open Graph and Twitter Metadata</h3><p>Open Graph and Twitter metadata enrich how your content appears when shared on social platforms. Next.js supports these through the <code>openGraph</code> and <code>twitter</code> fields within the metadata object.<a target="_blank" rel="noopener" href="https://dev.to/danmugh/understand-open-graph-og-in-next-js-a-practical-guide-3ade">DEV Community+1Stack Overflow+1</a><a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/api-reference/functions/generate-metadata">Next.js by Vercel - The React Framework</a></p><h4>Open Graph Metadata</h4><pre><code>export const metadata = {   openGraph: {     title: 'Next.js Guide',     description: 'A comprehensive guide to Next.js.',     url: 'https://example.com/nextjs-guide',     siteName: 'Example Site',     images: [       {         url: 'https://example.com/images/nextjs-guide.png',         width: 800,         height: 600,       },     ],     locale: 'en_US',     type: 'article',   }, }; </code></pre><p></p><h4>Twitter Metadata</h4><pre><code>export const metadata = {   twitter: {     card: 'summary_large_image',     title: 'Next.js Guide',     description: 'A comprehensive guide to Next.js.',     creator: '@example',     images: ['https://example.com/images/nextjs-guide.png'],   }, }; </code></pre><p></p><p>These metadata configurations ensure your content is presented attractively on social media platforms, potentially increasing engagement.</p><hr><h3>📊 Implementing Structured Data with JSON-LD</h3><p>Structured data helps search engines understand your content better, enabling rich search results. Next.js allows the inclusion of JSON-LD structured data within the metadata object.<a target="_blank" rel="noopener" href="https://nextjs.org/docs/app/building-your-application/optimizing/metadata">Next.js by Vercel - The React Framework</a></p><pre><code>export const metadata = {   other: {     'application/ld+json': JSON.stringify({       '@context': 'https://schema.org',       '@type': 'Article',       headline: 'Next.js Guide',       description: 'A comprehensive guide to Next.js.',       author: {         '@type': 'Person',         name: 'John Doe',       },       publisher: {         '@type': 'Organization',         name: 'Example Site',         logo: {           '@type': 'ImageObject',           url: 'https://example.com/logo.png',         },       },       datePublished: '2025-04-13',     }),   }, }; </code></pre><p></p><p>Incorporating structured data enhances your site's visibility in search engine results through rich snippets.</p><hr><h3>⚙️ Leveraging <code>generateStaticParams</code> for Dynamic Routes</h3><p>For dynamic routes, Next.js's <code>generateStaticParams</code> function enables pre-rendering pages at build time, improving performance and SEO.</p><pre><code>// app/blog/[slug]/page.tsx export async function generateStaticParams() {   const posts = await getAllPosts();   return posts.map((post) =&gt; ({     slug: post.slug,   })); } </code></pre><p></p><p>This function ensures that all dynamic routes are statically generated, reducing load times and enhancing crawlability.</p><hr><h3>🧰 Additional SEO Best Practices in Next.js</h3><ul class="list-disc ml-4"><li><p><strong>Canonical URLs</strong>: Prevent duplicate content issues by specifying canonical URLs.</p></li></ul><pre><code>export const metadata = {     alternates: {       canonical: 'https://example.com/nextjs-guide',     },   }; </code></pre><p></p><ul class="list-disc ml-4"><li><p><strong>Robots Meta Tag</strong>: Control how search engines index your pages.</p></li></ul><pre><code>export const metadata = {     robots: {       index: true,       follow: true,       nocache: false,     },   }; </code></pre><p></p><ul class="list-disc ml-4"><li><p><strong>Sitemap Generation</strong>: Use tools like <code>next-sitemap</code> to generate sitemaps, aiding search engine indexing.</p></li><li><p><strong>Performance Optimization</strong>: Implement lazy loading, image optimization, and code splitting to enhance page load speeds, positively impacting SEO.</p></li></ul><hr><h3>📌 Conclusion</h3><p>Optimizing SEO in Next.js involves a multifaceted approach, leveraging built-in features like metadata management, Open Graph and Twitter integration, structured data, and dynamic routing. By implementing these strategies, you can significantly improve your web application's visibility, user engagement, and search engine rankings.</p>`,
     tags: ["SEO", "Next.js", "React", "Web Development", "Web Accessibility"],
+  },
+  {
+    title:
+      "Mastering the View Transition API: Smooth UX in CSS, JS, React, and Next.js",
+    slug: "view-transition-api",
+    date: "2025-04-13",
+    readingTime: 8,
+    excerpt:
+      "Explore the new View Transition API from CSS, JavaScript, React, and Next.js perspectives. Learn how to implement seamless animations and enhance your web application's UX.",
+    coverImage: "/assets/images/blog/view-transition-api-cover.png",
+    tags: [
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "UX",
+      "Web Animations",
+      "ViewTransition",
+    ],
+    content: `<p>Creating smooth, native-like transitions has long been a challenge for developers. Whether building single-page applications (SPAs) or multi-page applications (MPAs), managing animated state transitions often required complex logic or third-party tools. Enter the <strong>View Transition API</strong>—a powerful, modern browser feature designed to streamline and standardize animated transitions between DOM states.</p><p>In this post, we&apos;ll dive into how this API works, and how you can use it effectively across <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React</strong>, and <strong>Next.js</strong>.</p><hr><h2>🚀 What is the View Transition API?</h2><p>The View Transition API enables developers to animate between two visual states in a way that feels smooth and natural. Think page-to-page animations or component-level transitions that look native to the platform.</p><p>With just a few lines of code, the API captures the current DOM state, applies updates, and renders the transition—all natively and efficiently.</p><hr><h2>🎨 Styling with CSS</h2><p>The View Transition API introduces several new CSS features:</p><pre><code>@view-transition;
+
+.my-element {
+  view-transition-name: fade-slide;
+}
+
+::view-transition-old(fade-slide) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+::view-transition-new(fade-slide) {
+  opacity: 0;
+  transform: translateY(20px);
+}</code></pre><p>Key pseudo-elements:</p><ul class="list-disc ml-4"><li><p><code>::view-transition-old(NAME)</code>: The outgoing state.</p></li><li><p><code>::view-transition-new(NAME)</code>: The incoming state.</p></li></ul><p>You can define these transitions inline, in your stylesheets, or dynamically via CSS-in-JS.</p><hr><h2>🧠 JavaScript: Starting a Transition</h2><p>In JavaScript, you use the <code>document.startViewTransition()</code> method to initiate the transition:</p><pre><code>document.startViewTransition(() =&gt; {
+  document.querySelector(".content").textContent = "New Content";
+});</code></pre><p>The callback contains your DOM mutation logic. The browser handles capturing before/after states and smoothly animating between them.</p><hr><h2>⚛️ React Support</h2><p>React&apos;s architecture complicates things slightly, but it&apos;s still possible. There&apos;s experimental support using:</p><pre><code>import { unstable_ViewTransition as ViewTransition } from 'react';
+
+function MyComponent() {
+  return (
+    &lt;ViewTransition&gt;
+      &lt;div&gt;Content goes here&lt;/div&gt;
+    &lt;/ViewTransition&gt;
+  );
+}</code></pre><p>Expect improvements to land as React&apos;s Concurrent Features become more widely adopted.</p><hr><h2>🔁 Next.js Integration</h2><p>To use view transitions in <strong>Next.js</strong>, we recommend <code>next-view-transitions</code>:</p><pre><code>npm install next-view-transitions</code></pre><p>Then, wrap your layout:</p><pre><code>// layout.tsx
+import { ViewTransitions } from 'next-view-transitions';
+
+export default function Layout({ children }) {
+  return (
+    &lt;ViewTransitions&gt;
+      &lt;html lang="en"&gt;
+        &lt;body&gt;{children}&lt;/body&gt;
+      &lt;/html&gt;
+    &lt;/ViewTransitions&gt;
+  );
+}</code></pre><p>Use the provided <code>&lt;Link /&gt;</code> component to trigger animated navigation:</p><pre><code>import { Link } from 'next-view-transitions';
+
+&lt;Link href="/about"&gt;About&lt;/Link&gt;</code></pre><hr><h2>📈 Why Use It?</h2><ul class="list-disc ml-4"><li><p>✅ <strong>Performance</strong>: Browser-optimized animations</p></li><li><p>✅ <strong>Simplified logic</strong>: No manual keyframe juggling</p></li><li><p>✅ <strong>Enhanced UX</strong>: Feels smoother, especially during navigation</p></li></ul><hr><h2>👀 Browser Support</h2><p>View Transition API is currently supported in <strong>Chromium-based browsers</strong> like Chrome and Edge. Firefox and Safari are in progress, so use progressive enhancement:</p><pre><code>if (document.startViewTransition) {
+  document.startViewTransition(() =&gt; updateDOM());
+} else {
+  updateDOM();
+}</code></pre><hr><h2>💡 Final Thoughts</h2><p>The View Transition API unlocks a new level of polish and interactivity for web apps. With clean integration points across CSS, JavaScript, React, and frameworks like Next.js, it&apos;s a game-changer for modern UX.</p><p>Start experimenting today—your users will feel the difference.</p>`,
   },
 ];
