@@ -98,6 +98,8 @@ export default async function BlogPost({ params }: Props) {
               alt={post.title}
               width={1200}
               height={630}
+              placeholder="blur"
+              blurDataURL={post.coverBlurData}
               className="w-full h-auto rounded-2xl"
             />
           </div>
@@ -161,6 +163,8 @@ export default async function BlogPost({ params }: Props) {
                           alt={relatedPost.title}
                           width={400}
                           height={200}
+                          placeholder="blur"
+                          blurDataURL={relatedPost.coverBlurData}
                           className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>

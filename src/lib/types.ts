@@ -9,6 +9,7 @@ export type PersonalInfoType = {
   website: string;
   summary: string;
   picture: string;
+  blurData: string;
 };
 
 export type SocialsType = {
@@ -45,9 +46,11 @@ export type EducationType = {
 
 export type ProjectsType = {
   id: number;
+  slug: string;
   title: string;
   description: string;
   image: string;
+  blurData:string;
   category: string;
   tags: string[];
   demoUrl: string | null;
@@ -85,6 +88,7 @@ export type BlogPost = {
   readingTime: number;
   excerpt: string;
   coverImage: string;
+  coverBlurData:string;
   content:string;
   tags: string[];
 };

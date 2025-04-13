@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NowPage() {
+export default async function NowPage() {
   return (
     <div className="container mx-auto px-4 py-20 relative">
       <GradientBackground />

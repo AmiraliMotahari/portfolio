@@ -20,6 +20,8 @@ const BlogCardRegular = ({ post }: Props) => {
             alt={post.title}
             width={600}
             height={400}
+            placeholder="blur"
+            blurDataURL={post.coverBlurData}
             className="h-48 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute top-3 left-3 flex flex-wrap gap-1">

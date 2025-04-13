@@ -8,9 +8,10 @@ import { defaultImage } from "@/lib/constants/images";
 
 type Props = {
   profilePicture: string;
+  blurData:string
 };
 
-export default function AboutHero({ profilePicture }: Props) {
+export default function AboutHero({ profilePicture, blurData }: Props) {
   return (
     <section className="relative pt-32 pb-20 px-12 overflow-hidden">
       {/* Background elements */}
@@ -46,9 +47,7 @@ export default function AboutHero({ profilePicture }: Props) {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center items-center lg:justify-start">
-              <Button variant={"secondary"}>
-                Contact Me
-              </Button>
+              <Button variant={"secondary"}>Contact Me</Button>
               <CVDownloadButton />
             </div>
           </motion.div>
@@ -67,6 +66,8 @@ export default function AboutHero({ profilePicture }: Props) {
                   alt="Amirali Motahari"
                   width={600}
                   height={600}
+                  placeholder="blur"
+                  blurDataURL={blurData}
                   className="w-full h-auto"
                 />
               </div>

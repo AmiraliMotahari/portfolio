@@ -63,6 +63,8 @@ export default function About({ personalInfo }: Props) {
                 alt="Profile"
                 width={600}
                 height={600}
+                placeholder="blur"
+                blurDataURL={personalInfo.blurData}
                 className="rounded-2xl w-full h-auto"
               />
               {/* <div className="absolute bottom-4 left-4 right-4 glass-card p-4 rounded-xl backdrop-blur-md">

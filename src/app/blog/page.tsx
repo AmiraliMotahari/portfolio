@@ -129,6 +129,8 @@ export default function BlogPage() {
                     alt={featuredPost.title}
                     width={1200}
                     height={630}
+                    placeholder="blur"
+                    blurDataURL={featuredPost.coverBlurData}
                     className="h-64 md:h-96 w-full object-center object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>

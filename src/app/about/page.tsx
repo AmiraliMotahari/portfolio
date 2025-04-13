@@ -47,7 +47,10 @@ export default function AboutPage() {
   const { personalInfo, skills, education, experiences } = user;
   return (
     <div className="min-h-screen">
-      <AboutHero profilePicture={personalInfo.picture} />
+      <AboutHero
+        profilePicture={personalInfo.picture}
+        blurData={personalInfo.blurData}
+      />
       <AboutSkills skills={skills} />
       <EducationSection education={education} />
       <ExperienceTimeline experiences={experiences} />

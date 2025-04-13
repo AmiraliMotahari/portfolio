@@ -29,6 +29,8 @@ export default function ProjectsGrid({ projects }: Props) {
                   alt={project.title}
                   width={800}
                   height={600}
+                  placeholder="blur"
+                  blurDataURL={project.blurData}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {project.featured && (
