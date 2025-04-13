@@ -14,7 +14,7 @@ export const metadata = {
     images: [
       {
         url: new URL(
-          "/assets/images/og/Contact-og.png",
+          "/assets/images/og/contact-og.png",
           process.env.NEXT_PUBLIC_URL
         ),
       },
@@ -28,7 +28,7 @@ export const metadata = {
     description:
       "Get in touch with me for project inquiries, collaborations, or just to say hello",
     image: new URL(
-      "/assets/images/og/Contact-og.png",
+      "/assets/images/og/contact-og.png",
       process.env.NEXT_PUBLIC_URL
     ),
   },
