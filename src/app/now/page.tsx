@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 export default async function NowPage() {
   return (
-    <div className="container mx-auto px-4 py-20 relative">
+    <div className="mx-auto dynamic-px py-20 relative">
       <GradientBackground />
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
