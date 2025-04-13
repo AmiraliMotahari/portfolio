@@ -7,6 +7,47 @@ import {
   BookOpen,
   Dumbbell,
 } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Now",
+  description:
+    "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
+  openGraph: {
+    title: "Now | Amirali Motahari",
+    description:
+      "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
+    url: new URL("/now", process.env.NEXT_PUBLIC_URL),
+    images: [
+      {
+        url: new URL(
+          "/assets/images/amirali-motahari.jpeg",
+          process.env.NEXT_PUBLIC_URL
+        ),
+        width: 400,
+        height: 280,
+        alt: "Amirali Motahari Portrait",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Now | Amirali Motahari",
+    description:
+      "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
+    images: [
+      new URL(
+        "/assets/images/amirali-motahari.jpeg",
+        process.env.NEXT_PUBLIC_URL
+      ),
+    ],
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_URL}/now`,
+  },
+};
 
 export default function NowPage() {
   return (

@@ -23,8 +23,62 @@ export const metadata: Metadata = {
   },
   description:
     "Explore the portfolio of Amirali Motahari - a web developer specializing in frontend technologies, AI, and full-stack projects. Showcasing web apps, coding projects, and ongoing learning in tech and design.",
-  authors: {
-    name: "Amirali Motahari",
+  authors: [{ name: "Amirali Motahari", url: process.env.NEXT_PUBLIC_URL }],
+  creator: "Amirali Motahari",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || ""),
+  openGraph: {
+    title: "Amirali Motahari",
+    description:
+      "Explore the portfolio of Amirali Motahari - a web developer specializing in frontend technologies, AI, and full-stack projects. Showcasing web apps, coding projects, and ongoing learning in tech and design.",
+    url: process.env.NEXT_PUBLIC_URL,
+    siteName: "Amirali Motahari",
+    images: [
+      {
+        url: new URL(
+          "/assets/images/amirali-motahari.jpeg",
+          process.env.NEXT_PUBLIC_URL
+        ),
+        width: 400,
+        height: 280,
+        alt: "Amirali Motahari Portrait",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Amirali Motahari",
+    description:
+      "Explore the portfolio of Amirali Motahari - a web developer specializing in frontend technologies, AI, and full-stack projects. Showcasing web apps, coding projects, and ongoing learning in tech and design.",
+    images: new URL(
+      "/assets/images/amirali-motahari.jpeg",
+      process.env.NEXT_PUBLIC_URL
+    ),
+  },
+  keywords: [
+    "Amirali Motahari",
+    "Creative Developer",
+    "Frontend Engineer",
+    "JavaScript",
+    "Next.js",
+    "React",
+    "Web Development",
+    "Developer Portfolio",
+  ],
+  category: "portfolio",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+    },
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_URL,
   },
 };
 

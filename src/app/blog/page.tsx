@@ -15,14 +15,17 @@ export const metadata = {
   openGraph: {
     title: "Blog | Amirali Motahari",
     description: "Thoughts, ideas, and tutorials on web development and design",
-    url: process.env.NEXT_PUBLIC_URL,
-    siteName: "Amirali Motahari",
+    url: new URL("/blog", process.env.NEXT_PUBLIC_URL),
     images: [
-      // {
-      //   url: new URL(post.imageUrl, metadataBase), // Must be an absolute URL
-      //   width: 400,
-      //   height: 280,
-      // },
+      {
+        url: new URL(
+          "/assets/images/og/blog-og.png",
+          process.env.NEXT_PUBLIC_URL
+        ),
+        width: 400,
+        height: 280,
+        alt: "Amirali Motahari Blog",
+      },
     ],
     locale: "en_US",
     type: "website",
@@ -31,7 +34,13 @@ export const metadata = {
     card: "summary_large_image",
     title: "Blog | Amirali Motahari",
     description: "Thoughts, ideas, and tutorials on web development and design",
-    // images: [`${new URL(post.imageUrl, metadataBase)}`],
+    image: new URL(
+      "/assets/images/og/blog-og.png",
+      process.env.NEXT_PUBLIC_URL
+    ),
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_URL}/blog`,
   },
 };
 
