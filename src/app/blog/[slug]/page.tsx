@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/data/blog-data";
 import { defaultImage } from "@/lib/constants/images";
+import xss from "xss"
 
 export async function generateMetadata({
   params,
@@ -87,7 +88,7 @@ export default async function BlogPost({
 
           <div
             className="prose lg:prose-xl dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: xss(post.content) }}
           />
         </article>
 
