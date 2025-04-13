@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/lib/data/blog-data";
+import { defaultImage } from "@/lib/constants/images";
 
 export async function generateMetadata({
   params,
@@ -33,20 +34,20 @@ export default async function BlogPost({
   const { slug } = await params;
   const post = blogPosts.find((post) => post.slug === slug);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) return notFound();
 
   return (
     <div className="container mx-auto px-4 py-20">
       <div className="max-w-3xl mx-auto">
-        <Link
-          href="/blog"
-          className="inline-flex items-center text-muted-foreground hover:text-neon-green mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to all posts
-        </Link>
+        <Button asChild variant={"ghost"}>
+          <Link
+            href="/blog"
+            className="inline-flex items-center mb-8 transition-colors"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back to all posts
+          </Link>
+        </Button>
 
         <article>
           <div className="mb-8">
@@ -76,7 +77,7 @@ export default async function BlogPost({
 
           <div className="glass-card p-1 rounded-2xl overflow-hidden mb-8">
             <Image
-              src={post.coverImage || "/placeholder.svg"}
+              src={post.coverImage || defaultImage}
               alt={post.title}
               width={1200}
               height={630}
@@ -84,82 +85,10 @@ export default async function BlogPost({
             />
           </div>
 
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p>
-              In the fast-evolving landscape of web development, staying ahead
-              means constantly adapting to new technologies and methodologies.
-              This post explores the latest trends that are reshaping how we
-              build for the web in {new Date().getFullYear()}.
-            </p>
-
-            <h2>The Rise of AI-Assisted Development</h2>
-            <p>
-              Artificial intelligence is no longer just a buzzword—it&apos;s
-              becoming an integral part of the development workflow. From code
-              completion to automated testing, AI tools are enhancing
-              productivity and enabling developers to focus on more creative
-              aspects of their work.
-            </p>
-            <p>
-              Tools like GitHub Copilot and AI-powered code review systems are
-              just the beginning. We&apos;re seeing the emergence of systems
-              that can generate entire components from descriptions or mockups,
-              dramatically accelerating the development process.
-            </p>
-
-            <h2>Web Performance as a Core Metric</h2>
-            <p>
-              With Core Web Vitals now directly impacting search rankings,
-              performance optimization has moved from a nice-to-have to a
-              business-critical concern. Developers are increasingly adopting
-              techniques like:
-            </p>
-            <ul>
-              <li>Partial hydration and island architecture</li>
-              <li>Streaming server-side rendering</li>
-              <li>Optimized asset loading strategies</li>
-              <li>Edge computing for reduced latency</li>
-            </ul>
-
-            <h2>The Maturation of Jamstack</h2>
-            <p>
-              The Jamstack approach has evolved beyond static site generators to
-              encompass a broader ecosystem of tools and services. Modern
-              Jamstack sites leverage:
-            </p>
-            <ul>
-              <li>Incremental static regeneration</li>
-              <li>Distributed persistent rendering</li>
-              <li>Headless CMS systems with robust APIs</li>
-              <li>Edge functions for dynamic content</li>
-            </ul>
-
-            <h2>Design Systems at Scale</h2>
-            <p>
-              As applications grow in complexity, the need for consistent,
-              maintainable UI components becomes paramount. Design systems are
-              becoming more sophisticated, with features like:
-            </p>
-            <ul>
-              <li>Automated accessibility testing</li>
-              <li>Theme switching capabilities</li>
-              <li>Component variant management</li>
-              <li>Integration with design tools</li>
-            </ul>
-
-            <h2>Looking Ahead</h2>
-            <p>
-              The web development landscape will continue to evolve, with a
-              focus on performance, accessibility, and developer experience. By
-              staying informed about these trends and selectively adopting new
-              tools and techniques, developers can create better experiences for
-              users while maintaining sustainable codebases.
-            </p>
-            <p>
-              What trends are you most excited about? Share your thoughts in the
-              comments below!
-            </p>
-          </div>
+          <div
+            className="prose prose-lg dark:prose-invert max-w-none"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </article>
 
         <div className="mt-12 pt-8 border-t">
@@ -219,11 +148,9 @@ export default async function BlogPost({
               </div>
             </div>
 
-            <Link href="/blog">
-              <Button className="bg-neon-green hover:bg-neon-green/80 text-black">
-                Read more articles
-              </Button>
-            </Link>
+            <Button asChild variant={"default"}>
+              <Link href="/blog">Read more articles</Link>
+            </Button>
           </div>
         </div>
       </div>

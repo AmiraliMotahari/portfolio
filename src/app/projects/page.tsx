@@ -1,6 +1,5 @@
 import ProjectsGrid from "@/components/projects/projects-grid";
 import ProjectsHero from "@/components/projects/projects-hero";
-import ProjectsFilter from "@/components/projects/projects-filter";
 import { user } from "@/lib/data";
 
 export const metadata = {
@@ -14,7 +13,6 @@ export default async function ProjectsPage() {
   return (
     <div className="min-h-screen">
       <ProjectsHero />
-      <ProjectsFilter />
       <ProjectsGrid projects={projects} />
     </div>
   );

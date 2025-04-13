@@ -85,5 +85,6 @@ export type BlogPost = {
   readingTime: number;
   excerpt: string;
   coverImage: string;
+  content:string;
   tags: string[];
 };

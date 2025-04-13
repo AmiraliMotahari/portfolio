@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import { cvData } from "@/lib/data/cv-data";
+import { user } from "@/lib/data";
 import { jsPDF } from "jspdf";
 
 export default function CVDownloadButton() {
@@ -22,10 +22,10 @@ export default function CVDownloadButton() {
 
       // Set document properties
       doc.setProperties({
-        title: `${cvData.personalInfo.name} - CV`,
+        title: `${user.personalInfo.name} - CV`,
         subject: "Curriculum Vitae",
-        author: cvData.personalInfo.name,
-        creator: cvData.personalInfo.name,
+        author: user.personalInfo.name,
+        creator: user.personalInfo.name,
       });
 
       // Define colors to match the portfolio theme
@@ -41,19 +41,19 @@ export default function CVDownloadButton() {
       // Header with name and title
       doc.setFontSize(24);
       doc.setTextColor(neonGreen);
-      doc.text(cvData.personalInfo.name, 20, 20);
+      doc.text(user.personalInfo.name, 20, 20);
 
       doc.setFontSize(16);
       doc.setTextColor(255, 255, 255);
-      doc.text(cvData.personalInfo.title, 20, 30);
+      doc.text(user.personalInfo.title, 20, 30);
 
       // Contact information
       doc.setFontSize(10);
       doc.setTextColor(lightGray);
-      doc.text(`Email: ${cvData.personalInfo.email}`, 20, 40);
-      // doc.text(`Phone: ${cvData.personalInfo.phone}`, 20, 45);
-      doc.text(`Location: ${cvData.personalInfo.location}`, 20, 50);
-      doc.text(`Website: ${cvData.personalInfo.website}`, 20, 55);
+      doc.text(`Email: ${user.personalInfo.email}`, 20, 40);
+      // doc.text(`Phone: ${user.personalInfo.phone}`, 20, 45);
+      doc.text(`Location: ${user.personalInfo.location}`, 20, 50);
+      doc.text(`Website: ${user.personalInfo.website}`, 20, 55);
 
       // Summary
       doc.setFontSize(12);
@@ -70,7 +70,7 @@ export default function CVDownloadButton() {
 
       // Split the summary into multiple lines
       const summaryLines = doc.splitTextToSize(
-        cvData.personalInfo.summary,
+        user.personalInfo.summary,
         170
       );
       doc.text(summaryLines, 20, 80);
@@ -89,10 +89,10 @@ export default function CVDownloadButton() {
       yPos += 10;
 
       // Create two columns for skills
-      const skillsPerColumn = Math.ceil(cvData.skills.length / 2);
+      const skillsPerColumn = Math.ceil(user.skills.length / 2);
 
       for (let i = 0; i < skillsPerColumn; i++) {
-        const skill = cvData.skills[i];
+        const skill = user.skills[i];
         if (skill) {
           doc.setFontSize(10);
           doc.setTextColor(lightGray);
@@ -108,7 +108,7 @@ export default function CVDownloadButton() {
           doc.roundedRect(70, yPos - 3, (skill.level / 100) * 40, 4, 1, 1, "F");
 
           // Draw second column skill if available
-          const secondSkill = cvData.skills[i + skillsPerColumn];
+          const secondSkill = user.skills[i + skillsPerColumn];
           if (secondSkill) {
             doc.setTextColor(lightGray);
             doc.text(`${secondSkill.name} (${secondSkill.level}%)`, 120, yPos);
@@ -147,7 +147,7 @@ export default function CVDownloadButton() {
 
       yPos += 10;
 
-      for (const exp of cvData.experiences) {
+      for (const exp of user.experiences) {
         doc.setFontSize(11);
         doc.setTextColor(neonGreen);
         doc.text(exp.position, 20, yPos);
@@ -198,7 +198,7 @@ export default function CVDownloadButton() {
 
       yPos += 10;
 
-      for (const edu of cvData.education) {
+      for (const edu of user.education) {
         doc.setFontSize(11);
         doc.setTextColor(neonGreen);
         doc.text(edu.degree, 20, yPos);
@@ -245,7 +245,7 @@ export default function CVDownloadButton() {
       const link = document.createElement("a");
       link.target = "_blank";
       link.href = url;
-      link.download = `${cvData.personalInfo.name.replace(/\s+/g, "_")}_CV.pdf`;
+      link.download = `${user.personalInfo.name.replace(/\s+/g, "_")}_CV.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

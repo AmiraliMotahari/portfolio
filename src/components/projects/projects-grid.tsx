@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ProjectsType } from "@/lib/types";
 
@@ -13,22 +11,11 @@ type Props = {
 };
 
 export default function ProjectsGrid({ projects }: Props) {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [filteredProjects, setFilteredProjects] = useState<ProjectsType>([]);
-
-  useEffect(() => {
-    setFilteredProjects(
-      activeFilter === "All"
-        ? projects
-        : projects.filter((project) => project.category === activeFilter)
-    );
-  }, [activeFilter, projects]);
-
   return (
     <section className="pt-10 pb-20 px-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.id}
               className="glass-card overflow-hidden group h-full flex flex-col"
@@ -99,21 +86,11 @@ export default function ProjectsGrid({ projects }: Props) {
           ))}
         </div>
 
-        {filteredProjects.length === 0 && (
+        {projects.length === 0 ? (
           <div className="text-center py-20">
             <h3 className="text-2xl font-bold mb-4">No projects found</h3>
-            <p className="text-muted-foreground mb-6">
-              No projects match the selected filter. Try another category.
-            </p>
-            <Button
-              variant="outline"
-              className="border-neon-green text-neon-green hover:bg-neon-green/10"
-              onClick={() => setActiveFilter("All")}
-            >
-              View All Projects
-            </Button>
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );
