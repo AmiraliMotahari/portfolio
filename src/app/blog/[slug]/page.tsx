@@ -29,6 +29,30 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: `${post.title} | Blog`,
     description: post.excerpt,
+    openGraph: {
+      title: `${post.title} | Amirali Motahari`,
+      description: post.excerpt,
+      url: new URL(`/blog/${post.slug}`, process.env.NEXT_PUBLIC_URL),
+      images: [
+        {
+          url: new URL(post.coverImage, process.env.NEXT_PUBLIC_URL),
+          width: 400,
+          height: 280,
+          alt: post.title,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Amirali Motahari`,
+      description: post.excerpt,
+      image: new URL(post.coverImage, process.env.NEXT_PUBLIC_URL),
+    },
+    alternates: {
+      canonical: new URL(`/blog/${post.slug}`, process.env.NEXT_PUBLIC_URL),
+    },
   };
 }
 
