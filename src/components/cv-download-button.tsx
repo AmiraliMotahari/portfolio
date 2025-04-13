@@ -240,16 +240,17 @@ export default function CVDownloadButton() {
       }
 
       // Save the PDF
+
+
       const pdfBlob = doc.output("blob");
       const url = URL.createObjectURL(pdfBlob);
-      const link = document.createElement("a");
-      link.target = "_blank";
-      link.href = url;
-      link.download = `${user.personalInfo.name.replace(/\s+/g, "_")}_CV.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+
+      // Open the PDF in a new tab (especially for iOS)
+      window.open(url, "_blank");
+
+      // Optionally, revoke the URL later
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
     } catch (error) {
       console.error("Error generating PDF:", error);
     } finally {
