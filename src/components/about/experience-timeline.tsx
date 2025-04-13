@@ -121,7 +121,7 @@ const ExperienceCard = (experience: {
 export default function ExperienceTimeline({ experiences }: Props) {
   return (
     <section className="py-20 relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto dynamic-px relative z-10">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"
           initial={{ opacity: 0 }}

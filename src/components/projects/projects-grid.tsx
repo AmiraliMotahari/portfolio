@@ -12,7 +12,7 @@ type Props = {
 
 export default function ProjectsGrid({ projects }: Props) {
   return (
-    <section className="pt-10 pb-20 px-12">
+    <section className="pt-10 pb-20 dynamic-px">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (

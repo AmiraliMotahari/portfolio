@@ -91,7 +91,7 @@ export default function BlogPage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-12 pb-20">
+      <div className="container mx-auto dynamic-px pb-20">
         {/* Tags Filter */}
         {/* todo:next version */}
         {/* <div className="flex flex-wrap gap-2 mb-12 justify-center">

@@ -29,7 +29,7 @@ export default function Contact({ contactData }: Props) {
   }, [resolvedTheme]);
 
   return (
-    <section className="py-20 px-12 relative ">
+    <section className="py-20 dynamic-px relative ">
       <Particles
         className="absolute inset-0 z-0"
         quantity={100}

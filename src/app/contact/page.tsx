@@ -40,7 +40,7 @@ export const metadata = {
 export default function ContactPage() {
   const { personalInfo, socials } = user;
   return (
-    <section className="min-h-svh pb-20 pt-32 px-12 relative">
+    <section className="min-h-svh pb-20 pt-32 dynamic-px relative">
       <div className="container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
           Get In Touch

@@ -31,7 +31,7 @@ export default function BlogLoading() {
         </div>
       </div>
 
-      <div className="container mx-auto px-12 pb-20">
+      <div className="container mx-auto dynamic-px pb-20">
         {/* Tags Filter */}
         {/* <div className="flex flex-wrap gap-2 mb-12 justify-center">
           <Badge variant="outline" className="animate-pulse bg-muted/20">

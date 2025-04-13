@@ -10,7 +10,9 @@ const Home = () => {
   const { personalInfo, projects, socials } = user;
 
   const topProjects = projects.slice(0, 3);
-  const recentPosts = blogPosts.slice(0, 3);
+  const recentPosts = blogPosts
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3);
 
   return (
     <>

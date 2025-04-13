@@ -17,7 +17,7 @@ import { motion } from "motion/react";
 
 const Hero = () => {
   return (
-    <section className="w-full h-svh ">
+    <section className="w-full h-svh min-h-[600px]">
       <WarpBackground className="w-full h-full flex justify-center items-center">
         <motion.div
           // className="glass-card p-6 text-center"

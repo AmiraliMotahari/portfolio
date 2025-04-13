@@ -28,7 +28,7 @@ export default function EducationSection({ education }: Props) {
     <section className="py-20 bg-background/50 relative">
       <GradientBackground />
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto dynamic-px">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"
           initial={{ opacity: 0 }}

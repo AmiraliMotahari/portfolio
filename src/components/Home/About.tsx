@@ -36,7 +36,7 @@ type Props = {
 
 export default function About({ personalInfo }: Props) {
   return (
-    <section id="about" className="py-20 px-12">
+    <section id="about" className="py-20 dynamic-px">
       <div className="container mx-auto">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"

@@ -159,4 +159,7 @@
   .page-transition-exit-active {
     @apply opacity-0 -translate-y-2.5 transition-all duration-300;
   }
+  .dynamic-px{
+    @apply px-4 sm:px-12
+  }
 }

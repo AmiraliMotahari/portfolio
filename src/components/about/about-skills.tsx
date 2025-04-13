@@ -100,7 +100,7 @@ type Props = {
 };
 export default function AboutSkills({ skills }: Props) {
   return (
-    <section className="py-20 px-12 bg-background/50">
+    <section className="py-20 dynamic-px bg-background/50">
       <div className="container mx-auto px-4">
         <motion.h2
           className="text-3xl md:text-4xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red"

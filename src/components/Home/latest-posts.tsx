@@ -33,8 +33,8 @@ const PostCard = ({
 
 export default function LatestPosts({ recentPosts }: Props) {
   return (
-    <section className="py-20 bg-muted/10 px-12">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-muted/10 dynamic-px">
+      <div className="container mx-auto">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0 }}
