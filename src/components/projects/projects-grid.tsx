@@ -5,6 +5,8 @@ import Image from "next/image";
 import { ExternalLink, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ProjectsType } from "@/lib/types";
+import { defaultImage } from "@/lib/constants/images";
+import { Button } from "../ui/button";
 
 type Props = {
   projects: ProjectsType;
@@ -25,7 +27,7 @@ export default function ProjectsGrid({ projects }: Props) {
             >
               <div className="relative overflow-hidden">
                 <Image
-                  src={project.image || "/placeholder.svg"}
+                  src={project.image || defaultImage}
                   alt={project.title}
                   width={800}
                   height={600}
@@ -33,28 +35,24 @@ export default function ProjectsGrid({ projects }: Props) {
                   blurDataURL={project.blurData}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                {project.featured && (
-                  <div className="absolute top-4 right-4 bg-neon-green text-black text-xs font-bold px-3 py-1 rounded-full">
+                {project.featured ? (
+                  <Badge variant={"default"} className="absolute top-4 right-4">
                     Featured
-                  </div>
-                )}
+                  </Badge>
+                ) : null}
                 <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="outline"
-                      className="border-neon-green text-neon-green"
-                    >
+                    <Badge key={tag} variant="outline">
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <h3 className="text-xl font-bold mb-2 group-hover:text-neon-green transition-colors">
+                <h3 className="text-xl font-bold mb-2 transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-muted-foreground mb-4 flex-grow">
@@ -63,24 +61,28 @@ export default function ProjectsGrid({ projects }: Props) {
 
                 <div className="flex gap-4 mt-auto">
                   {project.demoUrl ? (
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-sm text-neon-green hover:text-neon-red transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-1" /> Live Demo
-                    </a>
+                    <Button asChild variant={"ghost"}>
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-sm transition-colors"
+                      >
+                        <ExternalLink className="h-4 w-4 mr-1" /> Live Demo
+                      </a>
+                    </Button>
                   ) : null}
                   {project.githubUrl ? (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-sm text-neon-green hover:text-neon-red transition-colors"
-                    >
-                      <Github className="h-4 w-4 mr-1" /> Source Code
-                    </a>
+                    <Button asChild variant={"ghost"}>
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-sm transition-colors"
+                      >
+                        <Github className="h-4 w-4 mr-1" /> Source Code
+                      </a>
+                    </Button>
                   ) : null}
                 </div>
               </div>
