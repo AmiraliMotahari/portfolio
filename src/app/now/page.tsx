@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 export default async function NowPage() {
   return (
-    <div className="mx-auto dynamic-px py-20 relative">
+    <section className="mx-auto dynamic-px py-20 relative">
       <GradientBackground />
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
@@ -70,7 +70,7 @@ export default async function NowPage() {
 
           <div className="space-y-8">
             <div className="flex items-start gap-4">
-              <Code className="h-6 w-6 text-neon-green flex-shrink-0 mt-1" />
+              <Code className="h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h2 className="text-xl font-semibold mb-2">Current Projects</h2>
                 <p>
@@ -81,7 +81,7 @@ export default async function NowPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <BookOpen className="h-6 w-6 text-neon-green flex-shrink-0 mt-1" />
+              <BookOpen className="h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h2 className="text-xl font-semibold mb-2">Learning</h2>
                 <p>
@@ -93,7 +93,7 @@ export default async function NowPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <Headphones className="h-6 w-6 text-neon-green flex-shrink-0 mt-1" />
+              <Headphones className="h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h2 className="text-xl font-semibold mb-2">Listening To</h2>
                 <p>
@@ -104,7 +104,7 @@ export default async function NowPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <Dumbbell className="h-6 w-6 text-neon-green flex-shrink-0 mt-1" />
+              <Dumbbell className="h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h2 className="text-xl font-semibold mb-2">Health & Fitness</h2>
                 <p>
@@ -115,7 +115,7 @@ export default async function NowPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <Coffee className="h-6 w-6 text-neon-green flex-shrink-0 mt-1" />
+              <Coffee className="h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h2 className="text-xl font-semibold mb-2">Daily Routine</h2>
                 <p>
@@ -126,7 +126,7 @@ export default async function NowPage() {
             </div>
 
             <div className="flex items-start gap-4">
-              <CalendarDays className="h-6 w-6 text-neon-green flex-shrink-0 mt-1" />
+              <CalendarDays className="h-6 w-6 flex-shrink-0 mt-1" />
               <div>
                 <h2 className="text-xl font-semibold mb-2">Future Plans</h2>
                 <p>
@@ -139,6 +139,6 @@ export default async function NowPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

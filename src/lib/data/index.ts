@@ -48,115 +48,175 @@ export const skills: SkillsType = [
 
 export const experiences: ExperiencesType = [
   {
-    position: "Senior Frontend Developer",
-    company: "Tech Innovations Inc.",
-    location: "San Francisco, CA",
-    startDate: "Jan 2021",
+    position: "Head Frontend Developer",
+    company: "Mavira",
+    location: "Tehran, Iran",
+    startDate: "Sep 2023",
+    endDate: "Oct 2024",
+    description:
+      "Led the frontend development of Doctorize — a healthcare web platform enabling users to search for medical providers, view profiles, and book appointments based on real-time availability and geolocation. Oversaw the technical roadmap, architecture decisions, and frontend team collaboration to deliver a responsive, scalable experience.",
+    achievements: [
+      "Designed and implemented the entire frontend architecture for Doctorize, focusing on performance and scalability",
+      "Managed a team of 5 frontend developers, introduced development best practices, and conducted regular code reviews",
+      "Built a single-page application with features such as infinite scrolling, real-time data updates, and component memoization",
+      "Integrated Google Maps APIs for provider discovery based on user location, distance filtering, and interactive map views",
+      "Created a custom UI framework and toast notification system for consistent design and reusable logic",
+      "Improved overall performance with lazy loading, dynamic imports, and optimized rendering strategies",
+      "Collaborated with backend teams to ensure seamless API integration and real-time appointment logic",
+    ],
+    technologies: [
+      // Core Web Technologies
+      "JavaScript (ES6+)", // Core language for building dynamic UI logic
+      "CSS3", // Styling, custom layouts, animations
+
+      // API Integrations
+      "Google Maps JavaScript API", // Interactive maps for provider locations and directions
+      "Google Places API", // Location search and autocomplete for addresses
+      "Google Geolocation API", // User-based location detection
+      "Google Geocoding API", // Translating addresses into latitude/longitude and vice versa
+
+      // Architecture & Patterns
+      "Component-based Architecture", // Modular, reusable UI components
+      "Custom UI Framework", // Internal library for consistent design and functionality
+      "Memoization Techniques", // Optimizing component renders and performance
+      "Debouncing and throttling",
+
+      // UX & Performance
+      "Infinite Scrolling", // Efficient data fetching for large provider lists
+      "Real-time Data Updates", // Live availability and appointment updates
+      "Lazy Loading & Code Splitting", // Optimized initial load and faster navigation
+
+      // Tooling & Deployment
+      "Version Control (Git)", // Team collaboration and codebase management
+      "Responsive Design Principles", // Mobile-first approach for various device sizes
+      "Custom Toast Notification System", // Real-time feedback for user actions
+    ],
+  },
+  {
+    position: "Fullstack Developer",
+    company: "Donya L.L.C.",
+    location: "Bethesda, MD",
+    startDate: "Oct 2024",
     endDate: "Present",
     description:
-      "Lead developer for client projects, focusing on creating performant and accessible web applications. Implemented modern frontend architectures using React and Next.js.",
+      "Designed and developed the company's official website to showcase construction projects, highlight services, and allow potential clients to seamlessly schedule consultations. Focused on performance, accessibility, and a polished user experience tailored to the construction industry.",
     achievements: [
-      "Reduced load time by 40% through performance optimizations",
-      "Implemented CI/CD pipeline reducing deployment time by 60%",
-      "Mentored junior developers and led technical workshops",
-      "Developed component library used across multiple projects",
+      "Built a portfolio-style website using Next.js and Tailwind CSS to present completed and ongoing projects",
+      "Improved SEO and accessibility, resulting in a measurable increase in organic traffic and lead conversions",
+      "Developed a modular component system using Shadcn UI and TypeScript for scalable future updates",
+      "Connected form submissions and booking logic to backend services using RESTful APIs and Zod for validation",
+      "Deployed the site on Vercel for optimized performance and ease of maintenance",
     ],
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL"],
-  },
-  {
-    position: "Frontend Developer",
-    company: "Digital Solutions Agency",
-    location: "Portland, OR",
-    startDate: "Mar 2018",
-    endDate: "Dec 2020",
-    description:
-      "Developed responsive websites and web applications for various clients across different industries.",
-    achievements: [
-      "Created interactive data visualizations for financial dashboard",
-      "Built e-commerce platform with custom checkout flow",
-      "Implemented design system used across multiple projects",
-      "Optimized website performance achieving 95+ Lighthouse scores",
+    technologies: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Zod",
+      "RESTful API",
     ],
-    technologies: ["JavaScript", "React", "SCSS", "Redux", "REST APIs"],
-  },
-  {
-    position: "Web Developer Intern",
-    company: "StartUp Ventures",
-    location: "Seattle, WA",
-    startDate: "Jun 2017",
-    endDate: "Feb 2018",
-    description:
-      "Assisted in the development of web applications and learned modern development practices.",
-    achievements: [
-      "Contributed to open-source projects",
-      "Developed landing pages for marketing campaigns",
-      "Created interactive prototypes for user testing",
-      "Assisted with UX research and user interviews",
-    ],
-    technologies: ["HTML", "CSS", "JavaScript", "jQuery", "Bootstrap"],
   },
 ];
 
 export const education: EducationType = [
   {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "University of Technology",
-    location: "San Francisco, CA",
-    startDate: "2013",
-    endDate: "2017",
+    degree: "Bachelor of Computer Engineering",
+    institution: "Islamic Azad University: Science and Research Branch",
+    location: "Tehran, Iran",
+    startDate: "2019",
+    endDate: "2023",
     description:
-      "Focused on web technologies and human-computer interaction. Graduated with honors.",
+      "Focused on the fundamentals of computer architecture, software engineering, and algorithm design. Developed a strong foundation in both hardware and software systems, with hands-on experience in embedded systems, web development, and computer networks.",
     courses: [
-      "Advanced Web Development",
-      "User Interface Design",
-      "Data Structures and Algorithms",
-      "Database Systems",
+      "Data Structures & Algorithms",
+      "Operating Systems",
       "Computer Networks",
+      "Web Programming",
+      "Database Systems",
+      "Microprocessors & Assembly",
+      "Software Engineering",
+      "Artificial Intelligence",
+      "Object-Oriented Programming (OOP)",
+      "Digital Logic Design",
     ],
     achievements: [
-      "Dean's List for Academic Excellence (2015-2017)",
-      "Best Final Year Project Award",
-      "Student Representative for Computer Science Department",
+      "Graduated with honors (Top 3 of class)",
+      "GPA: 18.73 / 20",
+      "Designed and developed a full-stack final year project using Django and js",
+    ],
+  },
+  {
+    degree: "Master of Artificial Intelligence",
+    institution: "Islamic Azad University: Science and Research Branch",
+    location: "Tehran, Iran",
+    startDate: "2024",
+    endDate: "2026",
+    description:
+      "Currently pursuing a Master's degree focused on advanced topics in Artificial Intelligence, including machine learning, deep learning, data science, and intelligent systems. The program emphasizes both theoretical foundations and hands-on research, preparing students for careers in AI development and research.",
+    courses: [
+      "Machine Learning",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "Data Mining",
+      "Neural Networks",
+      "Fuzzy Logic & Expert Systems",
+      "Pattern Recognition",
+    ],
+    achievements: [
+      "Engaged in ongoing research around transformer-based models for language understanding",
     ],
   },
   {
     degree: "Web Development Bootcamp",
-    institution: "Code Academy",
-    location: "Online",
-    startDate: "2017",
-    endDate: "2017",
+    institution: "Tehran Institute of Technology",
+    location: "Tehran, Iran",
+    startDate: "2022",
+    endDate: "2023",
     description:
-      "Intensive 12-week program focused on modern web development technologies and practices.",
+      "An intensive, hands-on bootcamp focused on modern frontend and backend web development practices. Gained practical experience in building responsive, accessible, and performant web applications using industry-standard tools and workflows. Emphasized real-world project building, version control, and team collaboration.",
     courses: [
-      "Frontend Development with React",
-      "Backend Development with Node.js",
-      "Database Design and Implementation",
+      "Frontend Development",
+      "HTML",
+      "CSS",
+      "JS/TS",
+      "Git",
+      "Responsive Design",
+      "Jquery",
+      "Sass",
       "RESTful API Development",
-      "Deployment and DevOps",
+      "Deployment",
     ],
     achievements: [
-      "Top Student Award",
-      "Built a full-stack application that was featured in the academy showcase",
+      "Final score: 100/100",
+      "Built and deployed several portfolio-ready web projects",
+      "Completed a capstone project: a full-stack e-commerce app",
+      "Led a group project simulating agile workflow using Git and GitHub",
+      "Integrated third-party APIs to enhance real-world functionality",
+      "Received 'Top Performer' recognition by instructors for consistent excellence",
     ],
   },
   {
-    degree: "UI/UX Design Certification",
-    institution: "Design Institute",
-    location: "Portland, OR",
-    startDate: "2018",
-    endDate: "2018",
+    degree: "React Bootcamp",
+    institution: "Laitec",
+    location: "Tehran, Iran",
+    startDate: "2023",
+    endDate: "2023",
     description:
-      "Specialized training in user interface and experience design principles and methodologies.",
+      "An advanced React-focused bootcamp designed to deepen understanding of component-based architecture, state management, form handling, and modern front-end tooling. Emphasis was placed on building scalable, maintainable applications using best practices with React and related libraries.",
     courses: [
-      "User Research and Testing",
-      "Interaction Design",
-      "Visual Design Principles",
-      "Prototyping and Wireframing",
-      "Accessibility in Design",
+      "React.js (Hooks, Context, Routing, etc)",
+      "Redux.js (Redux Toolkit, Thunk)",
+      "React-hook-form",
+      "React Router",
+      "Component Reusability & Optimization",
+      "ReactQuery",
     ],
     achievements: [
-      "Portfolio selected for institute's annual exhibition",
-      "Mentored junior designers in program",
+      "Final score: 100/100",
+      "Developed a fully responsive e-commerce web app using React and Redux",
+      "Integrated complex forms and validation flows using react-hook-form",
+      "Built multiple projects demonstrating route-based code splitting and lazy loading",
     ],
   },
 ];
