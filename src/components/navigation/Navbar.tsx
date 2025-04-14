@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Logo from "@/components/icons/logo";
 import { useIsMobile } from "@/hooks/use-mobile";
-import MobileNav from "./mobile-nav";
+import MobileNav from "@/components/navigation/mobile-nav";
 
 export type NavigationItem = {
   title: string;

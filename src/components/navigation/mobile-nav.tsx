@@ -14,6 +14,8 @@ import { NavigationItem } from "./Navbar";
 import Logo from "@/components/icons/logo";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 type Props = {
   navigationList: NavigationItem[];
@@ -21,6 +23,8 @@ type Props = {
 };
 
 const MobileNav = ({ navigationList, className }: Props) => {
+  const pathname = usePathname();
+
   return (
     <Sheet>
       <SheetTrigger className={className}>
@@ -33,10 +37,21 @@ const MobileNav = ({ navigationList, className }: Props) => {
           </SheetTitle>
           <ul className="w-full flex flex-col justify-center items-center gap-5 mt-12">
             {navigationList.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (pathname === "/" && item.href.startsWith("/#")) ||
+                (pathname.startsWith(item.href) && item.href !== "/");
               return (
-                <li key={`mobile-nav-item-${item.title}`}>
+                <li key={`mobile-nav-item-${item.title}`} className="w-full">
                   <SheetClose asChild>
-                    <Button asChild variant={"ghost"}>
+                    <Button
+                      asChild
+                      variant={"plain"}
+                      className={cn(
+                        "w-full text-lg font-medium",
+                        isActive && "text-muted-foreground"
+                      )}
+                    >
                       <Link href={item.href}>{item.title}</Link>
                     </Button>
                   </SheetClose>
