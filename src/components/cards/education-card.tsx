@@ -38,7 +38,7 @@ const EducationCard = ({ data }: Props) => {
       <CardContent>
         <p className="text-muted-foreground">{data.description}</p>
       </CardContent>
-      <CardFooter className="grid md:grid-cols-2 gap-6">
+      <CardFooter className="grid md:grid-cols-2 gap-6 items-start">
         {/* courses */}
         <div>
           <div className="flex items-center mb-3">
