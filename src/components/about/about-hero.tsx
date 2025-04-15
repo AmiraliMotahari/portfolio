@@ -10,10 +10,10 @@ type Props = {
   profilePicture: string;
   blurData:string
 };
-
+//bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red
 export default function AboutHero({ profilePicture, blurData }: Props) {
   return (
-    <section className="relative pt-32 pb-20 px-12 overflow-hidden">
+    <section className="relative pt-32 pb-20 px-12 overflow-hidden ">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-green/20 rounded-full filter blur-3xl"></div>
@@ -28,7 +28,7 @@ export default function AboutHero({ profilePicture, blurData }: Props) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               About Me
             </h1>
 

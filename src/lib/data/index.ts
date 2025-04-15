@@ -124,8 +124,8 @@ export const education: EducationType = [
     degree: "Bachelor of Computer Engineering",
     institution: "Islamic Azad University: Science and Research Branch",
     location: "Tehran, Iran",
-    startDate: "2019",
-    endDate: "2023",
+    startDate: "Sep 2019",
+    endDate: "Aug 2023",
     description:
       "Focused on the fundamentals of computer architecture, software engineering, and algorithm design. Developed a strong foundation in both hardware and software systems, with hands-on experience in embedded systems, web development, and computer networks.",
     courses: [
@@ -150,8 +150,8 @@ export const education: EducationType = [
     degree: "Master of Artificial Intelligence",
     institution: "Islamic Azad University: Science and Research Branch",
     location: "Tehran, Iran",
-    startDate: "2024",
-    endDate: "2026",
+    startDate: "Sep 2024",
+    endDate: "In Progress",
     description:
       "Currently pursuing a Master's degree focused on advanced topics in Artificial Intelligence, including machine learning, deep learning, data science, and intelligent systems. The program emphasizes both theoretical foundations and hands-on research, preparing students for careers in AI development and research.",
     courses: [
@@ -171,8 +171,8 @@ export const education: EducationType = [
     degree: "Web Development Bootcamp",
     institution: "Tehran Institute of Technology",
     location: "Tehran, Iran",
-    startDate: "2022",
-    endDate: "2023",
+    startDate: "Nov 2022",
+    endDate: "Aug 2023",
     description:
       "An intensive, hands-on bootcamp focused on modern frontend and backend web development practices. Gained practical experience in building responsive, accessible, and performant web applications using industry-standard tools and workflows. Emphasized real-world project building, version control, and team collaboration.",
     courses: [
@@ -200,8 +200,8 @@ export const education: EducationType = [
     degree: "React Bootcamp",
     institution: "Laitec",
     location: "Tehran, Iran",
-    startDate: "2023",
-    endDate: "2023",
+    startDate: "Sep 2023",
+    endDate: "Dec 2023",
     description:
       "An advanced React-focused bootcamp designed to deepen understanding of component-based architecture, state management, form handling, and modern front-end tooling. Emphasis was placed on building scalable, maintainable applications using best practices with React and related libraries.",
     courses: [

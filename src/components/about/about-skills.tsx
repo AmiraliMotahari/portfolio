@@ -11,26 +11,27 @@ import {
   Lock,
   Cpu,
 } from "lucide-react";
+import SkillCategoryCard from "../cards/skill-category-card";
 
 const categories = [
   {
     title: "Frontend Development",
-    icon: <Code className="h-8 w-8 text-neon-green" />,
+    icon: <Code className="h-8 w-8" />,
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
     title: "Design",
-    icon: <Palette className="h-8 w-8 text-neon-green" />,
+    icon: <Palette className="h-8 w-8" />,
     skills: ["Figma", "Adobe Illustrator", "Adobe Premiere"],
   },
   {
     title: "Backend Development",
-    icon: <Server className="h-8 w-8 text-neon-green" />,
+    icon: <Server className="h-8 w-8" />,
     skills: ["Node.js", "SQL", "PostgreSQL", "REST APIs"],
   },
   {
     title: "Performance Optimization",
-    icon: <Rocket className="h-8 w-8 text-neon-green" />,
+    icon: <Rocket className="h-8 w-8" />,
     skills: [
       "Caching Strategies",
       "Code Splitting",
@@ -158,29 +159,12 @@ export default function AboutSkills({ skills }: Props) {
               {categories.slice(0,4).map((category, index) => (
                 <motion.div
                   key={category.title}
-                  className="glass-card p-6"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="flex items-center mb-4">
-                    {category.icon}
-                    <h4 className="text-lg font-semibold ml-3">
-                      {category.title}
-                    </h4>
-                  </div>
-                  <ul className="space-y-2">
-                    {category.skills.map((skill) => (
-                      <li
-                        key={skill}
-                        className="text-muted-foreground flex items-center"
-                      >
-                        <span className="h-1.5 w-1.5 rounded-full bg-neon-green mr-2"></span>
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
+                  <SkillCategoryCard category={category}/>
                 </motion.div>
               ))}
             </div>

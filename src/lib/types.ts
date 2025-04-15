@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 export type PersonalInfoType = {
   firstName: string;
   lastName: string;
@@ -50,7 +52,7 @@ export type ProjectsType = {
   title: string;
   description: string;
   image: string;
-  blurData:string;
+  blurData: string;
   category: string;
   tags: string[];
   demoUrl: string | null;
@@ -88,7 +90,13 @@ export type BlogPost = {
   readingTime: number;
   excerpt: string;
   coverImage: string;
-  coverBlurData:string;
-  content:string;
+  coverBlurData: string;
+  content: string;
   tags: string[];
+};
+
+export type SkillCategoryType = {
+  title: string;
+  icon: JSX.Element;
+  skills: string[];
 };
