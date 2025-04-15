@@ -28,11 +28,11 @@ export default function ContactInfo({ personalInfo, socials }: Props) {
           href={`mailto:${personalInfo.email}`}
           className="flex justify-items-start gap-2"
         >
-          <Mail className="text-neon-green" />
+          <Mail />
           {personalInfo.email}
         </a>
         <address className="font-normal not-italic flex justify-items-start gap-2">
-          <MapPin className="text-neon-green" />
+          <MapPin />
           {personalInfo.location}
         </address>
       </div>
@@ -42,7 +42,7 @@ export default function ContactInfo({ personalInfo, socials }: Props) {
         <div className="flex space-x-4">
           <a
             href={`${socials.find((elem) => elem.title === "GitHub")?.href}`}
-            className="text-muted-foreground hover:text-neon-green transition-colors"
+            className="text-muted-foreground transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export default function ContactInfo({ personalInfo, socials }: Props) {
           </a>
           <a
             href={`${socials.find((elem) => elem.title === "LinkedIn")?.href}`}
-            className="text-muted-foreground hover:text-neon-green transition-colors"
+            className="text-muted-foreground transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
