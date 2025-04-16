@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "@/components/ui/sonner";
-import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,7 +80,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: process.env.NEXT_PUBLIC_URL,
   },
-  
+  verification: {
+    google: "pzNPuEAjQ8w3lN9Z_NlfKOpf3pqF4nOkeDzVbZ_6Zhc",
+  },
 };
 
 export default function RootLayout({
@@ -91,12 +92,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <meta
-          name="google-site-verification"
-          content="pzNPuEAjQ8w3lN9Z_NlfKOpf3pqF4nOkeDzVbZ_6Zhc"
-        />
-      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
