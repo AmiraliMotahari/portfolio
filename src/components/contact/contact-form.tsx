@@ -13,6 +13,7 @@ import { contactFormSchema, ContactFormSchemaType } from "@/lib/zod-schema";
 import InputWithLabel from "../inputs/input-with-label";
 import TextareaWithLabel from "../inputs/textarea-with-label";
 import { sendMessageAction } from "@/app/actions/send-message";
+import ReactCloudflareTurnstile from "react-cloudflare-turnstile";
 
 export default function ContactForm() {
   const form = useForm<ContactFormSchemaType>({
@@ -47,6 +48,12 @@ export default function ContactForm() {
     execute(values);
   }
 
+  if (form.formState.errors.validationToken) {
+    toast("Error", {
+      description: "Please complete the verification.",
+    });
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
@@ -78,6 +85,17 @@ export default function ContactForm() {
               placeholder="Your message"
               className="min-h-[120px]"
             />
+            <div className="w-full flex justify-center items-center">
+              <ReactCloudflareTurnstile
+                turnstileSiteKey={
+                  process.env
+                    .NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY as string
+                }
+                callback={(token) => {
+                  form.setValue("validationToken", token);
+                }}
+              />
+            </div>
             <Button
               type="submit"
               disabled={isPending}

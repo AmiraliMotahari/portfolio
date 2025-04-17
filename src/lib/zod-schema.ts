@@ -13,6 +13,7 @@ export const contactFormSchema = z.object({
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
+  validationToken: z.string().nonempty(),
 });
 
 export type ContactFormSchemaType = z.infer<typeof contactFormSchema>;

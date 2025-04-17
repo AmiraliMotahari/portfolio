@@ -64,12 +64,12 @@ export const OwnerNotificationEmail = ({
                 </Heading>
 
                 <Text className="text-gray-300 text-base mb-1">
-                  <Text className="text-gray-400 inline">Name: </Text>
+                  <Text className="text-white inline">Name: </Text>
                   {name}
                 </Text>
 
                 <Text className="text-gray-300 text-base mb-1">
-                  <Text className="text-gray-400 inline">Email: </Text>
+                  <Text className="text-white inline">Email: </Text>
                   <Link
                     href={`mailto:${email}`}
                     className="text-green-400 underline"
@@ -79,18 +79,18 @@ export const OwnerNotificationEmail = ({
                 </Text>
 
                 <Text className="text-gray-300 text-base mb-1">
-                  <Text className="text-gray-400 inline">Subject: </Text>
+                  <Text className="text-white inline">Subject: </Text>
                   {subject}
                 </Text>
 
                 <Text className="text-gray-300 text-base mb-1">
-                  <Text className="text-gray-400 inline">Submitted: </Text>
+                  <Text className="text-white inline">Submitted: </Text>
                   {formattedDate}
                 </Text>
 
                 <Hr className="border-gray-700 my-4" />
 
-                <Text className="text-gray-400 text-base mb-2">Message:</Text>
+                <Text className="text-white text-base mb-2">Message:</Text>
                 <Text className="text-white text-base bg-gray-700 p-4 rounded-md">
                   {message}
                 </Text>
@@ -105,11 +105,11 @@ export const OwnerNotificationEmail = ({
             </Section>
             <Hr className="border-gray-700 my-6" />
             <Section>
-              <Text className="text-gray-400 text-sm text-center">
+              <Text className="text-white text-sm text-center">
                 © {new Date().getFullYear()} {portfolioOwner}. All rights
                 reserved.
               </Text>
-              <Text className="text-gray-400 text-xs text-center">
+              <Text className="text-white text-xs text-center">
                 This is an automated notification from your portfolio website.
               </Text>
             </Section>
