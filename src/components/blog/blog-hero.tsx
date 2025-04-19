@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 const BlogHero = () => {
   return (
-    <div className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-24 md:py-32 overflow-hidden">
       {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background/0 z-10"></div>
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-green/10 rounded-full filter blur-3xl"></div>
@@ -39,7 +39,7 @@ const BlogHero = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

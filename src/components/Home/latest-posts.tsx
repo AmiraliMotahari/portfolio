@@ -20,7 +20,7 @@ const PostCard = ({
 }) => {
   return (
     <motion.div
-      className="glass-card overflow-hidden group h-full flex flex-col"
+      className="overflow-hidden group h-full flex flex-col"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

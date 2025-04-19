@@ -7,7 +7,7 @@ import { blogPosts } from "@/lib/data/blog-data";
 import { defaultImage } from "@/lib/constants/images";
 import { formatDate } from "@/lib/formatter";
 import BlogCardRegular from "@/components/cards/blog-card-regular";
-import BlogHero from "@/components/blog/blog-hero";
+import HeroAnimated from "@/components/hero-animated";
 
 //todo: add image
 export const metadata = {
@@ -63,9 +63,14 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <BlogHero />
+      <HeroAnimated
+        title="Blog & Insights"
+        description=" Thoughts, ideas, and tutorials on web development, design, and
+              creative coding."
+        className="pt-32 pb-20"
+      />
 
-      <div className="container mx-auto dynamic-px pb-20">
+      <section className="container mx-auto dynamic-px pb-20">
         {/* Tags Filter */}
         {/* todo:next version */}
         {/* <div className="flex flex-wrap gap-2 mb-12 justify-center">
@@ -196,7 +201,7 @@ export default function BlogPage() {
             </div>
           </div>
         </div> */}
-      </div>
+      </section>
     </div>
   );
 }
