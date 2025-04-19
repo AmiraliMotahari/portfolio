@@ -5,6 +5,8 @@ import LatestPosts from "@/components/Home/latest-posts";
 import Projects from "@/components/Home/projects";
 import { user } from "@/lib/data";
 import { blogPosts } from "@/lib/data/blog-data";
+import Script from "next/script";
+import { Person, WithContext } from "schema-dts";
 
 const Home = () => {
   const { personalInfo, projects, socials } = user;
@@ -13,6 +15,27 @@ const Home = () => {
   const recentPosts = blogPosts
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 3);
+
+  const webUrl = process.env.NEXT_PUBLIC_URL;
+
+  const jsonLd: WithContext<Person> = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: personalInfo.name,
+    url: personalInfo.website,
+    image: new URL(personalInfo.picture, webUrl).toString(),
+    sameAs: [...socials.flatMap((elem) => elem.href)],
+    jobTitle: "Frontend Developer",
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "JavaScript",
+      "Artificial Intelligence",
+      "SEO",
+      "Web Performance",
+    ],
+  };
 
   return (
     <>
@@ -26,6 +49,11 @@ const Home = () => {
           location: personalInfo.location,
         }}
         socials={socials}
+      />
+      <Script
+        id="home-page-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </>
   );

@@ -8,6 +8,8 @@ import {
   Dumbbell,
 } from "lucide-react";
 import type { Metadata } from "next";
+import Script from "next/script";
+import { BlogPosting, WithContext } from "schema-dts";
 
 export const metadata: Metadata = {
   title: "Now",
@@ -50,6 +52,38 @@ export const metadata: Metadata = {
 };
 
 export default async function NowPage() {
+  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const publishDate = "2025-04-12";
+
+  const jsonLd: WithContext<BlogPosting> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: "Now - What I'm Focused On",
+    description:
+      "Here's what I'm currently working on, learning, and thinking about.",
+    author: {
+      "@type": "Person",
+      name: "Amirali Motahari",
+      url: webUrl,
+    },
+    datePublished: publishDate,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": new URL("/new", webUrl).toString(),
+    },
+    url: new URL("/new", webUrl).toString(),
+    image: new URL("/assets/images/amiralimotahari.jpeg", webUrl).toString(), // optional
+    articleBody:
+      "I'm currently leading multiple projects, including an e-commerce store and a tax management system built with Next.js. I'm pursuing a Master's degree in Artificial Intelligence while sharpening my skills in web development and digital marketing. My days are driven by early morning coding sessions, sound tracked by synthwave playlists, and balanced with workouts and meditation. I'm passionate about blending AI with intuitive design to create smarter digital experiences.",
+    keywords: [
+      "Freelance",
+      "Frontend Developer",
+      "Web Development",
+      "Next.js",
+      "Now Page",
+    ],
+  };
+
   return (
     <section className="mx-auto dynamic-px py-20 relative">
       <GradientBackground />
@@ -61,7 +95,7 @@ export default async function NowPage() {
         <div className="glass-card p-8 mb-12">
           <div className="border-l-4 border-neon-green pl-4 italic mb-8">
             Last updated:{" "}
-            {new Date("2025-04-12").toLocaleDateString("en-US", {
+            {new Date(publishDate).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",
@@ -139,6 +173,11 @@ export default async function NowPage() {
           </div>
         </div>
       </div>
+      <Script
+        id="now-page-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </section>
   );
 }

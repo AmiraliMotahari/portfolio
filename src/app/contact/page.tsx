@@ -2,6 +2,8 @@ import ContactForm from "@/components/contact/contact-form";
 import ContactInfo from "@/components/contact/contact-info";
 import HeroAnimated from "@/components/hero-animated";
 import { user } from "@/lib/data";
+import Script from "next/script";
+import { ContactPage as ContactPageJsonLd, WithContext } from "schema-dts";
 
 export const metadata = {
   title: "Contact",
@@ -40,6 +42,30 @@ export const metadata = {
 
 export default function ContactPage() {
   const { personalInfo, socials } = user;
+  const webUrl = process.env.NEXT_PUBLIC_URL;
+
+  const jsonLd: WithContext<ContactPageJsonLd> = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact",
+    url: new URL("/contact", webUrl).toString(),
+    mainEntity: {
+      "@type": "Person",
+      name: personalInfo.name,
+      jobTitle: "Frontend Developer",
+      url: webUrl,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "Customer Support",
+        email: personalInfo.email,
+        url: new URL("/contact", webUrl).toString(),
+        areaServed: ["Global"],
+        availableLanguage: ["English", "Persian"],
+      },
+      sameAs: socials.flatMap((elem) => elem.href),
+    },
+  };
+
   return (
     <div className="min-h-svh">
       <HeroAnimated
@@ -47,7 +73,7 @@ export default function ContactPage() {
         description="Feel free to reach out if you have any questions or want to work
           together. I'm always open to discussing new projects, creative
           ideas, or opportunities to be part of your vision."
-          className="pt-32 pb-20"
+        className="pt-32 pb-20"
       />
       <section className="pb-20 dynamic-px relative">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -55,6 +81,11 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </section>
+      <Script
+        id="contact-page-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   );
 }
