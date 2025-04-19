@@ -51,7 +51,7 @@ export default function ContactPage() {
           ideas, or opportunities to be part of your vision.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12">
           <ContactInfo personalInfo={personalInfo} socials={socials} />
           <ContactForm />
         </div>
