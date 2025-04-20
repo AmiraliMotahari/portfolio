@@ -1,8 +1,8 @@
-import About from "@/components/Home/about";
-import Contact from "@/components/Home/contact";
-import Hero from "@/components/Home/hero";
-import LatestPosts from "@/components/Home/latest-posts";
-import Projects from "@/components/Home/projects";
+import About from "@/components/home/about";
+import Contact from "@/components/home/contact";
+import Hero from "@/components/home/hero";
+import LatestPosts from "@/components/home/latest-posts";
+import Projects from "@/components/home/projects";
 import { user } from "@/lib/data";
 import { blogPosts } from "@/lib/data/blog-data";
 import Script from "next/script";
