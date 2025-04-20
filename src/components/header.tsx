@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react";
-import Navbar from "./navigation/navbar";
+import Navbar from "@/components/navigation/navbar";
 
 const Header = () => {
   return (

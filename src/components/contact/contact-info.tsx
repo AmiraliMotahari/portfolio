@@ -3,7 +3,7 @@
 import { PersonalInfoType, SocialsType } from "@/lib/types";
 import { motion } from "motion/react";
 import { Mail, MapPin } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Props = {
   socials: SocialsType;

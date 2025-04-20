@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { ProjectsType } from "@/lib/types";
-import ProjectCard from "../cards/project-card";
+import ProjectCard from "@/components/cards/project-card";
 
 type Props = {
   projects: ProjectsType;

@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { toast } from "sonner";
 import { contactFormSchema, ContactFormSchemaType } from "@/lib/zod-schema";
-import InputWithLabel from "../inputs/input-with-label";
-import TextareaWithLabel from "../inputs/textarea-with-label";
+import InputWithLabel from "@/components/inputs/input-with-label";
+import TextareaWithLabel from "@/components/inputs/textarea-with-label";
 import { sendMessageAction } from "@/app/actions/send-message";
 import ReactCloudflareTurnstile from "react-cloudflare-turnstile";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function ContactForm() {
   const form = useForm<ContactFormSchemaType>({

@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import {  ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/types";
-import BlogCardRegular from "../cards/blog-card-regular";
+import BlogCardRegular from "@/components/cards/blog-card-regular";
 
 type Props = {
   recentPosts: BlogPost[];

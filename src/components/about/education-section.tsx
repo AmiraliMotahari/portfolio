@@ -4,9 +4,9 @@ import type React from "react";
 
 import { motion } from "motion/react";
 import { useRef } from "react";
-import { TracingBeam } from "../ui/tracing-beam";
-import GradientBackground from "../ui/gradient-background";
-import EducationCard from "../cards/education-card";
+import { TracingBeam } from "@/components/ui/tracing-beam";
+import GradientBackground from "@/components/ui/gradient-background";
+import EducationCard from "@/components/cards/education-card";
 
 type Props = {
   education: {

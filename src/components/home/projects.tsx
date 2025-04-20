@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProjectsType } from "@/lib/types";
-import ProjectCard from "../cards/project-card";
+import ProjectCard from "@/components/cards/project-card";
 
 type Props = {
   topProjects: ProjectsType;

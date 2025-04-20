@@ -11,7 +11,7 @@ import {
   Lock,
   Cpu,
 } from "lucide-react";
-import SkillCategoryCard from "../cards/skill-category-card";
+import SkillCategoryCard from "@/components/cards/skill-category-card";
 
 const categories = [
   {

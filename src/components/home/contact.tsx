@@ -3,8 +3,8 @@
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Particles } from "../ui/particles";
-import { Button } from "../ui/button";
+import { Particles } from "@/components/ui/particles";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Globe } from "@/components/ui/globe";
 import { Mail, MapPin } from "lucide-react";

@@ -2,7 +2,7 @@ import { defaultImage } from "@/lib/constants/images";
 import { BlogPost } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { Calendar, ChevronRight, Clock } from "lucide-react";
 import { formatDate } from "@/lib/formatter";
 
