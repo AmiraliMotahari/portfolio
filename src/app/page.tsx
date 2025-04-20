@@ -1,6 +1,6 @@
-import About from "@/components/Home/About";
+import About from "@/components/Home/about";
 import Contact from "@/components/Home/contact";
-import Hero from "@/components/Home/Hero";
+import Hero from "@/components/Home/hero";
 import LatestPosts from "@/components/Home/latest-posts";
 import Projects from "@/components/Home/projects";
 import { user } from "@/lib/data";

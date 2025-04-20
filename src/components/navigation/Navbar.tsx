@@ -1,9 +1,9 @@
 "use client";
 
-import NavItem from "./NavItem";
+import NavItem from "./navItem";
 import { motion, TargetAndTransition } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/ModeToggle";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Logo from "@/components/icons/logo";
