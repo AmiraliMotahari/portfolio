@@ -38,7 +38,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen">
       <Hero />
       <About personalInfo={personalInfo} />
       <Projects topProjects={topProjects} />
@@ -55,7 +55,7 @@ const Home = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </>
+    </div>
   );
 };
 

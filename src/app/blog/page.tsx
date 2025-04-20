@@ -93,11 +93,6 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen">
-      <Script
-        id="blog-page-json-ld"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       {/* Hero Section */}
       <HeroAnimated
         title="Blog & Insights"
@@ -238,6 +233,11 @@ export default function BlogPage() {
           </div>
         </div> */}
       </section>
+      <Script
+        id="blog-page-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   );
 }

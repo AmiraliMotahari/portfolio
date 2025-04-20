@@ -85,99 +85,106 @@ export default async function NowPage() {
   };
 
   return (
-    <section className="mx-auto dynamic-px py-20 relative">
-      <GradientBackground />
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
-          Now
-        </h1>
+    <div className="min-h-screen">
+      <section className="mx-auto dynamic-px pt-32 pb-20 relative">
+        <GradientBackground />
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
+            Now
+          </h1>
 
-        <div className="glass-card p-8 mb-12">
-          <div className="border-l-4 border-neon-green pl-4 italic mb-8">
-            Last updated:{" "}
-            {new Date(publishDate).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </div>
-
-          <div className="space-y-8">
-            <div className="flex items-start gap-4">
-              <Code className="h-6 w-6 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-xl font-semibold mb-2">Current Projects</h2>
-                <p>
-                  Managing multiple initiatives, including an e-commerce store
-                  and a tax management system using Next.js.
-                </p>
-              </div>
+          <div className="glass-card p-8 mb-12">
+            <div className="border-l-4 border-neon-green pl-4 italic mb-8">
+              Last updated:{" "}
+              {new Date(publishDate).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
             </div>
 
-            <div className="flex items-start gap-4">
-              <BookOpen className="h-6 w-6 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-xl font-semibold mb-2">Learning</h2>
-                <p>
-                  Currently pursuing a Master&apos;s degree in Artificial
-                  Intelligence. Actively developing skills in Next.js and
-                  expanding knowledge in digital marketing strategies
-                </p>
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <Code className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2">
+                    Current Projects
+                  </h2>
+                  <p>
+                    Managing multiple initiatives, including an e-commerce store
+                    and a tax management system using Next.js.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <Headphones className="h-6 w-6 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-xl font-semibold mb-2">Listening To</h2>
-                <p>
-                  Synthwave playlists while coding. Tech podcasts during
-                  commutes.
-                </p>
+              <div className="flex items-start gap-4">
+                <BookOpen className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2">Learning</h2>
+                  <p>
+                    Currently pursuing a Master&apos;s degree in Artificial
+                    Intelligence. Actively developing skills in Next.js and
+                    expanding knowledge in digital marketing strategies
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <Dumbbell className="h-6 w-6 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-xl font-semibold mb-2">Health & Fitness</h2>
-                <p>
-                  Maintaining a 3-day workout routine. Experimenting with
-                  meditation for better focus and creativity.
-                </p>
+              <div className="flex items-start gap-4">
+                <Headphones className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2">Listening To</h2>
+                  <p>
+                    Synthwave playlists while coding. Tech podcasts during
+                    commutes.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <Coffee className="h-6 w-6 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-xl font-semibold mb-2">Daily Routine</h2>
-                <p>
-                  Early riser. Morning coding sessions are my most productive.
-                  Taking regular breaks to stay fresh and creative.
-                </p>
+              <div className="flex items-start gap-4">
+                <Dumbbell className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2">
+                    Health & Fitness
+                  </h2>
+                  <p>
+                    Maintaining a 3-day workout routine. Experimenting with
+                    meditation for better focus and creativity.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-start gap-4">
-              <CalendarDays className="h-6 w-6 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="text-xl font-semibold mb-2">Future Plans</h2>
-                <p>
-                  Working toward completing my Master’s degree in Artificial
-                  Intelligence. I aim to combine my expertise in web development
-                  with AI to build smarter, more intuitive digital experiences.
-                </p>
+              <div className="flex items-start gap-4">
+                <Coffee className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2">Daily Routine</h2>
+                  <p>
+                    Early riser. Morning coding sessions are my most productive.
+                    Taking regular breaks to stay fresh and creative.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <CalendarDays className="h-6 w-6 flex-shrink-0 mt-1" />
+                <div>
+                  <h2 className="text-xl font-semibold mb-2">Future Plans</h2>
+                  <p>
+                    Working toward completing my Master’s degree in Artificial
+                    Intelligence. I aim to combine my expertise in web
+                    development with AI to build smarter, more intuitive digital
+                    experiences.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <Script
         id="now-page-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </section>
+    </div>
   );
 }

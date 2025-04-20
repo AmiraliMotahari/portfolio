@@ -70,13 +70,13 @@ export default async function ProjectsPage() {
 
   return (
     <div className="min-h-screen">
+      <ProjectsHero />
+      <ProjectsGrid projects={projects} />
       <Script
         id="projects-page-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ProjectsHero />
-      <ProjectsGrid projects={projects} />
     </div>
   );
 }
