@@ -8,6 +8,8 @@ import { defaultImage } from "@/lib/constants/images";
 import { formatDate } from "@/lib/formatter";
 import BlogCardRegular from "@/components/cards/blog-card-regular";
 import HeroAnimated from "@/components/hero-animated";
+import { Blog, WithContext } from "schema-dts";
+import Script from "next/script";
 
 //todo: add image
 export const metadata = {
@@ -59,9 +61,43 @@ export default function BlogPage() {
   const regularPosts = blogPosts
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(1);
+  const webUrl = process.env.NEXT_PUBLIC_URL;
+
+  const jsonLd: WithContext<Blog> = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Amirali Motahari",
+    url: new URL("/blog", webUrl).toString(),
+    description:
+      "Thoughts, ideas, and tutorials on web development, design, and creative coding.",
+    author: {
+      "@type": "Person",
+      name: "Amirali Motahari",
+      url: webUrl,
+    },
+    blogPost: blogPosts.slice(0, 10).map((post) => {
+      return {
+        "@type": "BlogPosting",
+        headline: post.title,
+        url: new URL(`/blog/${post.slug}`, webUrl).toString(),
+        image: new URL(post.coverImage, webUrl).toString(),
+        datePublished: post.date,
+        author: {
+          "@type": "Person",
+          name: "Amirali Motahari",
+        },
+        description: post.excerpt,
+      };
+    }),
+  };
 
   return (
     <div className="min-h-screen">
+      <Script
+        id="blog-page-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <HeroAnimated
         title="Blog & Insights"

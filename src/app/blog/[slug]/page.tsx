@@ -11,6 +11,8 @@ import xss from "xss";
 import { formatDate } from "@/lib/formatter";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ShareButton from "@/components/share-button";
+import { BlogPosting, WithContext } from "schema-dts";
+import Script from "next/script";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -61,6 +63,8 @@ export default async function BlogPost({ params }: Props) {
   const post = blogPosts.find((post) => post.slug === slug);
   const { personalInfo } = user;
 
+  const webUrl = process.env.NEXT_PUBLIC_URL;
+
   if (!post) return notFound();
 
   // Get related posts (posts with at least one matching tag)
@@ -71,8 +75,44 @@ export default async function BlogPost({ params }: Props) {
     )
     .slice(0, 3);
 
+  const jsonLd: WithContext<BlogPosting> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    image: new URL(post.coverImage, webUrl).toString(),
+    author: {
+      "@type": "Person",
+      name: "Amirali Motahari",
+      url: webUrl,
+    },
+    editor: "Amirali Motahari",
+    genre: "Web Development",
+    keywords: post.tags,
+    publisher: {
+      "@type": "Organization",
+      name: "Amirali Motahari",
+      logo: {
+        "@type": "ImageObject",
+        url: new URL(`/assets/images/logo-round.png`, webUrl).toString(),
+      },
+    },
+    url: new URL(`/blog/${post.slug}`, webUrl).toString(),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": new URL(`/blog/${post.slug}`, webUrl).toString(),
+    },
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt,
+  };
+
   return (
     <div className="min-h-screen">
+      <Script
+        id="blog-post-page-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <div className="relative pt-20 pb-10 md:pt-32 md:pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background/0 z-10"></div>
@@ -113,7 +153,6 @@ export default async function BlogPost({ params }: Props) {
           </div>
         </div>
       </div>
-
       <div className="container mx-auto dynamic-px pb-20">
         <div className="max-w-3xl mx-auto">
           <div className="glass-card p-1 rounded-2xl overflow-hidden mb-8">
