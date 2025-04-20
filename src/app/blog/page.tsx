@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Calendar, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { blogPosts } from "@/lib/data/blog-data";
+import { blogPosts, blogPostSorted } from "@/lib/data/blog-data";
 import { defaultImage } from "@/lib/constants/images";
 import { formatDate } from "@/lib/formatter";
 import BlogCardRegular from "@/components/cards/blog-card-regular";
@@ -55,12 +55,11 @@ export default function BlogPage() {
   // const allTags = Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
 
   // Featured post (first post)
-  const featuredPost = blogPosts[0];
+  const featuredPost = blogPostSorted[0];
 
   // Rest of the posts
-  const regularPosts = blogPosts
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(1);
+  const regularPosts = blogPostSorted.slice(1);
+  
   const webUrl = process.env.NEXT_PUBLIC_URL;
 
   const jsonLd: WithContext<Blog> = {

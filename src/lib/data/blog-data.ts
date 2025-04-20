@@ -191,4 +191,49 @@ export default function Layout({ children }) {
   updateDOM();
 }</code></pre><hr><h2>💡 Final Thoughts</h2><p>The View Transition API unlocks a new level of polish and interactivity for web apps. With clean integration points across CSS, JavaScript, React, and frameworks like Next.js, it&apos;s a game-changer for modern UX.</p><p>Start experimenting today—your users will feel the difference.</p>`,
   },
+  {
+    title: "Harnessing Web Workers in JavaScript, React, and Next.js",
+    slug: "web-workers-js-react-nextjs",
+    date: "2025-04-20",
+    readingTime: 8,
+    excerpt:
+      "Learn how to leverage Web Workers in JavaScript, React, and Next.js to offload heavy computations and improve performance.",
+    tags: ["JavaScript", "React", "Next.js", "Web Workers", "Performance"],
+    coverBlurData:
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVR4nAE0AMv/AAAOKwAGJR01Vhw0VABLXoWGn8e0wt1HWH8ABSBAAh8/BRs3BiA/ALLC5PH+/+Pw/4+fvnxBE8HZPpkHAAAAAElFTkSuQmCC",
+    coverImage: "/assets/images/blog/web-worker-integration-in-javascript.png",
+    content: `<h2>Introduction</h2><p>Modern web applications are increasingly dynamic and interactive, but that often comes at a performance cost. One powerful tool for managing CPU-intensive tasks without blocking the main thread is the <strong>Web Worker</strong>.</p><p>In this post, we&apos;ll explore what Web Workers are, how to use them in JavaScript, React, and Next.js, and real-world scenarios where they can significantly enhance your project&apos;s performance and UX.</p><hr><h2>🧠 What Are Web Workers?</h2><p>Web Workers are scripts that run in background threads separate from the main execution thread of a web application. This allows you to perform computationally expensive operations—like data processing, file manipulation, or long-running algorithms—without freezing the UI.</p><p>The main thread stays responsive while the Web Worker does the heavy lifting.</p><hr><h2>📦 Basic Web Worker Usage in JavaScript</h2><pre><code>// worker.js
+self.onmessage = function(e) {
+  const result = heavyCalculation(e.data);
+  self.postMessage(result);
+};
+
+function heavyCalculation(data) {
+  // some expensive logic
+  return data * 2;
+}</code></pre><pre><code>// main.js
+const worker = new Worker('worker.js');
+worker.postMessage(10);
+
+worker.onmessage = function(e) {
+  console.log('Result:', e.data);
+};</code></pre><hr><h2>⚛️ Using Web Workers in React</h2><p>You can integrate workers with React by separating state management from the computational tasks:</p><pre><code>useEffect(() =&gt; {
+  const worker = new Worker(new URL('./worker.js', import.meta.url));
+  worker.postMessage(100);
+  worker.onmessage = (e) =&gt; {
+    setResult(e.data);
+  };
+  return () =&gt; worker.terminate();
+}, []);</code></pre><p>You may need tools like <strong>worker-loader</strong> or <strong>Vite/webpack plugins</strong> to help bundle workers correctly.</p><hr><h2>🌐 Web Workers in Next.js</h2><p>Since Next.js runs in both client and server environments, you must ensure workers are only instantiated on the client side:</p><pre><code>useEffect(() =&gt; {
+  if (typeof window !== 'undefined') {
+    const worker = new Worker(new URL('./worker.js', import.meta.url));
+    worker.postMessage({ data: 'hello' });
+    worker.onmessage = (e) =&gt; console.log(e.data);
+  }
+}, []);</code></pre><p>With Next.js 13+, you can also utilize <strong>dynamic imports</strong> and <strong>Edge functions</strong> to extend performance enhancements even further.</p><hr><h2>🌍 Real-World Use Cases</h2><p>Web Workers can be extremely useful in:</p><ul class="list-disc ml-4"><li><p><strong>Image processing</strong> (e.g., resizing, filters)</p></li><li><p><strong>PDF generation or parsing</strong></p></li><li><p><strong>Cryptographic operations</strong></p></li><li><p><strong>Data visualization</strong> with libraries like D3.js</p></li><li><p><strong>Machine learning inference</strong> on the client</p></li><li><p><strong>Large dataset filtering or sorting</strong></p></li><li><p><strong>Syntax highlighting or code formatting</strong> in online editors</p></li></ul><hr><h2>📈 How Much Can It Improve Performance?</h2><p>Using Web Workers offloads intensive work from the main thread, resulting in:</p><ul class="list-disc ml-4"><li><p>🚀 Faster load times</p></li><li><p>🧭 Smoother scrolling and interactions</p></li><li><p>🧩 Better responsiveness under load</p></li><li><p>💻 Improved user experience on lower-powered devices</p></li></ul><p>Here&apos;s a practical benchmark:</p><ul class="list-disc ml-4"><li><p><strong>Without Worker</strong>: A complex operation might freeze the UI for 500ms+</p></li><li><p><strong>With Worker</strong>: The same task is offloaded, UI remains responsive</p></li></ul><p>Example: Sorting a list of 100,000 items—without workers, the app stutters; with workers, the animation continues seamlessly.</p><hr><h2>🧪 Tips for Using Workers Effectively</h2><ul class="list-disc ml-4"><li><p><strong>Always terminate workers</strong> when done to avoid memory leaks.</p></li><li><p><strong>Use transferable objects</strong> (e.g., <code>ArrayBuffer</code>) for faster data transfer.</p></li><li><p>Consider <strong>Comlink</strong> library to simplify message-passing syntax.</p></li><li><p>Make sure to handle <strong>error events</strong> gracefully.</p></li></ul><hr><h2>⚠️ Gotchas and Caveats</h2><p>While Web Workers are powerful, there are a few important considerations to keep in mind:</p><h3>1. ❌ No Access to DOM</h3><p>Web Workers run in a separate global context and <strong>cannot access the DOM</strong> directly. If you need to update the UI, you'll have to send data back to the main thread and update the DOM there.</p><h3>2. 📦 Bundling and Path Issues</h3><p>In frameworks like Next.js or Vite, creating workers using <code>new Worker('./worker.js')</code> may not work out-of-the-box. You often need to:</p><ul class="list-disc ml-4"><li><p>Use a bundler plugin (like <code>vite-plugin-worker</code> or Webpack&apos;s <code>worker-loader</code>)</p></li><li><p>Use <code>new URL('./worker.js', import.meta.url)</code> syntax to resolve paths</p></li></ul><h3>3. 📤 Communication Overhead</h3><p>Passing large data between the main thread and worker can be slow if not optimized. Use <strong>transferable objects</strong> instead of cloning (e.g., <code>ArrayBuffer</code>) to reduce overhead.</p><h3>4. 🧯 Memory Leaks from Unterminated Workers</h3><p>If you forget to terminate a worker, it can linger in memory and consume resources. Always call <code>worker.terminate()</code> when the worker is no longer needed (e.g., in <code>useEffect</code> cleanup).</p><h3>5. 🔄 Hot Reloading in Dev Mode</h3><p>Workers may not reload properly during development due to caching or build tools. You may need to manually refresh or configure worker-friendly dev plugins.</p><h3>6. 🧠 Limited APIs</h3><p>Web Workers have access to a limited set of web APIs. For example:</p><ul class="list-disc ml-4"><li><p>No access to <code>window</code>, <code>document</code>, or <code>localStorage</code></p></li><li><p>Limited event handling</p></li><li><p>No native fetch in older browsers (though supported in modern ones)</p></li></ul><h3>7. ❗ Error Handling</h3><p>Uncaught errors in a worker don&apos;t propagate to the main thread. Use <code>worker.onerror</code> or <code>onmessageerror</code> to catch and log worker-side issues.</p><hr><h2>✅ Summary</h2><p>Web Workers are a hidden gem for client-side performance optimization. Whether you're building data-intensive dashboards, image manipulation tools, or interactive SPAs, they can dramatically improve responsiveness and perceived speed.</p><p>With careful integration into JavaScript, React, and Next.js projects, Web Workers become a must-have tool for building modern web applications.</p><p>Take a moment to look through your app—what tasks are blocking the main thread? That&apos;s your cue to start using Web Workers.</p>`,
+  },
 ];
+
+export const blogPostSorted = blogPosts.sort((a, b) =>
+  b.date.localeCompare(a.date)
+);
