@@ -38,7 +38,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-svh">
       <Hero />
       <About personalInfo={personalInfo} />
       <Projects topProjects={topProjects} />
