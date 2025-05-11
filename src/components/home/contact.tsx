@@ -7,7 +7,7 @@ import { Particles } from "@/components/ui/particles";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Globe } from "@/components/ui/globe";
-import { Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 type Props = {
   contactData: {
@@ -64,13 +64,6 @@ export default function Contact({ contactData }: Props) {
                 creative ideas, or opportunities to be part of your vision.
               </p>
               <div className="flex flex-col justify-start items-start gap-4 text-center ">
-                <a
-                  href={`mailto:${contactData.email}`}
-                  className="flex justify-items-start gap-2"
-                >
-                  <Mail />
-                  {contactData.email}
-                </a>
                 <address className="font-normal not-italic flex justify-items-start gap-2">
                   <MapPin />
                   {contactData.location}

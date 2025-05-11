@@ -2,7 +2,7 @@
 
 import { PersonalInfoType, SocialsType } from "@/lib/types";
 import { motion } from "motion/react";
-import { Mail, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Props = {
@@ -26,13 +26,6 @@ export default function ContactInfo({ personalInfo, socials }: Props) {
       </p>
 
       <div className="flex flex-col justify-start items-start gap-4 text-center mb-12">
-        <a
-          href={`mailto:${personalInfo.email}`}
-          className="flex justify-items-start gap-2"
-        >
-          <Mail />
-          {personalInfo.email}
-        </a>
         <address className="font-normal not-italic flex justify-items-start gap-2">
           <MapPin />
           {personalInfo.location}
