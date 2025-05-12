@@ -51,9 +51,8 @@ export default function CVDownloadButton() {
       doc.setFontSize(10);
       doc.setTextColor(lightGray);
       doc.text(`Email: ${user.personalInfo.email}`, 20, 40);
-      // doc.text(`Phone: ${user.personalInfo.phone}`, 20, 45);
-      doc.text(`Location: ${user.personalInfo.location}`, 20, 50);
-      doc.text(`Website: ${user.personalInfo.website}`, 20, 55);
+      doc.text(`Location: ${user.personalInfo.location}`, 20, 45);
+      doc.text(`Website: ${user.personalInfo.website}`, 20, 50);
 
       // Summary
       doc.setFontSize(12);
@@ -96,38 +95,26 @@ export default function CVDownloadButton() {
         if (skill) {
           doc.setFontSize(10);
           doc.setTextColor(lightGray);
-          doc.text(`${skill.name} (${skill.level}%)`, 20, yPos);
+          doc.text(`${skill.name}`, 20, yPos);
 
           // Draw skill level bar
           doc.setDrawColor(darkGray);
           doc.setFillColor(darkGray);
-          doc.roundedRect(70, yPos - 3, 40, 4, 1, 1, "F");
 
           doc.setDrawColor(neonGreen);
           doc.setFillColor(neonGreen);
-          doc.roundedRect(70, yPos - 3, (skill.level / 100) * 40, 4, 1, 1, "F");
 
           // Draw second column skill if available
           const secondSkill = user.skills[i + skillsPerColumn];
           if (secondSkill) {
             doc.setTextColor(lightGray);
-            doc.text(`${secondSkill.name} (${secondSkill.level}%)`, 120, yPos);
+            doc.text(`${secondSkill.name}`, 120, yPos);
 
             doc.setDrawColor(darkGray);
             doc.setFillColor(darkGray);
-            doc.roundedRect(170, yPos - 3, 40, 4, 1, 1, "F");
 
             doc.setDrawColor(neonGreen);
             doc.setFillColor(neonGreen);
-            doc.roundedRect(
-              170,
-              yPos - 3,
-              (secondSkill.level / 100) * 40,
-              4,
-              1,
-              1,
-              "F"
-            );
           }
 
           yPos += 8;

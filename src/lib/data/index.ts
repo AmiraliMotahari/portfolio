@@ -17,7 +17,7 @@ export const personalInfo: PersonalInfoType = {
   title: "Creative Developer",
   email: "amiralimotahari.dev@gmail.com",
   location: "Tehran, Iran",
-  website: "amiralimotahari.vercel.app",
+  website: "amiralimotahari.com",
   summary:
     "Creative developer with over 5 years of experience in building beautiful, functional, and accessible web experiences. Specializing in interactive applications that combine cutting-edge technology with thoughtful design.",
   picture: "/assets/images/amirali-motahari.jpeg",
