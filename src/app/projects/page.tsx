@@ -1,8 +1,13 @@
 import ProjectsGrid from "@/components/projects/projects-grid";
 import ProjectsHero from "@/components/projects/projects-hero";
-import { user } from "@/lib/data";
+import { getProjects } from "@/lib/queries";
+import { SortOptions } from "@/lib/types";
 import Script from "next/script";
 import { CollectionPage, WithContext } from "schema-dts";
+
+type Props = {
+  searchParams: Promise<{ page?: string; perPage?: string; sort?: string }>;
+};
 
 export const metadata = {
   title: "Projects",
@@ -42,8 +47,23 @@ export const metadata = {
   },
 };
 
-export default async function ProjectsPage() {
-  const { projects } = user;
+export default async function ProjectsPage({ searchParams }: Props) {
+  const { page, perPage, sort } = await searchParams;
+  const pageNum = parseInt(page ?? "", 10) || 1;
+  const pageSize = parseInt(perPage ?? "", 10) || 9;
+  console.log(sort);
+  
+
+  const result = await getProjects({
+    page: pageNum,
+    perPage: pageSize,
+    sort: sort as SortOptions,
+  });
+
+  const projects = result?.data ?? [];
+
+  console.log(projects.map((elem) => ({ name: elem.title, date: elem.date })));
+
   const webUrl = process.env.NEXT_PUBLIC_URL;
 
   const jsonLd: WithContext<CollectionPage> = {

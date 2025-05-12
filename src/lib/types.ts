@@ -58,6 +58,7 @@ export type ProjectsType = {
   demoUrl: string | null;
   githubUrl: string | null;
   featured: boolean;
+  date: Date;
 }[];
 
 export type CertificationsType = {
@@ -100,3 +101,5 @@ export type SkillCategoryType = {
   icon: JSX.Element;
   skills: string[];
 };
+
+export type SortOptions = "most-recent" | "asc" | "desc" | undefined;

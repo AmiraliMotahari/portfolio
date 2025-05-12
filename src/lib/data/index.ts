@@ -236,6 +236,7 @@ const projects: ProjectsType = [
     demoUrl: "https://donyallc.com",
     githubUrl: null,
     featured: true,
+    date: new Date("2024-08-11"),
   },
   {
     id: 2,
@@ -251,6 +252,7 @@ const projects: ProjectsType = [
     demoUrl: "https://doctorize.com/",
     githubUrl: null,
     featured: false,
+    date: new Date("2023-09-01"),
   },
   {
     id: 3,
@@ -266,6 +268,7 @@ const projects: ProjectsType = [
     demoUrl: "https://www.npmjs.com/package/themtfy",
     githubUrl: "https://github.com/AmiraliMotahari/themtfy",
     featured: false,
+    date: new Date("2024-04-16"),
   },
   {
     id: 4,
@@ -281,6 +284,7 @@ const projects: ProjectsType = [
     demoUrl: null,
     githubUrl: null,
     featured: false,
+    date: new Date("2025-02-11"),
   },
   {
     id: 5,
@@ -296,6 +300,7 @@ const projects: ProjectsType = [
     demoUrl: null,
     githubUrl: "https://github.com/AmiraliMotahari/advance-data-table",
     featured: false,
+    date: new Date("2025-01-18"),
   },
   {
     id: 6,
@@ -311,6 +316,7 @@ const projects: ProjectsType = [
     demoUrl: "https://rich-text-editor-chi-six.vercel.app/",
     githubUrl: "https://github.com/AmiraliMotahari/rich-text-editor",
     featured: false,
+    date: new Date("2025-02-09"),
   },
   {
     id: 7,
@@ -326,6 +332,7 @@ const projects: ProjectsType = [
     demoUrl: null,
     githubUrl: "https://github.com/AmiraliMotahari/grocery",
     featured: false,
+    date: new Date("2023-01-27"),
   },
   {
     id: 8,
@@ -341,6 +348,7 @@ const projects: ProjectsType = [
     demoUrl: "https://amiralimotahari.github.io/dynamicoriflame/",
     githubUrl: "https://github.com/AmiraliMotahari/dynamicoriflame",
     featured: false,
+    date: new Date("2023-02-12"),
   },
   {
     id: 9,
@@ -356,6 +364,7 @@ const projects: ProjectsType = [
     demoUrl: "https://amiralimotahari.github.io/mydigikala/",
     githubUrl: "https://github.com/AmiraliMotahari/mydigikala",
     featured: false,
+    date: new Date("2022-12-27"),
   },
 ];
 
