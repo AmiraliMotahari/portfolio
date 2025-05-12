@@ -55,6 +55,10 @@ export const getProjects = async (query: {
     startIndex,
     startIndex + perPage
   );
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  console.log("ran");
+  
 
   return {
     data: paginatedProjects,

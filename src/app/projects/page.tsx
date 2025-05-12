@@ -1,8 +1,12 @@
 import ProjectsGrid from "@/components/projects/projects-grid";
 import ProjectsHero from "@/components/projects/projects-hero";
+import ServerSidePagination from "@/components/ServerSidePagination";
+import ProjectsGridSkeleton from "@/components/skeletons/projects/projects-grid-skeleton";
 import { getProjects } from "@/lib/queries";
+
 import { SortOptions } from "@/lib/types";
 import Script from "next/script";
+import { cache, Suspense } from "react";
 import { CollectionPage, WithContext } from "schema-dts";
 
 type Props = {
@@ -47,14 +51,14 @@ export const metadata = {
   },
 };
 
-export default async function ProjectsPage({ searchParams }: Props) {
+const cachedGetProjects = cache(getProjects);
+
+const ProjectsList = async ({ searchParams }: Props) => {
   const { page, perPage, sort } = await searchParams;
   const pageNum = parseInt(page ?? "", 10) || 1;
   const pageSize = parseInt(perPage ?? "", 10) || 9;
-  console.log(sort);
-  
 
-  const result = await getProjects({
+  const result = await cachedGetProjects({
     page: pageNum,
     perPage: pageSize,
     sort: sort as SortOptions,
@@ -62,7 +66,22 @@ export default async function ProjectsPage({ searchParams }: Props) {
 
   const projects = result?.data ?? [];
 
-  console.log(projects.map((elem) => ({ name: elem.title, date: elem.date })));
+  return <ProjectsGrid projects={projects} />;
+};
+
+export default async function ProjectsPage({ searchParams }: Props) {
+  const { page, perPage, sort } = await searchParams;
+  const pageNum = parseInt(page ?? "", 10) || 1;
+  const pageSize = parseInt(perPage ?? "", 10) || 9;
+
+  const result = await cachedGetProjects({
+    page: pageNum,
+    perPage: pageSize,
+    sort: sort as SortOptions,
+  });
+
+  const projects = result?.data ?? [];
+  const { totalPages } = result;
 
   const webUrl = process.env.NEXT_PUBLIC_URL;
 
@@ -73,7 +92,7 @@ export default async function ProjectsPage({ searchParams }: Props) {
     url: new URL("/projects", webUrl).toString(),
     description:
       "A collection of my work spanning web development, design, and interactive experiences. Each project represents a unique challenge and solution.",
-    hasPart: projects.slice(0, 10).map((elem) => {
+    hasPart: projects.map((elem) => {
       return {
         "@type": "CreativeWork",
         name: elem.title,
@@ -91,7 +110,15 @@ export default async function ProjectsPage({ searchParams }: Props) {
   return (
     <div className="min-h-screen">
       <ProjectsHero />
-      <ProjectsGrid projects={projects} />
+      <Suspense
+        key={pageNum + pageSize + (sort ?? "")}
+        fallback={<ProjectsGridSkeleton />}
+      >
+        <ProjectsList searchParams={searchParams} />
+      </Suspense>
+      {totalPages > 1 ? (
+        <ServerSidePagination totalPages={totalPages} className="mb-8" />
+      ) : null}
       <Script
         id="projects-page-json-ld"
         type="application/ld+json"
