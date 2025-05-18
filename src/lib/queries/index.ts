@@ -1,8 +1,8 @@
 import { user } from "../data";
 import { blogPosts } from "../data/blog-data";
-import { SortOptions } from "../types";
+import { BlogPost, ProjectsType, QueryFunction, SortOptions } from "../types";
 
-export const getProjects = async (query: {
+export const getProjects: QueryFunction<ProjectsType[number]> = async (query: {
   page: number;
   perPage: number;
   sort?: SortOptions;
@@ -66,7 +66,7 @@ export const getProjects = async (query: {
   };
 };
 
-export const getBlogPosts = async (query: {
+export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
   page: number;
   perPage: number;
   sort?: SortOptions;
@@ -139,4 +139,12 @@ export const getBlogPosts = async (query: {
     currentPage: safePage,
     perPage,
   };
+};
+
+export const getAllTags = () => {
+  return Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
+};
+
+export const getFeaturedBlogPosts = () => {
+  return blogPosts.filter((post) => post.isFeatured);
 };

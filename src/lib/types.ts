@@ -94,6 +94,7 @@ export type BlogPost = {
   coverBlurData: string;
   content: string;
   tags: string[];
+  isFeatured: boolean;
 };
 
 export type SkillCategoryType = {
@@ -103,3 +104,16 @@ export type SkillCategoryType = {
 };
 
 export type SortOptions = "most-recent" | "asc" | "desc" | undefined;
+
+export type QueryFunction<T> = (query: {
+  page: number;
+  perPage: number;
+  sort?: SortOptions;
+  searchQuery?: string;
+}) => Promise<{
+  data: T[];
+  totalPages: number;
+  total: number;
+  currentPage: number;
+  perPage: number;
+}>;

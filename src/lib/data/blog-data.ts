@@ -20,6 +20,7 @@ export const blogPosts: BlogPost[] = [
       "JavaScript",
       "Performance Optimization",
     ],
+    isFeatured: false,
   },
   {
     title: "Implementing Voice Search Optimization in Web Applications",
@@ -40,6 +41,7 @@ export const blogPosts: BlogPost[] = [
       "Web Development",
       "Web Accessibility",
     ],
+    isFeatured: false,
   },
   {
     title: "Mastering SEO in Next.js: A Comprehensive Guide",
@@ -127,6 +129,7 @@ export async function generateStaticParams() {
     },
   };</code></pre><p></p><ul class="list-disc ml-4"><li><p><strong>Sitemap Generation</strong>: Use tools like <code>next-sitemap</code> to generate sitemaps, aiding search engine indexing.</p></li><li><p><strong>Performance Optimization</strong>: Implement lazy loading, image optimization, and code splitting to enhance page load speeds, positively impacting SEO.</p></li></ul><hr><h3>📌 Conclusion</h3><p>Optimizing SEO in Next.js involves a multifaceted approach, leveraging built-in features like metadata management, Open Graph and Twitter integration, structured data, and dynamic routing. By implementing these strategies, you can significantly improve your web application's visibility, user engagement, and search engine rankings.</p>`,
     tags: ["SEO", "Next.js", "React", "Web Development", "Web Accessibility"],
+    isFeatured: true,
   },
   {
     title:
@@ -148,6 +151,7 @@ export async function generateStaticParams() {
       "Web Animations",
       "ViewTransition",
     ],
+    isFeatured: false,
     content: `<p>Creating smooth, native-like transitions has long been a challenge for developers. Whether building single-page applications (SPAs) or multi-page applications (MPAs), managing animated state transitions often required complex logic or third-party tools. Enter the <strong>View Transition API</strong>—a powerful, modern browser feature designed to streamline and standardize animated transitions between DOM states.</p><p>In this post, we&apos;ll dive into how this API works, and how you can use it effectively across <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React</strong>, and <strong>Next.js</strong>.</p><hr><h2>🚀 What is the View Transition API?</h2><p>The View Transition API enables developers to animate between two visual states in a way that feels smooth and natural. Think page-to-page animations or component-level transitions that look native to the platform.</p><p>With just a few lines of code, the API captures the current DOM state, applies updates, and renders the transition—all natively and efficiently.</p><hr><h2>🎨 Styling with CSS</h2><p>The View Transition API introduces several new CSS features:</p><pre><code>@view-transition;
 
 .my-element {
@@ -202,6 +206,7 @@ export default function Layout({ children }) {
     coverBlurData:
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAP0lEQVR4nAE0AMv/AAAOKwAGJR01Vhw0VABLXoWGn8e0wt1HWH8ABSBAAh8/BRs3BiA/ALLC5PH+/+Pw/4+fvnxBE8HZPpkHAAAAAElFTkSuQmCC",
     coverImage: "/assets/images/blog/web-worker-integration-in-javascript.png",
+    isFeatured: false,
     content: `<h2>Introduction</h2><p>Modern web applications are increasingly dynamic and interactive, but that often comes at a performance cost. One powerful tool for managing CPU-intensive tasks without blocking the main thread is the <strong>Web Worker</strong>.</p><p>In this post, we&apos;ll explore what Web Workers are, how to use them in JavaScript, React, and Next.js, and real-world scenarios where they can significantly enhance your project&apos;s performance and UX.</p><hr><h2>🧠 What Are Web Workers?</h2><p>Web Workers are scripts that run in background threads separate from the main execution thread of a web application. This allows you to perform computationally expensive operations—like data processing, file manipulation, or long-running algorithms—without freezing the UI.</p><p>The main thread stays responsive while the Web Worker does the heavy lifting.</p><hr><h2>📦 Basic Web Worker Usage in JavaScript</h2><pre><code>// worker.js
 self.onmessage = function(e) {
   const result = heavyCalculation(e.data);
