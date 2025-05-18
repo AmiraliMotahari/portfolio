@@ -141,7 +141,7 @@ export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
   };
 };
 
-export const getAllTags = () => {
+export const getAllTags = async() => {
   return Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
 };
 

@@ -1,6 +1,6 @@
 import ProjectsGrid from "@/components/projects/projects-grid";
 import ProjectsHero from "@/components/projects/projects-hero";
-import ServerSidePagination from "@/components/ServerSidePagination";
+import AdvancePagination from "@/components/advance-pagination";
 import ProjectsGridSkeleton from "@/components/skeletons/projects/projects-grid-skeleton";
 import { getProjects } from "@/lib/queries";
 
@@ -117,7 +117,7 @@ export default async function ProjectsPage({ searchParams }: Props) {
         <ProjectsList searchParams={searchParams} />
       </Suspense>
       {totalPages > 1 ? (
-        <ServerSidePagination totalPages={totalPages} className="mb-8" />
+        <AdvancePagination totalPages={totalPages} className="mb-8" />
       ) : null}
       <Script
         id="projects-page-json-ld"

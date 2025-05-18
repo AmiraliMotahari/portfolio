@@ -12,6 +12,7 @@ import Script from "next/script";
 import { getBlogPosts, getFeaturedBlogPosts } from "@/lib/queries";
 import Searchbar from "@/components/searchbar";
 import { SortOptions } from "@/lib/types";
+import AdvancePagination from "@/components/advance-pagination";
 
 type Props = {
   searchParams: Promise<{
@@ -67,15 +68,14 @@ export default async function BlogPage({ searchParams }: Props) {
   const searchQuery = search?.query;
   const sort = search?.sort as SortOptions;
 
-  // Get all unique tags from blog posts
-  // todo: next version
-  // const allTags = Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
+  // Tags 
+  // const tags = getAllTags()
 
   // Featured posts
   const featuredPost = getFeaturedBlogPosts()[0];
 
   // Blog posts
-  const { data: posts } = await getBlogPosts({
+  const { data: posts, totalPages } = await getBlogPosts({
     page,
     perPage,
     searchQuery,
@@ -130,24 +130,7 @@ export default async function BlogPage({ searchParams }: Props) {
 
       <section className="container mx-auto dynamic-px pb-20">
         {/* Tags Filter */}
-        {/* todo:next version */}
-        {/* <div className="flex flex-wrap gap-2 mb-12 justify-center">
-          <Badge
-            variant="outline"
-            className="hover:bg-neon-green/10 hover:text-neon-green cursor-pointer transition-colors"
-          >
-            All
-          </Badge>
-          {allTags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="outline"
-              className="hover:bg-neon-green/10 hover:text-neon-green cursor-pointer transition-colors"
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div> */}
+        {/* <BlogTagFilter getTags={tags}/> */}
 
         {/* Featured Post */}
         {featuredPost ? (
@@ -233,39 +216,11 @@ export default async function BlogPage({ searchParams }: Props) {
           </div>
         </div>
 
+        {totalPages > 1 ? (
+          <AdvancePagination totalPages={totalPages} className="mb-8" />
+        ) : null}
+
         {/* Newsletter Signup */}
-        {/* todo: next version */}
-        {/* <div className="max-w-3xl mx-auto">
-          <div className="glass-card p-8 relative overflow-hidden">
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-neon-green/10 rounded-full filter blur-3xl"></div>
-            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-neon-red/10 rounded-full filter blur-3xl"></div>
-
-            <div className="relative">
-              <h3 className="text-2xl font-bold mb-2 text-center">
-                Stay Updated
-              </h3>
-              <p className="text-muted-foreground mb-6 text-center">
-                Subscribe to my newsletter to get the latest articles and
-                updates.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-grow bg-background/50 backdrop-blur-sm"
-                />
-                <Button className="bg-neon-green hover:bg-neon-green/80 text-black">
-                  Subscribe
-                </Button>
-              </div>
-
-              <p className="text-xs text-muted-foreground mt-3 text-center">
-                I respect your privacy. Unsubscribe at any time.
-              </p>
-            </div>
-          </div>
-        </div> */}
       </section>
       <Script
         id="blog-page-json-ld"

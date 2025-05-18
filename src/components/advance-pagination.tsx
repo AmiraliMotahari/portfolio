@@ -15,16 +15,16 @@ import { useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { getPaginationRange } from "@/lib/pagination";
 
-type ServerSidePaginationProps = {
+type Props = {
   totalPages: number;
   className?: string;
 };
 
-const ServerSidePagination = ({
+const AdvancePagination = ({
   totalPages,
   className,
-}: ServerSidePaginationProps) => {
-  const pathName = usePathname();
+}: Props) => {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const pageNum = searchParams.get("page") ?? "";
@@ -46,9 +46,9 @@ const ServerSidePagination = ({
         }
       }
 
-      return `${pathName}?${newSearchParams.toString()}`;
+      return `${pathname}?${newSearchParams.toString()}`;
     },
-    [searchParams, pathName]
+    [searchParams, pathname]
   );
 
   const pagesToShow = useMemo(
@@ -107,4 +107,4 @@ const ServerSidePagination = ({
   );
 };
 
-export default ServerSidePagination;
+export default AdvancePagination;
