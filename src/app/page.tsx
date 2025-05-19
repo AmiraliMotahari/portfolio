@@ -5,8 +5,9 @@ import LatestPosts from "@/components/home/latest-posts";
 import Projects from "@/components/home/projects";
 import { user } from "@/lib/data";
 import { blogPosts } from "@/lib/data/blog-data";
+import { getWebsiteSchema } from "@/lib/seo/schemas";
 import Script from "next/script";
-import { Person, WithContext } from "schema-dts";
+import { ProfilePage, WithContext } from "schema-dts";
 
 const Home = () => {
   const { personalInfo, projects, socials } = user;
@@ -16,25 +17,35 @@ const Home = () => {
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 3);
 
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
-  const jsonLd: WithContext<Person> = {
+  const jsonLd: WithContext<ProfilePage> = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: personalInfo.name,
-    url: personalInfo.website,
-    image: new URL(personalInfo.picture, webUrl).toString(),
-    sameAs: [...socials.flatMap((elem) => elem.href)],
-    jobTitle: "Frontend Developer",
-    knowsAbout: [
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "JavaScript",
-      "Artificial Intelligence",
-      "SEO",
-      "Web Performance",
-    ],
+    "@type": "ProfilePage",
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${webUrl}/#person`,
+      name: personalInfo.name,
+      url: personalInfo.website,
+      description: personalInfo.summary,
+      image: new URL(personalInfo.picture, webUrl).toString(),
+      sameAs: socials.map((elem) => elem.href),
+      jobTitle: "Frontend Developer",
+      knowsAbout: [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "JavaScript",
+        "Artificial Intelligence",
+        "SEO",
+        "Web Performance",
+      ],
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": webUrl,
+      },
+      alternateName: ["amirali", "motahari", "themt"],
+    },
   };
 
   return (
@@ -54,6 +65,13 @@ const Home = () => {
         id="home-page-json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Script
+        id="global-website-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getWebsiteSchema(webUrl ?? "")),
+        }}
       />
     </div>
   );

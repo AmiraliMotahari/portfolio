@@ -1,7 +1,9 @@
 import ContactForm from "@/components/contact/contact-form";
 import ContactInfo from "@/components/contact/contact-info";
 import HeroAnimated from "@/components/hero-animated";
+import BreadcrumbJsonLd from "@/components/seo/breadcrumb-json-ld";
 import { user } from "@/lib/data";
+import { BreadcrumbItem } from "@/lib/types";
 import Script from "next/script";
 import { ContactPage as ContactPageJsonLd, WithContext } from "schema-dts";
 
@@ -42,7 +44,7 @@ export const metadata = {
 
 export default function ContactPage() {
   const { personalInfo, socials } = user;
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
   const jsonLd: WithContext<ContactPageJsonLd> = {
     "@context": "https://schema.org",
@@ -63,8 +65,23 @@ export default function ContactPage() {
         availableLanguage: ["English", "Persian"],
       },
       sameAs: socials.flatMap((elem) => elem.href),
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": new URL("/contact", webUrl).toString(),
+      },
     },
   };
+
+  const breadcrumb: BreadcrumbItem[] = [
+    {
+      name: "Home",
+      url: webUrl,
+    },
+    {
+      name: "Contact",
+      url: new URL("/contact", webUrl).toString(),
+    },
+  ];
 
   return (
     <div className="min-h-svh">
@@ -86,6 +103,7 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={breadcrumb} id="breadcrumb-schema-contact" />
     </div>
   );
 }

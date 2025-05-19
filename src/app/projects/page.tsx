@@ -4,10 +4,11 @@ import AdvancePagination from "@/components/advance-pagination";
 import ProjectsGridSkeleton from "@/components/skeletons/projects/projects-grid-skeleton";
 import { getProjects } from "@/lib/queries";
 
-import { SortOptions } from "@/lib/types";
+import { BreadcrumbItem, SortOptions } from "@/lib/types";
 import Script from "next/script";
 import { cache, Suspense } from "react";
 import { CollectionPage, WithContext } from "schema-dts";
+import BreadcrumbJsonLd from "@/components/seo/breadcrumb-json-ld";
 
 type Props = {
   searchParams: Promise<{ page?: string; perPage?: string; sort?: string }>;
@@ -83,7 +84,7 @@ export default async function ProjectsPage({ searchParams }: Props) {
   const projects = result?.data ?? [];
   const { totalPages } = result;
 
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
   const jsonLd: WithContext<CollectionPage> = {
     "@context": "https://schema.org",
@@ -101,11 +102,23 @@ export default async function ProjectsPage({ searchParams }: Props) {
         description: elem.description,
         creator: {
           "@type": "Person",
+          "@id": `${webUrl}#person`,
           name: "Amirali Motahari",
         },
       };
     }),
   };
+
+  const breadcrumb: BreadcrumbItem[] = [
+    {
+      name: "Home",
+      url: webUrl,
+    },
+    {
+      name: "Projects",
+      url: new URL("/projects", webUrl).toString(),
+    },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -124,6 +137,7 @@ export default async function ProjectsPage({ searchParams }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={breadcrumb} id="breadcrumb-schema-projects" />
     </div>
   );
 }

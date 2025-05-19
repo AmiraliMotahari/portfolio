@@ -13,6 +13,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ShareButton from "@/components/share-button";
 import { BlogPosting, WithContext } from "schema-dts";
 import Script from "next/script";
+import { BreadcrumbItem } from "@/lib/types";
+import BreadcrumbJsonLd from "@/components/seo/breadcrumb-json-ld";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -63,7 +65,7 @@ export default async function BlogPost({ params }: Props) {
   const post = blogPosts.find((post) => post.slug === slug);
   const { personalInfo } = user;
 
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
   if (!post) return notFound();
 
@@ -79,15 +81,22 @@ export default async function BlogPost({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
+    url: new URL(`/blog/${post.slug}`, webUrl).toString(),
     image: new URL(post.coverImage, webUrl).toString(),
-    author: {
-      "@type": "Person",
-      name: "Amirali Motahari",
-      url: webUrl,
-    },
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt,
     editor: "Amirali Motahari",
     genre: "Web Development",
     keywords: post.tags,
+    timeRequired: `PT${Math.ceil(post.readingTime)}M`,
+    articleBody: post.content, // gives the full content of the post
+    author: {
+      "@type": "Person",
+      "@id": `${webUrl}#person`,
+      name: "Amirali Motahari",
+      url: webUrl,
+    },
     publisher: {
       "@type": "Organization",
       name: "Amirali Motahari",
@@ -96,15 +105,26 @@ export default async function BlogPost({ params }: Props) {
         url: new URL(`/assets/images/logo-round.png`, webUrl).toString(),
       },
     },
-    url: new URL(`/blog/${post.slug}`, webUrl).toString(),
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": new URL(`/blog/${post.slug}`, webUrl).toString(),
     },
-    datePublished: post.date,
-    dateModified: post.date,
-    description: post.excerpt,
   };
+
+  const breadcrumb: BreadcrumbItem[] = [
+    {
+      name: "Home",
+      url: webUrl,
+    },
+    {
+      name: "Blog",
+      url: new URL("/blog", webUrl).toString(),
+    },
+    {
+      name: post.title,
+      url: new URL(`/blog/${post.slug}`, webUrl).toString(),
+    },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -265,6 +285,8 @@ export default async function BlogPost({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      
+      <BreadcrumbJsonLd items={breadcrumb} id="breadcrumb-schema-blog-post" />
     </div>
   );
 }

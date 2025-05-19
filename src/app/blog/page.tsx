@@ -11,8 +11,9 @@ import { Blog, WithContext } from "schema-dts";
 import Script from "next/script";
 import { getBlogPosts, getFeaturedBlogPosts } from "@/lib/queries";
 import Searchbar from "@/components/searchbar";
-import { SortOptions } from "@/lib/types";
+import { BreadcrumbItem, SortOptions } from "@/lib/types";
 import AdvancePagination from "@/components/advance-pagination";
+import BreadcrumbJsonLd from "@/components/seo/breadcrumb-json-ld";
 
 type Props = {
   searchParams: Promise<{
@@ -81,7 +82,7 @@ export default async function BlogPage({ searchParams }: Props) {
     sort,
   });
 
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
   const jsonLd: WithContext<Blog> = {
     "@context": "https://schema.org",
@@ -92,24 +93,45 @@ export default async function BlogPage({ searchParams }: Props) {
       "Thoughts, ideas, and tutorials on web development, design, and creative coding.",
     author: {
       "@type": "Person",
+      "@id": `${webUrl}#person`,
       name: "Amirali Motahari",
       url: webUrl,
     },
     blogPost: posts.map((post) => {
       return {
         "@type": "BlogPosting",
+        "@id": new URL(`/blog/${post.slug}#post`, webUrl).toString(),
         headline: post.title,
         url: new URL(`/blog/${post.slug}`, webUrl).toString(),
         image: new URL(post.coverImage, webUrl).toString(),
+        description: post.excerpt,
+        keywords: post?.tags || [],
         datePublished: post.date,
+        dateModified: post.date,
         author: {
           "@type": "Person",
+          "@id": `${webUrl}#person`,
           name: "Amirali Motahari",
+          url: webUrl,
         },
-        description: post.excerpt,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": new URL(`/blog/${post.slug}`, webUrl).toString(),
+        },
       };
     }),
   };
+
+  const breadcrumb: BreadcrumbItem[] = [
+    {
+      name: "Home",
+      url: webUrl,
+    },
+    {
+      name: "Blog",
+      url: new URL("/blog", webUrl).toString(),
+    },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -121,8 +143,8 @@ export default async function BlogPage({ searchParams }: Props) {
         className="pt-32 pb-20"
       >
         <Searchbar
-          // action="/blog"
-          // query="query"
+        // action="/blog"
+        // query="query"
         />
       </HeroAnimated>
 
@@ -225,6 +247,7 @@ export default async function BlogPage({ searchParams }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={breadcrumb} id="blog-breadcrumb-schema" />
     </div>
   );
 }

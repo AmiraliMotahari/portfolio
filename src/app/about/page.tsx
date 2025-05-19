@@ -6,6 +6,8 @@ import ExperienceTimeline from "@/components/about/experience-timeline";
 import { socials, user } from "@/lib/data";
 import { AboutPage as AboutPageJsonLd, WithContext } from "schema-dts";
 import Script from "next/script";
+import { BreadcrumbItem } from "@/lib/types";
+import BreadcrumbJsonLd from "@/components/seo/breadcrumb-json-ld";
 
 export const metadata: Metadata = {
   title: "About Me",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const { personalInfo, skills, education, experiences } = user;
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
   const jsonLd: WithContext<AboutPageJsonLd> = {
     "@context": "https://schema.org",
@@ -56,6 +58,7 @@ export default function AboutPage() {
     url: new URL("/about", webUrl).toString(),
     mainEntity: {
       "@type": "Person",
+      "@id": `${webUrl}#person`,
       name: "Amirali Motahari",
       image: new URL(personalInfo.picture, webUrl).toString(),
       jobTitle: "Frontend Developer",
@@ -70,9 +73,25 @@ export default function AboutPage() {
         "SEO",
         "Web Performance",
       ],
-      sameAs: socials.flatMap((elem) => elem.href),
+      sameAs: socials.map((elem) => elem.href),
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": new URL("/about", webUrl).toString(),
+      },
+      alternateName: ["amirali", "motahari", "themt"],
     },
   };
+
+  const breadcrumb: BreadcrumbItem[] = [
+    {
+      name: "Home",
+      url: webUrl,
+    },
+    {
+      name: "About",
+      url: new URL("/about", webUrl).toString(),
+    },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -88,6 +107,7 @@ export default function AboutPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={breadcrumb} id="breadcrumb-schema-now" />
     </div>
   );
 }

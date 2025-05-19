@@ -117,3 +117,8 @@ export type QueryFunction<T> = (query: {
   currentPage: number;
   perPage: number;
 }>;
+
+export type BreadcrumbItem = {
+  name: string;
+  url: string;
+};

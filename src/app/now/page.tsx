@@ -1,4 +1,6 @@
+import BreadcrumbJsonLd from "@/components/seo/breadcrumb-json-ld";
 import GradientBackground from "@/components/ui/gradient-background";
+import { BreadcrumbItem } from "@/lib/types";
 import {
   CalendarDays,
   Coffee,
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 export default async function NowPage() {
-  const webUrl = process.env.NEXT_PUBLIC_URL;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
   const publishDate = "2025-04-12";
 
   const jsonLd: WithContext<BlogPosting> = {
@@ -69,9 +71,9 @@ export default async function NowPage() {
     datePublished: publishDate,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": new URL("/new", webUrl).toString(),
+      "@id": new URL("/now", webUrl).toString(),
     },
-    url: new URL("/new", webUrl).toString(),
+    url: new URL("/now", webUrl).toString(),
     image: new URL("/assets/images/amiralimotahari.jpeg", webUrl).toString(), // optional
     articleBody:
       "I'm currently leading multiple projects, including an e-commerce store and a tax management system built with Next.js. I'm pursuing a Master's degree in Artificial Intelligence while sharpening my skills in web development and digital marketing. My days are driven by early morning coding sessions, sound tracked by synthwave playlists, and balanced with workouts and meditation. I'm passionate about blending AI with intuitive design to create smarter digital experiences.",
@@ -84,6 +86,16 @@ export default async function NowPage() {
     ],
   };
 
+  const breadcrumb: BreadcrumbItem[] = [
+    {
+      name: "Home",
+      url: webUrl,
+    },
+    {
+      name: "Now",
+      url: new URL("/now", webUrl).toString(),
+    },
+  ];
   return (
     <div className="min-h-screen">
       <section className="mx-auto dynamic-px pt-32 pb-20 relative">
@@ -185,6 +197,7 @@ export default async function NowPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <BreadcrumbJsonLd items={breadcrumb} id="breadcrumb-schema-now" />
     </div>
   );
 }
