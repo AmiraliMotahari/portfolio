@@ -106,8 +106,8 @@ export default async function BlogPage({ searchParams }: Props) {
         image: new URL(post.coverImage, webUrl).toString(),
         description: post.excerpt,
         keywords: post?.tags || [],
-        datePublished: post.date,
-        dateModified: post.date,
+        datePublished: new Date(post.date),
+        dateModified: new Date(post.date),
         author: {
           "@type": "Person",
           "@id": `${webUrl}#person`,

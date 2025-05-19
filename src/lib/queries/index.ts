@@ -169,7 +169,7 @@ export const getBlogPosts: QueryFunction<BlogPost> = async (query) => {
       ignoreLocation: true,
     });
 
-    const fuseResults = fuse.search(searchQuery);
+    const fuseResults = fuse.search(searchQuery.trim());
     filteredPosts = fuseResults.map((result) => result.item);
   }
 

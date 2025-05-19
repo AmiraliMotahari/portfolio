@@ -64,7 +64,7 @@ export type ProjectsType = {
 export type CertificationsType = {
   name: string;
   issuer: string;
-  date: string;
+  date: Date;
   url: string;
 }[];
 
@@ -87,7 +87,7 @@ export type UserType = {
 export type BlogPost = {
   title: string;
   slug: string;
-  date: string;
+  date: Date;
   readingTime: number;
   excerpt: string;
   coverImage: string;

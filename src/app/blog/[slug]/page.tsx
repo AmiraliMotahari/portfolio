@@ -83,8 +83,8 @@ export default async function BlogPost({ params }: Props) {
     headline: post.title,
     url: new URL(`/blog/${post.slug}`, webUrl).toString(),
     image: new URL(post.coverImage, webUrl).toString(),
-    datePublished: post.date,
-    dateModified: post.date,
+    datePublished: post.date.toString(),
+    dateModified: post.date.toString(),
     description: post.excerpt,
     editor: "Amirali Motahari",
     genre: "Web Development",
@@ -285,7 +285,7 @@ export default async function BlogPost({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
+
       <BreadcrumbJsonLd items={breadcrumb} id="breadcrumb-schema-blog-post" />
     </div>
   );

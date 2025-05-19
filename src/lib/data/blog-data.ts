@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Next.js 15: A Deep Dive into Its Latest Features",
     slug: "nextjs-15-deep-dive",
-    date: "2025-04-10",
+    date: new Date("2025-04-10"),
     readingTime: 8,
     excerpt:
       "Explore the ground breaking features of Next.js 15, including React 19 support, caching improvements, and the stabilization of Turbopack.",
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Implementing Voice Search Optimization in Web Applications",
     slug: "voice-search-optimization-web-apps",
-    date: "2025-04-11",
+    date: new Date("2025-04-11"),
     readingTime: 8,
     excerpt:
       "Voice search is transforming the way users interact with the web. Learn how to optimize your React or Next.js app for the voice-first era.",
@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
   {
     title: "Mastering SEO in Next.js: A Comprehensive Guide",
     slug: "nextjs-seo-guide",
-    date: "2025-04-12",
+    date: new Date("2025-04-12"),
     readingTime: 10,
     excerpt:
       "Explore the essential SEO features in Next.js, including metadata management, Open Graph integration, structured data, and dynamic routing.",
@@ -155,7 +155,7 @@ export async function generateStaticParams() {
     title:
       "Mastering the View Transition API: Smooth UX in CSS, JS, React, and Next.js",
     slug: "view-transition-api",
-    date: "2025-04-13",
+    date: new Date("2025-04-13"),
     readingTime: 8,
     excerpt:
       "Explore the new View Transition API from CSS, JavaScript, React, and Next.js perspectives. Learn how to implement seamless animations and enhance your web application's UX.",
@@ -218,7 +218,7 @@ export default function Layout({ children }) {
   {
     title: "Harnessing Web Workers in JavaScript, React, and Next.js",
     slug: "web-workers-js-react-nextjs",
-    date: "2025-04-20",
+    date: new Date("2025-04-20"),
     readingTime: 8,
     excerpt:
       "Learn how to leverage Web Workers in JavaScript, React, and Next.js to offload heavy computations and improve performance.",
@@ -259,6 +259,6 @@ worker.onmessage = function(e) {
   },
 ];
 
-export const blogPostSorted = blogPosts.sort((a, b) =>
-  b.date.localeCompare(a.date)
+export const blogPostSorted = blogPosts.sort(
+  (a, b) => b.date.getTime() - a.date.getTime()
 );

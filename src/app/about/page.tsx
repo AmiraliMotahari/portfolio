@@ -58,12 +58,14 @@ export default function AboutPage() {
     url: new URL("/about", webUrl).toString(),
     mainEntity: {
       "@type": "Person",
-      "@id": `${webUrl}#person`,
+      "@id": `${webUrl}/#person`,
       name: "Amirali Motahari",
       image: new URL(personalInfo.picture, webUrl).toString(),
       jobTitle: "Frontend Developer",
       description: personalInfo.summary,
       url: personalInfo.website,
+      sameAs: socials.map((elem) => elem.href),
+      alternateName: ["amirali", "motahari", "themt"],
       knowsAbout: [
         "Next.js",
         "React",
@@ -73,12 +75,10 @@ export default function AboutPage() {
         "SEO",
         "Web Performance",
       ],
-      sameAs: socials.map((elem) => elem.href),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": new URL("/about", webUrl).toString(),
       },
-      alternateName: ["amirali", "motahari", "themt"],
     },
   };
 
