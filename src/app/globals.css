@@ -46,10 +46,12 @@
   /* New Colors */
   --color-neon-green: var(--neon-green);
   --color-neon-red: var(--neon-red);
-
-  /* Animations */
-
-  /* Key Frames */
+  --color-info: var(--info); /* A calm blue */
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success); /* A natural green */
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning); /* A warm yellow */
+  --color-warning-foreground: var(--warning-foreground);
 }
 
 :root {
@@ -88,6 +90,12 @@
   /* New colors */
   --neon-red: oklch(65.42% 0.2433 7.57);
   --neon-green: oklch(90.09% 0.156839 187.7228);
+  --info: oklch(0.7 0.18 240); /* A calm blue */
+  --info-foreground: oklch(0.98 0 0);
+  --success: oklch(0.7 0.2 145); /* A natural green */
+  --success-foreground: oklch(0.98 0 0);
+  --warning: oklch(0.8 0.25 80); /* A warm yellow */
+  --warning-foreground: oklch(0.2 0 0);
 }
 
 .dark {
@@ -159,7 +167,7 @@
   .page-transition-exit-active {
     @apply opacity-0 -translate-y-2.5 transition-all duration-300;
   }
-  .dynamic-px{
-    @apply px-4 sm:px-12
+  .dynamic-px {
+    @apply px-4 sm:px-12;
   }
 }

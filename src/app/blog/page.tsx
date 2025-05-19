@@ -59,8 +59,6 @@ export const metadata = {
   },
 };
 
-//todo: add search and filter
-
 export default async function BlogPage({ searchParams }: Props) {
   const search = await searchParams;
   const page = parseInt(search?.page || "", 10) || 1;
@@ -68,11 +66,12 @@ export default async function BlogPage({ searchParams }: Props) {
   const searchQuery = search?.query;
   const sort = search?.sort as SortOptions;
 
-  // Tags 
+  // Tags
   // const tags = getAllTags()
 
   // Featured posts
-  const featuredPost = getFeaturedBlogPosts()[0];
+  const featuredPosts = getFeaturedBlogPosts();
+  const featuredPost = featuredPosts[0];
 
   // Blog posts
   const { data: posts, totalPages } = await getBlogPosts({
@@ -122,9 +121,8 @@ export default async function BlogPage({ searchParams }: Props) {
         className="pt-32 pb-20"
       >
         <Searchbar
-          action="/blog"
-          query="query"
-          initialQueryValue={searchQuery}
+          // action="/blog"
+          // query="query"
         />
       </HeroAnimated>
 
@@ -158,9 +156,9 @@ export default async function BlogPage({ searchParams }: Props) {
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="flex flex-wrap gap-2 mb-3">
                         {/* TODO: Add slider */}
-                        {featuredPost.tags.map((tag) => (
+                        {featuredPost.tags.map((tag, i) => (
                           <Badge
-                            key={tag}
+                            key={`${tag}-${i}`}
                             variant="secondary"
                             className="bg-background/70 backdrop-blur-sm"
                           >

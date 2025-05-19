@@ -84,18 +84,20 @@ export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
   }
 
   const posts = [...blogPosts];
-  const total = posts.length;
-  const totalPages = Math.ceil(total / perPage);
-  const normalizedSearch = searchQuery?.toLowerCase();
+  const normalizedSearch = searchQuery?.toLowerCase().trim();
+  const searchTokens = normalizedSearch ? normalizedSearch.split(/\s+/) : [];
 
   const filteredPosts = posts.filter(({ title, excerpt, tags }) => {
-    const matchesSearch =
-      !normalizedSearch ||
-      title.toLowerCase().includes(normalizedSearch) ||
-      excerpt.toLowerCase().includes(normalizedSearch) ||
-      tags.includes(normalizedSearch);
+    const normalizedTitle = title.toLowerCase();
+    const normalizedExcerpt = excerpt.toLowerCase();
+    const normalizedTags = tags.map((tag) => tag.toLowerCase());
 
-    return matchesSearch;
+    return searchTokens.every(
+      (token) =>
+        normalizedTitle.includes(token) ||
+        normalizedExcerpt.includes(token) ||
+        normalizedTags.some((tag) => tag.includes(token))
+    );
   });
 
   if (sort) {
@@ -123,7 +125,8 @@ export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
         break;
     }
   }
-
+  const total = filteredPosts.length;
+  const totalPages = Math.ceil(total / perPage);
   const safePage = Math.max(1, page);
   const startIndex = (safePage - 1) * perPage;
 
@@ -141,7 +144,7 @@ export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
   };
 };
 
-export const getAllTags = async() => {
+export const getAllTags = async () => {
   return Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
 };
 

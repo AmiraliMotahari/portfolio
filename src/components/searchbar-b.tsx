@@ -1,28 +1,24 @@
 "use client";
 
 import type React from "react";
-import Form from "next/form";
 
 import { useState, useEffect, useRef } from "react";
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { getBlogPosts } from "@/lib/queries";
 import { BlogPost } from "@/lib/types";
-import BlogSearchCard from "@/components/cards/blog-search-card";
-import { Button } from "@/components/ui/button";
+import BlogSearchCard from "./cards/blog-search-card";
 
 export default function Searchbar() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const initialQuery = searchParams.get("query");
-  const [searchTerm, setSearchTerm] = useState(initialQuery ?? "");
+  const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<BlogPost[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   // Debounce search term
   useEffect(() => {
@@ -118,41 +114,34 @@ export default function Searchbar() {
 
   return (
     <div className="relative w-full max-w-md mx-auto" ref={searchRef}>
-      <Form action={"/blog"} className="flex justify-center items-center gap-3">
-        <div className="flex-2/3 relative group">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 group-focus-within:text-foreground transition-colors" />
-          <Input
-            ref={inputRef}
-            type="text"
-            name="query"
-            placeholder="Search articles..."
-            className="pl-10 pr-10 bg-background/50 border-muted focus:border-neon-green/50 transition-all"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onFocus={() => searchTerm && setIsOpen(true)}
-            aria-expanded={isOpen}
-            aria-autocomplete="list"
-            aria-controls="search-results"
-            aria-activedescendant={
-              selectedIndex >= 0 ? `result-${selectedIndex}` : undefined
-            }
-            autoComplete="off"
-          />
-          {searchTerm && (
-            <button
-              onClick={clearSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Clear search"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
-        </div>
-        <Button type="submit" onClick={() => setIsOpen(false)}>
-          Search
-        </Button>
-      </Form>
+      <div className="relative group">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 group-focus-within:text-foreground transition-colors" />
+        <Input
+          ref={inputRef}
+          type="text"
+          placeholder="Search articles..."
+          className="pl-10 pr-10 bg-background/50 border-muted focus:border-neon-green/50 transition-all"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
+          onFocus={() => searchTerm && setIsOpen(true)}
+          aria-expanded={isOpen}
+          aria-autocomplete="list"
+          aria-controls="search-results"
+          aria-activedescendant={
+            selectedIndex >= 0 ? `result-${selectedIndex}` : undefined
+          }
+        />
+        {searchTerm && (
+          <button
+            onClick={clearSearch}
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Clear search"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
+      </div>
 
       {isOpen && results.length > 0 && (
         <div

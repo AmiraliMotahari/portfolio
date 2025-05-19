@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  ComponentProps,
-  InputHTMLAttributes,
-  useEffect,
-  useState,
-} from "react";
+import { InputHTMLAttributes, useEffect, useState } from "react";
 
 export function DebouncedInput({
   value: initialValue,
@@ -16,8 +11,7 @@ export function DebouncedInput({
   value: string | number;
   onChange: (value: string | number) => void;
   debounce?: number;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> &
-  ComponentProps<"input">) {
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "onChange">) {
   const [value, setValue] = useState(initialValue ?? "");
 
   useEffect(() => {
