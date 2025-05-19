@@ -1,6 +1,7 @@
 import { user } from "../data";
 import { blogPosts } from "../data/blog-data";
 import { BlogPost, ProjectsType, QueryFunction, SortOptions } from "../types";
+import Fuse from "fuse.js";
 
 export const getProjects: QueryFunction<ProjectsType[number]> = async (query: {
   page: number;
@@ -66,13 +67,88 @@ export const getProjects: QueryFunction<ProjectsType[number]> = async (query: {
   };
 };
 
-export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
-  page: number;
-  perPage: number;
-  sort?: SortOptions;
-  searchQuery?: string;
-}) => {
+// export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
+//   page: number;
+//   perPage: number;
+//   sort?: SortOptions;
+//   searchQuery?: string;
+// }) => {
+//   const { page, perPage, sort, searchQuery } = query;
+
+//   if (!page || !perPage || perPage > 100) {
+//     return {
+//       data: [],
+//       total: 0,
+//       totalPages: 0,
+//       currentPage: 1,
+//       perPage: 0,
+//     };
+//   }
+
+//   const posts = [...blogPosts];
+//   const normalizedSearch = searchQuery?.toLowerCase().trim();
+//   const searchTokens = normalizedSearch ? normalizedSearch.split(/\s+/) : [];
+
+//   const filteredPosts = posts.filter(({ title, excerpt, tags }) => {
+//     const normalizedTitle = title.toLowerCase();
+//     const normalizedExcerpt = excerpt.toLowerCase();
+//     const normalizedTags = tags.map((tag) => tag.toLowerCase());
+
+//     return searchTokens.every(
+//       (token) =>
+//         normalizedTitle.includes(token) ||
+//         normalizedExcerpt.includes(token) ||
+//         normalizedTags.some((tag) => tag.includes(token))
+//     );
+//   });
+
+//   if (sort) {
+//     switch (sort) {
+//       case "most-recent":
+//         filteredPosts.sort(
+//           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+//         );
+//         break;
+//       case "asc":
+//         filteredPosts.sort((a, b) =>
+//           a.title.localeCompare(b.title, undefined, {
+//             sensitivity: "base",
+//           })
+//         );
+//         break;
+//       case "desc":
+//         filteredPosts.sort((a, b) =>
+//           b.title.localeCompare(a.title, undefined, {
+//             sensitivity: "base",
+//           })
+//         );
+//         break;
+//       default:
+//         break;
+//     }
+//   }
+//   const total = filteredPosts.length;
+//   const totalPages = Math.ceil(total / perPage);
+//   const safePage = Math.max(1, page);
+//   const startIndex = (safePage - 1) * perPage;
+
+//   const paginatedProjects = filteredPosts.slice(
+//     startIndex,
+//     startIndex + perPage
+//   );
+
+//   return {
+//     data: paginatedProjects,
+//     totalPages,
+//     total,
+//     currentPage: safePage,
+//     perPage,
+//   };
+// };
+
+export const getBlogPosts: QueryFunction<BlogPost> = async (query) => {
   const { page, perPage, sort, searchQuery } = query;
+
   if (!page || !perPage || perPage > 100) {
     return {
       data: [],
@@ -83,60 +159,44 @@ export const getBlogPosts: QueryFunction<BlogPost> = async (query: {
     };
   }
 
-  const posts = [...blogPosts];
-  const normalizedSearch = searchQuery?.toLowerCase().trim();
-  const searchTokens = normalizedSearch ? normalizedSearch.split(/\s+/) : [];
+  let filteredPosts = [...blogPosts];
 
-  const filteredPosts = posts.filter(({ title, excerpt, tags }) => {
-    const normalizedTitle = title.toLowerCase();
-    const normalizedExcerpt = excerpt.toLowerCase();
-    const normalizedTags = tags.map((tag) => tag.toLowerCase());
+  // Fussy filtering
+  if (searchQuery?.trim()) {
+    const fuse = new Fuse(filteredPosts, {
+      keys: ["title", "excerpt", "tags"],
+      threshold: 0.4,
+      ignoreLocation: true,
+    });
 
-    return searchTokens.every(
-      (token) =>
-        normalizedTitle.includes(token) ||
-        normalizedExcerpt.includes(token) ||
-        normalizedTags.some((tag) => tag.includes(token))
-    );
-  });
-
-  if (sort) {
-    switch (sort) {
-      case "most-recent":
-        filteredPosts.sort(
-          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
-        break;
-      case "asc":
-        filteredPosts.sort((a, b) =>
-          a.title.localeCompare(b.title, undefined, {
-            sensitivity: "base",
-          })
-        );
-        break;
-      case "desc":
-        filteredPosts.sort((a, b) =>
-          b.title.localeCompare(a.title, undefined, {
-            sensitivity: "base",
-          })
-        );
-        break;
-      default:
-        break;
-    }
+    const fuseResults = fuse.search(searchQuery);
+    filteredPosts = fuseResults.map((result) => result.item);
   }
+
+  // Sorting
+  switch (sort) {
+    case "most-recent":
+      filteredPosts.sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      );
+      break;
+    case "asc":
+      filteredPosts.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "desc":
+      filteredPosts.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+  }
+
+  // Pagination
   const total = filteredPosts.length;
   const totalPages = Math.ceil(total / perPage);
   const safePage = Math.max(1, page);
   const startIndex = (safePage - 1) * perPage;
-
-  const paginatedProjects = filteredPosts.slice(
-    startIndex,
-    startIndex + perPage
-  );
+  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + perPage);
 
   return {
-    data: paginatedProjects,
+    data: paginatedPosts,
     totalPages,
     total,
     currentPage: safePage,
