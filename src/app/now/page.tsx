@@ -55,26 +55,37 @@ export const metadata: Metadata = {
 
 export default async function NowPage() {
   const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
-  const publishDate = "2025-04-12";
+  const datePublished = new Date("2025-04-12").toISOString();
+  const dateModified = new Date("2025-04-12").toISOString();
 
   const jsonLd: WithContext<BlogPosting> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${webUrl}/now#blog-post`,
     headline: "Now - What I'm Focused On",
     description:
       "Here's what I'm currently working on, learning, and thinking about.",
+    datePublished: datePublished,
+    dateModified: dateModified,
+    url: new URL("/now", webUrl).toString(),
+    image: new URL("/assets/images/amiralimotahari.jpeg", webUrl).toString(),
     author: {
       "@type": "Person",
       name: "Amirali Motahari",
-      url: webUrl,
+      url: `${webUrl}/#person`,
     },
-    datePublished: publishDate,
+    publisher: {
+      "@type": "Organization",
+      name: "Amirali Motahari",
+      logo: {
+        "@type": "ImageObject",
+        url: `${webUrl}/assets/images/logo-round.png`,
+      },
+    },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": new URL("/now", webUrl).toString(),
     },
-    url: new URL("/now", webUrl).toString(),
-    image: new URL("/assets/images/amiralimotahari.jpeg", webUrl).toString(), // optional
     articleBody:
       "I'm currently leading multiple projects, including an e-commerce store and a tax management system built with Next.js. I'm pursuing a Master's degree in Artificial Intelligence while sharpening my skills in web development and digital marketing. My days are driven by early morning coding sessions, sound tracked by synthwave playlists, and balanced with workouts and meditation. I'm passionate about blending AI with intuitive design to create smarter digital experiences.",
     keywords: [
@@ -107,8 +118,8 @@ export default async function NowPage() {
 
           <div className="glass-card p-8 mb-12">
             <div className="border-l-4 border-neon-green pl-4 italic mb-8">
-              Last updated:{" "}
-              {new Date(publishDate).toLocaleDateString("en-US", {
+              Last updated:
+              {new Date(dateModified).toLocaleDateString("en-US", {
                 month: "long",
                 day: "numeric",
                 year: "numeric",

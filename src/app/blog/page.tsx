@@ -66,6 +66,7 @@ export default async function BlogPage({ searchParams }: Props) {
   const perPage = parseInt(search?.perPage || "", 10) || 9;
   const searchQuery = search?.query;
   const sort = search?.sort as SortOptions;
+  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
 
   // Tags
   // const tags = getAllTags()
@@ -82,16 +83,21 @@ export default async function BlogPage({ searchParams }: Props) {
     sort,
   });
 
-  const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
-
   const jsonLd: WithContext<Blog> = {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": `${webUrl}/blog#blog-page`,
     name: "Amirali Motahari",
     url: new URL("/blog", webUrl).toString(),
     description:
       "Thoughts, ideas, and tutorials on web development, design, and creative coding.",
     author: {
+      "@type": "Person",
+      "@id": `${webUrl}#person`,
+      name: "Amirali Motahari",
+      url: webUrl,
+    },
+    mainEntity: {
       "@type": "Person",
       "@id": `${webUrl}#person`,
       name: "Amirali Motahari",
@@ -106,8 +112,8 @@ export default async function BlogPage({ searchParams }: Props) {
         image: new URL(post.coverImage, webUrl).toString(),
         description: post.excerpt,
         keywords: post?.tags || [],
-        datePublished: new Date(post.date),
-        dateModified: new Date(post.date),
+        datePublished: post.date.toISOString(),
+        dateModified: post.date.toISOString(),
         author: {
           "@type": "Person",
           "@id": `${webUrl}#person`,

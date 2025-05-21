@@ -80,20 +80,20 @@ export default async function BlogPost({ params }: Props) {
   const jsonLd: WithContext<BlogPosting> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": new URL(`/blog/${post.slug}#article`, webUrl).toString(),
     headline: post.title,
     url: new URL(`/blog/${post.slug}`, webUrl).toString(),
     image: new URL(post.coverImage, webUrl).toString(),
-    datePublished: post.date.toString(),
-    dateModified: post.date.toString(),
+    datePublished: post.date.toISOString(),
+    dateModified: post.date.toISOString(),
     description: post.excerpt,
-    editor: "Amirali Motahari",
+    articleBody: post.content, // gives the full content of the post
     genre: "Web Development",
     keywords: post.tags,
     timeRequired: `PT${Math.ceil(post.readingTime)}M`,
-    articleBody: post.content, // gives the full content of the post
     author: {
       "@type": "Person",
-      "@id": `${webUrl}#person`,
+      "@id": `${webUrl}/#person`,
       name: "Amirali Motahari",
       url: webUrl,
     },
@@ -104,6 +104,10 @@ export default async function BlogPost({ params }: Props) {
         "@type": "ImageObject",
         url: new URL(`/assets/images/logo-round.png`, webUrl).toString(),
       },
+    },
+    editor: {
+      "@type": "Person",
+      name: "Amirali Motahari",
     },
     mainEntityOfPage: {
       "@type": "WebPage",

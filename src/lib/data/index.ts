@@ -368,24 +368,11 @@ const projects: ProjectsType = [
   },
 ];
 
-export const certifications: CertificationsType = [
-  {
-    name: "AWS Certified Developer",
-    issuer: "Amazon Web Services",
-    date: "2022",
-    url: "https://aws.amazon.com/certification/",
-  },
-  {
-    name: "Google UX Design Professional Certificate",
-    issuer: "Google",
-    date: "2021",
-    url: "https://grow.google/certificates/ux-design/",
-  },
-];
+export const certifications: CertificationsType = [];
 
 export const languages: LanguagesType = [
   { name: "Persian", proficiency: "Native" },
-  { name: "English", proficiency: "Advanced" },
+  { name: "English", proficiency: "Advance" },
 ];
 
 export const user = {

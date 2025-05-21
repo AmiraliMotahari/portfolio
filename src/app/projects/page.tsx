@@ -89,20 +89,28 @@ export default async function ProjectsPage({ searchParams }: Props) {
   const jsonLd: WithContext<CollectionPage> = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${webUrl}/projects#collection-page`,
     name: "Projects",
     url: new URL("/projects", webUrl).toString(),
     description:
       "A collection of my work spanning web development, design, and interactive experiences. Each project represents a unique challenge and solution.",
-    hasPart: projects.map((elem) => {
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${webUrl}/#person`,
+      name: "Amirali Motahari",
+      url: `${webUrl}`,
+    },
+    hasPart: projects.map((project) => {
       return {
         "@type": "CreativeWork",
-        name: elem.title,
+        "@id": `${webUrl}/projects/${project.slug}`,
+        name: project.title,
         url: new URL("/projects", webUrl).toString(),
-        image: new URL(elem.image, webUrl).toString(),
-        description: elem.description,
+        image: new URL(project.image, webUrl).toString(),
+        description: project.description,
         creator: {
           "@type": "Person",
-          "@id": `${webUrl}#person`,
+          "@id": `${webUrl}/#person`,
           name: "Amirali Motahari",
         },
       };

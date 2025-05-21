@@ -49,22 +49,27 @@ export default function ContactPage() {
   const jsonLd: WithContext<ContactPageJsonLd> = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
+    "@id": `${webUrl}/contact#contact-page`,
     name: "Contact",
     url: new URL("/contact", webUrl).toString(),
+    description:
+      "Get in touch with Amirali Motahari for frontend development, collaboration, or inquiries.",
     mainEntity: {
       "@type": "Person",
+      "@id": `${webUrl}/#person`,
       name: personalInfo.name,
       jobTitle: "Frontend Developer",
       url: webUrl,
+      sameAs: socials.flatMap((elem) => elem.href),
       contactPoint: {
         "@type": "ContactPoint",
+        "@id": `${webUrl}/contact#contact-point`,
         contactType: "Customer Support",
-        email: personalInfo.email,
+        // email: personalInfo.email,
         url: new URL("/contact", webUrl).toString(),
         areaServed: ["Global"],
         availableLanguage: ["English", "Persian"],
       },
-      sameAs: socials.flatMap((elem) => elem.href),
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": new URL("/contact", webUrl).toString(),

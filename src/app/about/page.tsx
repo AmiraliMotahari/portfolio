@@ -54,8 +54,10 @@ export default function AboutPage() {
   const jsonLd: WithContext<AboutPageJsonLd> = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
+    "@id": `${webUrl}/about#about-page`,
     name: "About",
     url: new URL("/about", webUrl).toString(),
+    description: personalInfo.summary,
     mainEntity: {
       "@type": "Person",
       "@id": `${webUrl}/#person`,
