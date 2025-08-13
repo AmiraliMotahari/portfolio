@@ -107,6 +107,7 @@ export default async function NowPage() {
       url: new URL("/now", webUrl).toString(),
     },
   ];
+
   return (
     <div className="min-h-screen">
       <section className="mx-auto dynamic-px pt-32 pb-20 relative">
@@ -192,10 +193,10 @@ export default async function NowPage() {
                 <div>
                   <h2 className="text-xl font-semibold mb-2">Future Plans</h2>
                   <p>
-                    Working toward completing my Master’s degree in Artificial
-                    Intelligence. I aim to combine my expertise in web
-                    development with AI to build smarter, more intuitive digital
-                    experiences.
+                    Working toward completing my Master&apos;s degree in
+                    Artificial Intelligence. I aim to combine my expertise in
+                    web development with AI to build smarter, more intuitive
+                    digital experiences.
                   </p>
                 </div>
               </div>
