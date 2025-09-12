@@ -170,4 +170,52 @@
   .dynamic-px {
     @apply px-4 sm:px-12;
   }
+
+  /* .nav-anchor {
+    @apply isolate;
+
+    anchor-name: --hovered-link;
+
+    &::after {
+      content: "";
+      @apply absolute rounded-full bg-accent dark:bg-accent/70 z-[-1];
+
+      top: calc(anchor(bottom) + 6px);
+      left: calc(anchor(left) + 1rem);
+      right: calc(anchor(right) + 1rem);
+      bottom: calc(anchor(bottom) - 6px);
+
+      position-anchor: --hovered-link;
+
+      transition: 500ms
+        linear(
+          0,
+          0.029 1.6%,
+          0.123 3.5%,
+          0.651 10.6%,
+          0.862 14.1%,
+          1.002 17.7%,
+          1.046 19.6%,
+          1.074 21.6%,
+          1.087 23.9%,
+          1.086 26.6%,
+          1.014 38.5%,
+          0.994 46.3%,
+          1
+        );
+    }
+
+    &:has(li:hover)::after {
+      top: anchor(top);
+      left: anchor(left);
+      right: anchor(right);
+      bottom: anchor(bottom);
+    }
+
+    li {
+      &:hover {
+        anchor-name: --hovered-link;
+      }
+    }
+  } */
 }
