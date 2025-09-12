@@ -11,7 +11,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-//todo: update
+// TODO: Update
+// TODO: Add rate-limit
 export const sendMessageAction = actionClient
   .metadata({ actionName: "sendMessageAction" })
   .schema(contactFormSchema, {
