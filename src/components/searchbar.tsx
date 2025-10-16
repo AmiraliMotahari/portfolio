@@ -15,15 +15,17 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "./ui/input-group";
+} from "@/components/ui/input-group";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
-import { useIsMac } from "@/hooks/use-isMac";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useIsApple } from "@/hooks/use-isApple";
 
 export default function Searchbar() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("query");
-  const isMac = useIsMac();
+  const isApple = useIsApple();
+  const isMobile = useIsMobile();
   const [searchTerm, setSearchTerm] = useState(initialQuery ?? "");
   const [results, setResults] = useState<BlogPost[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -183,12 +185,14 @@ export default function Searchbar() {
                 </InputGroupButton>
               </InputGroupAddon>
             ) : null}
-            <InputGroupAddon align={"inline-end"}>
-              <KbdGroup>
-                <Kbd className="border">{isMac ? "⌘" : "Ctrl"}</Kbd>
-                <Kbd className="border">K</Kbd>
-              </KbdGroup>
-            </InputGroupAddon>
+            {!isMobile ? (
+              <InputGroupAddon align={"inline-end"}>
+                <KbdGroup>
+                  <Kbd className="border">{isApple ? "⌘" : "Ctrl"}</Kbd>
+                  <Kbd className="border">K</Kbd>
+                </KbdGroup>
+              </InputGroupAddon>
+            ) : null}
           </InputGroup>
         </div>
         <Button type="submit" onClick={() => setIsOpen(false)}>

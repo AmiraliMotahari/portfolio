@@ -139,10 +139,6 @@
   body {
     @apply bg-background text-foreground;
   }
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    @apply animate-none mix-blend-normal;
-  }
 }
 
 @layer components {

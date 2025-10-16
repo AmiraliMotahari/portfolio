@@ -8,7 +8,7 @@ import Link from "next/link";
 import Logo from "@/components/icons/logo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileNav from "@/components/navigation/mobile-nav";
-import { AnimatedThemeToggler } from "../animation/animated-theme-toggler";
+import { ModeToggle } from "../mode-toggle";
 
 export type NavigationItem = {
   title: string;
@@ -95,7 +95,7 @@ const Navbar = ({ className }: Props) => {
               );
             })}
         <li>
-          <AnimatedThemeToggler />
+          <ModeToggle />
         </li>
         {isMobile ? (
           <li className="flex justify-center items-center">
