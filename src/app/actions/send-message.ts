@@ -1,6 +1,6 @@
 "use server";
 
-import ClientConfirmationEmail from "@/components/email/clinet-confirmation";
+import ClientConfirmationEmail from "@/components/email/client-confirmation";
 import OwnerNotificationEmail from "@/components/email/owner-notification";
 import { user } from "@/lib/data";
 import { actionClient } from "@/lib/safe-actions";
@@ -24,7 +24,9 @@ export const sendMessageAction = actionClient
       // Send confirmation email to the client
       const fullName = `${user.personalInfo.firstName} ${user.personalInfo.lastName}`;
       const email = user.personalInfo.email;
-      const webUrl = "contact.amiralimotahari.com";
+      const fromUrl = "contact.amiralimotahari.com";
+      const webUrl =
+        process.env.NEXT_PUBLIC_URL ?? "https://amiralimotahari.com";
 
       await verifyTurnstileToken({
         turnstileSecretKey: process.env
@@ -33,7 +35,7 @@ export const sendMessageAction = actionClient
       });
 
       const clientEmailResponse = await resend.emails.send({
-        from: `${fullName} <no-reply@${webUrl}>`,
+        from: `${fullName} <no-reply@${fromUrl}>`,
         to: data.email,
         subject: `Thank you for contacting ${data.name}`,
         react: ClientConfirmationEmail({
@@ -46,7 +48,7 @@ export const sendMessageAction = actionClient
 
       // Send notification email to the portfolio owner
       const ownerEmailResponse = await resend.emails.send({
-        from: `Contact Form <no-reply@${webUrl}>`,
+        from: `Contact Form <no-reply@${fromUrl}>`,
         to: email,
         subject: `New Contact Form: ${data.subject}`,
         react: OwnerNotificationEmail({

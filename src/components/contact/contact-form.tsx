@@ -30,27 +30,26 @@ export default function ContactForm() {
   const { execute, isPending } = useAction(sendMessageAction, {
     onSuccess({ data }) {
       if (data?.message) {
-        toast("Message sent!", {
+        toast.success("Message sent!", {
           description: data.message,
         });
       }
       form.reset();
     },
     onError({ error }) {
-      toast("Error", {
-        description: error.serverError,
+      toast.error("Error", {
+        description:
+          error.serverError ??
+          error.validationErrors?.message ??
+          "Unexpected Error",
       });
     },
   });
 
-  function onSubmit(values: ContactFormSchemaType) {
-    console.log(values);
-
-    execute(values);
-  }
+  const onSubmit = (values: ContactFormSchemaType) => execute(values);
 
   if (form.formState.errors.validationToken) {
-    toast("Error", {
+    toast.error("Error", {
       description: "Please complete the verification.",
     });
   }

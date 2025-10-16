@@ -105,7 +105,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
-          <Toaster />
+          <Toaster richColors position="top-center" />
         </ThemeProvider>
         <Analytics />
       </body>
