@@ -3,12 +3,12 @@
 import NavItem from "./navItem";
 import { motion, TargetAndTransition, Transition } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Logo from "@/components/icons/logo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileNav from "@/components/navigation/mobile-nav";
+import { AnimatedThemeToggler } from "../animation/animated-theme-toggler";
 
 export type NavigationItem = {
   title: string;
@@ -95,7 +95,7 @@ const Navbar = ({ className }: Props) => {
               );
             })}
         <li>
-          <ModeToggle />
+          <AnimatedThemeToggler />
         </li>
         {isMobile ? (
           <li className="flex justify-center items-center">
