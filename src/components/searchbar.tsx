@@ -4,18 +4,26 @@ import type React from "react";
 import Form from "next/form";
 
 import { useState, useEffect, useRef } from "react";
-import { Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { SearchIcon, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getBlogPosts } from "@/lib/queries";
 import { BlogPost } from "@/lib/types";
 import BlogSearchCard from "@/components/cards/blog-search-card";
 import { Button } from "@/components/ui/button";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "./ui/input-group";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import { useIsMac } from "@/hooks/use-isMac";
 
 export default function Searchbar() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("query");
+  const isMac = useIsMac();
   const [searchTerm, setSearchTerm] = useState(initialQuery ?? "");
   const [results, setResults] = useState<BlogPost[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -75,6 +83,29 @@ export default function Searchbar() {
     }
   }, [selectedIndex]);
 
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (!inputRef.current) return;
+      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
+        if (
+          (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+          e.target instanceof HTMLInputElement ||
+          e.target instanceof HTMLTextAreaElement ||
+          e.target instanceof HTMLSelectElement
+        ) {
+          return;
+        }
+
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleGlobalKeyDown);
+
+    return () => document.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
+
   // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!isOpen) return;
@@ -120,41 +151,52 @@ export default function Searchbar() {
     <div className="relative w-full max-w-md mx-auto" ref={searchRef}>
       <Form action={"/blog"} className="flex justify-center items-center gap-3">
         <div className="flex-2/3 relative group">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 group-focus-within:text-foreground transition-colors" />
-          <Input
-            ref={inputRef}
-            type="text"
-            name="query"
-            placeholder="Search articles..."
-            className="pl-10 pr-10 bg-background/50 border-muted focus:border-neon-green/50 transition-all"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onFocus={() => searchTerm && setIsOpen(true)}
-            aria-expanded={isOpen}
-            aria-autocomplete="list"
-            aria-controls="search-results"
-            aria-activedescendant={
-              selectedIndex >= 0 ? `result-${selectedIndex}` : undefined
-            }
-            autoComplete="off"
-          />
-          {searchTerm && (
-            <button
-              onClick={clearSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Clear search"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
+          <InputGroup>
+            <InputGroupInput
+              ref={inputRef}
+              type="text"
+              name="query"
+              placeholder="Search articles..."
+              className="pl-10 pr-10 bg-background/50 border-muted focus:border-muted-foreground/50 transition-all"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => searchTerm && setIsOpen(true)}
+              aria-expanded={isOpen}
+              aria-autocomplete="list"
+              aria-controls="search-results"
+              aria-activedescendant={
+                selectedIndex >= 0 ? `result-${selectedIndex}` : undefined
+              }
+              autoComplete="off"
+            />
+            <InputGroupAddon>
+              <SearchIcon />
+            </InputGroupAddon>
+            {searchTerm ? (
+              <InputGroupAddon align={"inline-end"}>
+                <InputGroupButton
+                  onClick={clearSearch}
+                  aria-label="Clear search"
+                >
+                  <X className="h-4 w-4" />
+                </InputGroupButton>
+              </InputGroupAddon>
+            ) : null}
+            <InputGroupAddon align={"inline-end"}>
+              <KbdGroup>
+                <Kbd className="border">{isMac ? "⌘" : "Ctrl"}</Kbd>
+                <Kbd className="border">K</Kbd>
+              </KbdGroup>
+            </InputGroupAddon>
+          </InputGroup>
         </div>
         <Button type="submit" onClick={() => setIsOpen(false)}>
           Search
         </Button>
       </Form>
 
-      {isOpen && results.length > 0 && (
+      {isOpen && results.length > 0 ? (
         <div
           id="search-results"
           ref={resultsRef}
@@ -175,9 +217,9 @@ export default function Searchbar() {
             ))}
           </div>
         </div>
-      )}
+      ) : null}
 
-      {isOpen && searchTerm && results.length === 0 && (
+      {isOpen && searchTerm && results.length === 0 ? (
         <div className="absolute z-50 mt-2 w-full bg-background/80 backdrop-blur-lg border border-border rounded-md shadow-lg p-4 text-center">
           <p className="text-muted-foreground">
             No results found for &quot;{searchTerm}&quot;
@@ -186,7 +228,7 @@ export default function Searchbar() {
             Try different keywords or check spelling
           </p>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

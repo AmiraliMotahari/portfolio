@@ -63,7 +63,7 @@ export const metadata = {
 export default async function BlogPage({ searchParams }: Props) {
   const search = await searchParams;
   const page = parseInt(search?.page || "", 10) || 1;
-  const perPage = Math.max(parseInt(search?.perPage || "", 10) ?? 9, 100);
+  const perPage = parseInt(search?.perPage || "", 10) || 9;
   const searchQuery = search?.query;
   const sort = search?.sort as SortOptions;
   const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
@@ -224,7 +224,7 @@ export default async function BlogPage({ searchParams }: Props) {
         ) : null}
 
         {/* Latest Posts */}
-        <div id="latest-posts" className="mb-16">
+        <div className="mb-16">
           <h2 className="text-2xl font-bold mb-6 flex items-center">
             <span className="h-px flex-grow bg-gradient-to-r from-neon-green/50 to-transparent mr-4"></span>
             Latest Articles

@@ -1,8 +1,12 @@
-// import { Badge } from "@/components/ui/badge";
-// import { Input } from "@/components/ui/input";
-// import { Search } from "lucide-react";
-
-//todo: add search and filter
+import { Button } from "@/components/ui/button";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
+import { Skeleton } from "@/components/ui/skeleton";
+import { SearchIcon } from "lucide-react";
 
 export default function BlogLoading() {
   return (
@@ -11,22 +15,27 @@ export default function BlogLoading() {
       <div className="relative py-20 md:py-32 overflow-hidden">
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
-              Blog & Insights
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Thoughts, ideas, and tutorials on web development, design, and
-              creative coding.
-            </p>
+            <Skeleton className="w-full max-w-md h-12 mb-6 mx-auto" />
+            <Skeleton className="w-full max-w-lg h-6 mb-6 mx-auto" />
 
-            {/* <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                type="search"
-                placeholder="Search articles..."
-                className="pl-10 bg-background/50 backdrop-blur-sm border-muted"
-              />
-            </div> */}
+            <div className="flex justify-center items-center gap-3 relative max-w-md mx-auto">
+              <InputGroup>
+                <InputGroupInput placeholder="Search..." disabled />
+                <InputGroupAddon>
+                  <SearchIcon />
+                </InputGroupAddon>
+                <InputGroupAddon align={"inline-end"}>
+                  <KbdGroup>
+                    <Kbd>⌘</Kbd>
+                    <Kbd>K</Kbd>
+                  </KbdGroup>
+                </InputGroupAddon>
+              </InputGroup>
+
+              <Button type="button" disabled>
+                Search
+              </Button>
+            </div>
           </div>
         </div>
       </div>
