@@ -2,7 +2,7 @@
 
 import React, { useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { motion, Transition } from "motion/react";
+import { Easing, motion, Transition } from "motion/react";
 
 /**
  * GradientBackground
@@ -17,7 +17,23 @@ import { motion, Transition } from "motion/react";
  *  - reducedMotion: boolean (if true stops animations)
  */
 
-const defaultBlobs = [
+type DefaultBlobs = {
+  id: string;
+  sizeClass: string;
+  opacity: number;
+  top: string;
+  left: string;
+  colorStops: string[];
+  keyframes: {
+    x: string[];
+    y: string[];
+    scale: number[];
+    duration: number;
+    ease: Easing;
+  };
+};
+
+const defaultBlobs: DefaultBlobs[] = [
   {
     id: "b1",
     sizeClass: "size-[400px]",

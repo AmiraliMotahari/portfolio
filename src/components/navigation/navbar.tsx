@@ -1,7 +1,7 @@
 "use client";
 
 import NavItem from "./navItem";
-import { motion, TargetAndTransition } from "motion/react";
+import { motion, TargetAndTransition, Transition } from "motion/react";
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
@@ -48,7 +48,7 @@ const navigationList: NavigationItem[] = [
 
 const initialState: TargetAndTransition = { opacity: 0.5, y: -100 };
 const finalState = { opacity: 1, y: 0 };
-const transition = {
+const transition: Transition = {
   type: "spring", // Use a spring for a natural movement
   stiffness: 100, // Control the stiffness (how "tight" the spring is)
   damping: 20, // Damping to prevent oscillation

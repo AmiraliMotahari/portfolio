@@ -73,22 +73,26 @@ export default function ContactForm() {
                 nameInSchema="name"
                 fieldTitle="Name"
                 placeholder="Your full name"
+                disabled={isPending}
               />
               <InputWithLabel<ContactFormSchemaType>
                 nameInSchema="email"
                 fieldTitle="Email"
                 placeholder="Your email"
+                disabled={isPending}
               />
               <InputWithLabel<ContactFormSchemaType>
                 nameInSchema="subject"
                 fieldTitle="Subject"
                 placeholder="Subject"
+                disabled={isPending}
               />
               <TextareaWithLabel<ContactFormSchemaType>
                 nameInSchema="message"
                 fieldTitle="Message"
                 placeholder="Your message"
                 className="min-h-[120px]"
+                disabled={isPending}
               />
               <div className="w-full flex justify-center items-center">
                 <ReactCloudflareTurnstile
@@ -109,7 +113,7 @@ export default function ContactForm() {
                 {isPending ? (
                   <>
                     <LoaderCircle className="animate-spin" />
-                    <span>Loading</span>
+                    <span>Sending...</span>
                   </>
                 ) : (
                   <span className="flex items-center">

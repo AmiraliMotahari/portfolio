@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import {
   Code,
   Palette,
@@ -42,7 +42,7 @@ const categories = [
   {
     title: "Global Deployment",
     icon: <Globe className="h-8 w-8 text-neon-green" />,
-    skills: ["Vercel", "Netlify", "AWS",],
+    skills: ["Vercel", "Netlify", "AWS"],
   },
   {
     title: "Security",
@@ -78,7 +78,7 @@ const categories = [
   },
 ];
 // Animation variants for the progress bar
-const progressBarVariants = {
+const progressBarVariants: Variants = {
   hidden: { width: 0 },
   visible: (level: number) => ({
     width: `${level}%`,
@@ -156,7 +156,7 @@ export default function AboutSkills({ skills }: Props) {
           <div>
             <h3 className="text-2xl font-semibold mb-8">Areas of Expertise</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {categories.slice(0,4).map((category, index) => (
+              {categories.slice(0, 4).map((category, index) => (
                 <motion.div
                   key={category.title}
                   initial={{ opacity: 0, y: 20 }}
@@ -164,7 +164,7 @@ export default function AboutSkills({ skills }: Props) {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <SkillCategoryCard category={category}/>
+                  <SkillCategoryCard category={category} />
                 </motion.div>
               ))}
             </div>
