@@ -63,7 +63,7 @@ export const metadata = {
 export default async function BlogPage({ searchParams }: Props) {
   const search = await searchParams;
   const page = parseInt(search?.page || "", 10) || 1;
-  const perPage = Math.max(parseInt(search?.perPage || "", 10) ?? 9, 100);
+  const perPage = Math.min(parseInt(search?.perPage || "", 10) || 9, 100);
   const searchQuery = search?.query;
   const sort = search?.sort as SortOptions;
   const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
