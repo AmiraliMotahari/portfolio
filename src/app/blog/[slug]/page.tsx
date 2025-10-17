@@ -139,7 +139,7 @@ export default async function BlogPost({ params }: Props) {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-svh">
       {/* Hero Section */}
       <section className="relative pt-20 pb-10 md:pt-32 md:pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-background/0 z-10"></div>
@@ -190,14 +190,16 @@ export default async function BlogPost({ params }: Props) {
               height={630}
               placeholder="blur"
               blurDataURL={post.coverBlurData}
-              className="w-full h-auto rounded-2xl"
+              className="w-full aspect-video rounded-2xl object-cover object-center"
             />
           </div>
 
           <article className="glass-card p-8 mb-12">
             <div
               className="prose prose-lg dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: xss(post.content) }}
+              dangerouslySetInnerHTML={{
+                __html: xss(post.content),
+              }}
             />
           </article>
 

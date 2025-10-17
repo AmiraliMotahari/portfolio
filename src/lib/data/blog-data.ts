@@ -149,7 +149,7 @@ export async function generateStaticParams() {
     },
   };</code></pre><p></p><ul class="list-disc ml-4"><li><p><strong>Sitemap Generation</strong>: Use tools like <code>next-sitemap</code> to generate sitemaps, aiding search engine indexing.</p></li><li><p><strong>Performance Optimization</strong>: Implement lazy loading, image optimization, and code splitting to enhance page load speeds, positively impacting SEO.</p></li></ul><hr><h3>📌 Conclusion</h3><p>Optimizing SEO in Next.js involves a multifaceted approach, leveraging built-in features like metadata management, Open Graph and Twitter integration, structured data, and dynamic routing. By implementing these strategies, you can significantly improve your web application's visibility, user engagement, and search engine rankings.</p>`,
     tags: ["SEO", "Next.js", "React", "Web Development", "Web Accessibility"],
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     title:
@@ -256,6 +256,615 @@ worker.onmessage = function(e) {
     worker.onmessage = (e) =&gt; console.log(e.data);
   }
 }, []);</code></pre><p>With Next.js 13+, you can also utilize <strong>dynamic imports</strong> and <strong>Edge functions</strong> to extend performance enhancements even further.</p><hr><h2>🌍 Real-World Use Cases</h2><p>Web Workers can be extremely useful in:</p><ul class="list-disc ml-4"><li><p><strong>Image processing</strong> (e.g., resizing, filters)</p></li><li><p><strong>PDF generation or parsing</strong></p></li><li><p><strong>Cryptographic operations</strong></p></li><li><p><strong>Data visualization</strong> with libraries like D3.js</p></li><li><p><strong>Machine learning inference</strong> on the client</p></li><li><p><strong>Large dataset filtering or sorting</strong></p></li><li><p><strong>Syntax highlighting or code formatting</strong> in online editors</p></li></ul><hr><h2>📈 How Much Can It Improve Performance?</h2><p>Using Web Workers offloads intensive work from the main thread, resulting in:</p><ul class="list-disc ml-4"><li><p>🚀 Faster load times</p></li><li><p>🧭 Smoother scrolling and interactions</p></li><li><p>🧩 Better responsiveness under load</p></li><li><p>💻 Improved user experience on lower-powered devices</p></li></ul><p>Here&apos;s a practical benchmark:</p><ul class="list-disc ml-4"><li><p><strong>Without Worker</strong>: A complex operation might freeze the UI for 500ms+</p></li><li><p><strong>With Worker</strong>: The same task is offloaded, UI remains responsive</p></li></ul><p>Example: Sorting a list of 100,000 items—without workers, the app stutters; with workers, the animation continues seamlessly.</p><hr><h2>🧪 Tips for Using Workers Effectively</h2><ul class="list-disc ml-4"><li><p><strong>Always terminate workers</strong> when done to avoid memory leaks.</p></li><li><p><strong>Use transferable objects</strong> (e.g., <code>ArrayBuffer</code>) for faster data transfer.</p></li><li><p>Consider <strong>Comlink</strong> library to simplify message-passing syntax.</p></li><li><p>Make sure to handle <strong>error events</strong> gracefully.</p></li></ul><hr><h2>⚠️ Gotchas and Caveats</h2><p>While Web Workers are powerful, there are a few important considerations to keep in mind:</p><h3>1. ❌ No Access to DOM</h3><p>Web Workers run in a separate global context and <strong>cannot access the DOM</strong> directly. If you need to update the UI, you'll have to send data back to the main thread and update the DOM there.</p><h3>2. 📦 Bundling and Path Issues</h3><p>In frameworks like Next.js or Vite, creating workers using <code>new Worker('./worker.js')</code> may not work out-of-the-box. You often need to:</p><ul class="list-disc ml-4"><li><p>Use a bundler plugin (like <code>vite-plugin-worker</code> or Webpack&apos;s <code>worker-loader</code>)</p></li><li><p>Use <code>new URL('./worker.js', import.meta.url)</code> syntax to resolve paths</p></li></ul><h3>3. 📤 Communication Overhead</h3><p>Passing large data between the main thread and worker can be slow if not optimized. Use <strong>transferable objects</strong> instead of cloning (e.g., <code>ArrayBuffer</code>) to reduce overhead.</p><h3>4. 🧯 Memory Leaks from Unterminated Workers</h3><p>If you forget to terminate a worker, it can linger in memory and consume resources. Always call <code>worker.terminate()</code> when the worker is no longer needed (e.g., in <code>useEffect</code> cleanup).</p><h3>5. 🔄 Hot Reloading in Dev Mode</h3><p>Workers may not reload properly during development due to caching or build tools. You may need to manually refresh or configure worker-friendly dev plugins.</p><h3>6. 🧠 Limited APIs</h3><p>Web Workers have access to a limited set of web APIs. For example:</p><ul class="list-disc ml-4"><li><p>No access to <code>window</code>, <code>document</code>, or <code>localStorage</code></p></li><li><p>Limited event handling</p></li><li><p>No native fetch in older browsers (though supported in modern ones)</p></li></ul><h3>7. ❗ Error Handling</h3><p>Uncaught errors in a worker don&apos;t propagate to the main thread. Use <code>worker.onerror</code> or <code>onmessageerror</code> to catch and log worker-side issues.</p><hr><h2>✅ Summary</h2><p>Web Workers are a hidden gem for client-side performance optimization. Whether you're building data-intensive dashboards, image manipulation tools, or interactive SPAs, they can dramatically improve responsiveness and perceived speed.</p><p>With careful integration into JavaScript, React, and Next.js projects, Web Workers become a must-have tool for building modern web applications.</p><p>Take a moment to look through your app—what tasks are blocking the main thread? That&apos;s your cue to start using Web Workers.</p>`,
+  },
+  {
+    title: "Next.js 16 (Beta): A Deep, Pragmatic Walkthrough",
+    slug: "nextjs-16-beta-deep-dive",
+    date: new Date("2025-10-16"),
+    readingTime: 14,
+    excerpt:
+      "Explore the major upgrades in Next.js 16 — Turbopack as the default bundler, refined caching APIs, React Compiler integration, Build Adapters, and more. Learn with practical code examples and migration guidance.",
+    coverImage: "/assets/images/blog/nextjs-16-beta-deep-dive.png",
+    coverBlurData: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAIAAAA7ljmRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMElEQVR4nGNg5TeSVgqUVQhlEbBgmNDx5sO3/4tn/3ex7GLQVE8tyj6qqpDCxKIHAPGxDRTXkNNTAAAAAElFTkSuQmCC`,
+    isFeatured: true,
+    tags: [
+      "React.js",
+      "Next.js",
+      "Next.js 16",
+      "React Compiler",
+      "Turbopack",
+      "PPR",
+    ],
+    content: `<h1>Next.js 16: A deep, pragmatic walkthrough</h1>
+<p>
+  <em>What&apos;s new, why it matters, and how to adopt it.</em>
+</p>
+<p>
+  Next.js 16 is a major step forward for the framework&apos;s DX, performance,
+  and architecture. It ships Turbopack as the default bundler, tighter caching
+  primitives, new Server Action APIs for immediate cache updates, deeper React
+  integration (React Compiler + React 19.2 features), and a Build Adapters API
+  for customizing the build pipeline — plus a set of breaking changes and
+  updated defaults you need to know before upgrading.
+</p>
+<p>
+  Below I&apos;ll explain the big ideas, show concrete code you can drop into
+  your app, and give a practical upgrade checklist to minimize friction.
+</p>
+<hr />
+<h2>What&apos;s the headline (short version)</h2>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      <strong>Turbopack is now stable and the default bundler</strong> for new
+      projects — faster hot reload / Fast Refresh and faster builds. You can opt
+      back into webpack if necessary.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>New &amp; refined caching APIs</strong>:
+      <code>revalidateTag()</code> requires a <code>cacheLife</code> profile
+      (for SWR behavior), and there are two new Server Actions APIs —
+      <code>updateTag()</code> (read-your-writes) and
+      <code>refresh()</code> (refresh uncached data). These are designed for
+      clear, reliable invalidation patterns for modern interactive apps.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>React Compiler support (stable)</strong>
+      — automatic memoization that can reduce re-renders (opt-in).
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Build Adapters API (alpha)</strong> — hook into and customize
+      Next.js&apos;s build pipeline for platforms or special needs.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>React 19.2 support</strong> — includes View Transitions,
+      <code>useEffectEvent</code>, <code>&lt;Activity/&gt;</code> and more (via
+      React canary integration).
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Breaking / behavior changes</strong>: Node and TypeScript minimum
+      versions raised, AMP removed, <code>next lint</code> behavior changed,
+      some APIs are now async-only. Read the breaking changes section carefully
+      before upgrading.
+    </p>
+  </li>
+</ul>
+<hr />
+<h2>Developer Experience improvements</h2>
+<h3>Turbopack as default</h3>
+<p>
+  Turbopack (now stable) is the default bundler for new apps and aims for
+  dramatically faster Fast Refresh (up to ~10x) and faster builds (~2-5x faster
+  builds) — a major developer productivity win for iterative development. If you
+  have a custom webpack setup you can still use webpack by passing
+  <code>--webpack</code> to dev and build commands:
+</p>
+<pre><code># use the new automated upgrade CLI
+npx @next/codemod@canary upgrade beta
+
+# or install manually
+npm install next@beta react@latest react-dom@latest
+
+# to opt back into webpack for dev or build:
+next dev --webpack
+next build --webpack
+</code></pre>
+<p>
+  If you have a very large repo, enable Turbopack file-system caching for dev
+  (stores compiled artifacts between runs):
+</p>
+<pre><code>// next.config.ts
+const nextConfig = {
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
+};
+export default nextConfig;
+</code></pre>
+<p>
+  This caches compiler artifacts on disk and speeds up restarts for large
+  projects. (Vercel reports meaningful build/dev speedups internally.)
+</p>
+
+<h2>React Compiler (stable, opt-in)</h2>
+<p>
+  Next.js 16 includes built-in support for the React Compiler. The compiler
+  introduces automatic memoization of React components in many cases — fewer
+  unnecessary re-renders without you changing component code.
+</p>
+<p>
+  It&apos;s <em>not</em> enabled by default because enabling it can increase
+  compile times (it uses Babel). Enable it if you want to experiment:
+</p>
+<pre><code>// next.config.ts
+const nextConfig = {
+  reactCompiler: true,
+};
+export default nextConfig;
+</code></pre>
+<p>You also need the plugin:</p>
+<pre><code>npm install babel-plugin-react-compiler@latest
+</code></pre>
+<p>
+  Be aware of the compile-time trade-off: lower runtime re-renders, potentially
+  longer compile times. Test on your codebase before enabling in production
+  builds.
+</p>
+
+<h2>Simplified <code>create-next-app</code></h2>
+<p>
+  The project bootstrap has been simplified and favors the App Router,
+  TypeScript-first, Tailwind, and ESLint out of the box — a sensible modern
+  default for new projects.
+</p>
+
+<hr />
+<h2>Routing, navigation, and prefetching: more efficient by default</h2>
+<p>Next.js 16 reworks prefetching and routing to reduce wasted downloads:</p>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      <strong>Layout deduplication</strong>: when prefetching links that share
+      the same root layout, that shared layout is downloaded once (instead of
+      repeatedly). This reduces network transfer for lists of links that use the
+      same layout.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Incremental prefetching</strong>: instead of prefetching entire
+      pages, Next.js prefetches only parts not already cached; it cancels
+      prefetches that leave the viewport and prioritizes hover/viewport
+      re-entry. The tradeoff is more small requests, but much smaller total
+      bytes transferred. No code changes required.
+    </p>
+  </li>
+</ul>
+<p>
+  <strong>Practical effect:</strong> pages keep snappy navigations while
+  reducing bandwidth and page payloads — particularly noticeable on large
+  catalogs or content-heavy apps.
+</p>
+<hr />
+<h2>
+  Cache primitives: <code>revalidateTag()</code>, <code>updateTag()</code>,
+  <code>refresh()</code>
+</h2>
+<p>Next.js 16 tightens cache control and clarifies common patterns:</p>
+<h3><code>revalidateTag(tag, cacheLife)</code></h3>
+<p>
+  <code>revalidateTag()</code> is still used to invalidate tag-based caches, but
+  it now <strong>requires</strong> a <code>cacheLife</code> profile as the
+  second argument (or an inline <code>{ revalidate: number }</code> object).
+  This enables stale-while-revalidate semantics in a consistent, explicit way.
+</p>
+<p>Examples:</p>
+<pre><code>import { revalidateTag } from 'next/cache';
+
+// Use a named cacheLife profile
+revalidateTag('blog-posts', 'max');
+
+// Use built-in profiles
+revalidateTag('news-feed', 'hours');
+
+// Inline custom TTL (seconds)
+revalidateTag('products', { revalidate: 3600 });
+</code></pre>
+<p>
+  Recommendation: use <code>'max'</code> for long-lived content where background
+  revalidation is acceptable.
+</p>
+
+<h3><code>updateTag(tag)</code></h3>
+<p>
+  <code>updateTag()</code> is a brand-new Server Actions-only API to provide
+  <strong>read-your-writes semantics</strong>: it expires and refreshes the
+  cached entry immediately within the same request. That means after a Server
+  Action updates the DB, the cache can show the updated data immediately, which
+  is perfect for forms, settings, and workflows where users expect to see their
+  changes at once.
+</p>
+<pre><code>// app/actions/updateUserProfile.ts
+'use server';
+import { updateTag } from 'next/cache';
+
+export async function updateUserProfile(userId: string, profile: Profile) {
+  await db.users.update(userId, profile);
+
+  // Immediately expire &amp; refresh the cache for this user's profile
+  updateTag(&grave;user-\${userId}&grave;);
+}
+</code></pre>
+<p>
+  This solves a common issue where you write to the DB and then the UI still
+  shows stale cached data until a background revalidation happens. Use
+  <code>updateTag()</code> when immediate consistency matters.
+</p>
+
+<h3><code>refresh()</code></h3>
+<p>
+  <code>refresh()</code> is another Server Actions-only helper. It refreshes
+  <em>uncached</em> data only — it does <strong>not</strong> touch the cache.
+  This is useful when you have parts of a page that are intentionally uncached
+  (eg. notification counts) and you want to refresh those after a Server Action.
+</p>
+<pre><code>// app/actions/markNotificationRead.ts
+'use server';
+import { refresh } from 'next/cache';
+
+export async function markNotificationAsRead(notificationId: string) {
+  await db.notifications.markAsRead(notificationId);
+
+  // Refresh uncached data elsewhere (eg. header count)
+  refresh();
+}
+</code></pre>
+<p>
+  This complements the client-side <code>router.refresh()</code> but is designed
+  to be used inside Server Actions for more predictable server-side refresh
+  behavior.
+</p>
+
+<hr />
+<h2>Partial Pre-Rendering (PPR) → Cache Components</h2>
+<p>
+  The previous experimental <code>ppr</code> flag is being folded into a new
+  Cache Components model. If you depend on the older
+  <code>experimental.ppr</code> flag, <strong>do not</strong> upgrade blindly —
+  stay on the pinned canary you currently use and wait for the migration guide
+  if you need help.
+</p>
+
+<hr />
+<h2>Build Adapters API (alpha)</h2>
+<p>
+  If you build custom deployment flows or target platforms with special build
+  requirements, the Build Adapters API lets you plug into the build process. The
+  API is alpha; example config:
+</p>
+<pre><code>// next.config.js
+const nextConfig = {
+  experimental: {
+    adapterPath: require.resolve('./my-adapter.js'),
+  },
+};
+module.exports = nextConfig;
+</code></pre>
+<p>
+  This opens the door for platform-specific build transforms and custom output
+  handling (useful for edge-only platforms, bespoke artifact formats, or
+  integrating with alternative CDNs). Expect the API to evolve; treat this as
+  early experimentation and collaborate in the RFC if you need platform support.
+</p>
+
+<hr />
+<h2>React 19.2 (Canary) features available in the App Router</h2>
+<p>
+  Next.js 16 ships with the latest React canary features available to App Router
+  apps — including View Transitions, <code>useEffectEvent()</code>, and
+  <code>&lt;Activity/&gt;</code>. These are powerful primitives:
+</p>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      <strong>View Transitions</strong> let you animate element changes between
+      navigations in an increasingly ergonomic way.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>useEffectEvent</code> helps extract non-reactive logic from effects
+      into reusable, stable callbacks.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>&lt;Activity/&gt;</code> provides a declarative model to represent
+      background activity while keeping UI responsive.
+    </p>
+  </li>
+</ul>
+<p>
+  These features are best learned via the React docs, but Next.js 16 makes them
+  accessible to App Router apps without extra wiring.
+</p>
+
+<hr />
+<h2>Breaking changes, removals, and new minimums (must-read)</h2>
+<p><strong>Platform &amp; language requirements</strong></p>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      Node.js: minimum <strong>20.9.0</strong>. Node 18 is no longer supported.
+    </p>
+  </li>
+  <li>
+    <p>TypeScript: minimum <strong>5.1.0</strong>.</p>
+  </li>
+  <li>
+    <p>Browser support: Chrome/Edge/Firefox 111+, Safari 16.4+.</p>
+  </li>
+</ul>
+<p><strong>Removed features</strong> (you must migrate away from these)</p>
+<ul class="list-disc ml-4">
+  <li>
+    <p><strong>AMP support</strong>: all AMP APIs/config removed.</p>
+  </li>
+  <li>
+    <p>
+      <code>next lint</code> no longer runs during <code>next build</code>; use
+      Biome or ESLint directly (codemods available).
+    </p>
+  </li>
+  <li>
+    <p>
+      Several experimental flags were removed or moved:
+      <code>experimental.turbopack</code> moved to top-level,
+      <code>experimental.ppr</code> evolves into Cache Components, etc.
+    </p>
+  </li>
+</ul>
+<p><strong>Behavioral defaults changed</strong> (examples)</p>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      Default bundler is now Turbopack (opt out with <code>--webpack</code>).
+    </p>
+  </li>
+  <li>
+    <p><code>images.minimumCacheTTL</code> default increased (4 hours).</p>
+  </li>
+  <li>
+    <p>
+      <code>revalidateTag()</code> requires <code>cacheLife</code> argument.
+    </p>
+  </li>
+  <li>
+    <p>
+      <code>next/image</code> local src with query strings now requires
+      <code>images.localPatterns</code> to avoid enumeration attacks.
+    </p>
+  </li>
+  <li>
+    <p>
+      Some previously synchronous helpers (like <code>params</code>,
+      <code>searchParams</code>, <code>cookies()</code>, <code>headers()</code>,
+      <code>draftMode()</code>) may now be async and need <code>await</code> in
+      some paths. Carefully test any code relying on synchronous access to
+      these.
+    </p>
+  </li>
+</ul>
+<p>
+  <strong>Migration guidance:</strong> If your app depends on removed or
+  deprecated flags, follow the blog guidance and migration codemods. For PPR
+  users, stay pinned to your current canary until the migration docs are
+  published.
+</p>
+
+<hr />
+<h2>Concrete upgrade &amp; migration checklist (practical)</h2>
+<ol class="list-decimal ml-4">
+  <li>
+    <p>
+      <strong>Lock toolchain versions</strong>: Upgrade Node to &gt;= 20.9 and
+      TypeScript to &gt;= 5.1 before installing <code>next@beta</code>.
+    </p>
+  </li>
+  <li>
+    <p><strong>Run the upgrade codemod</strong> (recommended):</p>
+    <pre><code>npx @next/codemod@canary upgrade beta
+</code></pre>
+  </li>
+  <li>
+    <p>
+      <strong>Search for removed APIs</strong>: find usages of AMP and
+      experimental flags, <code>devIndicators</code> options,
+      <code>export const experimental_ppr</code>, etc. Replace or remove as
+      guided.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Audit </strong><code>next/image</code><strong> usage</strong>:
+      ensure <code>images.localPatterns</code> is present if you rely on local
+      images with query strings.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Check server-side helpers</strong>: search for any code that
+      assumes synchronous <code>params</code> / <code>cookies()</code> — convert
+      to <code>await</code> usage where necessary.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Test with Turbopack</strong>: start dev with default (Turbopack).
+      If you see tooling breakage due to custom webpack plugins/config, run
+      <code>next dev --webpack</code> while you adapt.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Try </strong><code>reactCompiler</code
+      ><strong> in a branch</strong> (optional): enable and run your test suite
+      — watch for compile time changes.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Cache &amp; Server Actions</strong>: identify flows that need
+      read-your-writes semantics and replace ad-hoc invalidation with
+      <code>updateTag()</code> where appropriate. Also ensure
+      <code>revalidateTag()</code> calls use a <code>cacheLife</code> profile.
+    </p>
+  </li>
+</ol>
+<hr />
+<h2>Example: Putting it all together</h2>
+<p>
+  Imagine a blog app where users can edit their profile and see the updated
+  profile card and notification counts immediately.
+</p>
+<p>
+  <strong
+    >Server Action that updates profile and forces immediate cache
+    refresh:</strong
+  >
+</p>
+<pre><code>// app/actions/updateProfile.ts
+'use server';
+import { updateTag } from 'next/cache';
+import { db } from '@/lib/db';
+
+export async function updateProfile(userId: string, data: Partial&lt;Profile&gt;) {
+  await db.users.update(userId, data);
+  // Ensure the user's profile cache shows the new data immediately
+  updateTag(&grave;user-\${id}&grave;);
+}
+</code></pre>
+<p>
+  <strong
+    >Server Action that marks a notification read and refreshes uncached
+    counts:</strong
+  >
+</p>
+<pre><code>// app/actions/markRead.ts
+'use server';
+import { refresh } from 'next/cache';
+import { db } from '@/lib/db';
+
+export async function markNotificationRead(notificationId: string) {
+  await db.notifications.update(notificationId, { read: true });
+  // Refresh uncached data (eg. header notification count)
+  refresh();
+}
+</code></pre>
+<p><strong>Server-rendered profile page that uses tag-based caching</strong></p>
+<pre><code>// app/users/[id]/page.tsx (Server Component)
+import { getUser } from '@/lib/users';
+import { cache } from 'react';
+import { revalidateTag } from 'next/cache';
+
+// fetcher that tags the cache
+export default async function UserPage({ params }: { params: { id: string } }) {
+  const id = params.id;
+  // When fetching profile data, ensure we tag it for later invalidation
+  // (how you tag depends on your fetcher; conceptual example)
+  const profile = await getUser(id);
+  return (
+    &lt;div&gt;
+      &lt;ProfileCard user={profile} /&gt;
+      &lt;EditProfileForm user={profile} /&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<p>
+  When you invalidate: <code>updateTag(</code>user-$\{id}<code
+    >)will now ensure the cache entry is refreshed immediately after the Server
+    Action. UserevalidateTag('blog-posts', 'max')</code
+  >
+  for stale-while-revalidate behavior in collection pages.
+</p>
+
+<hr />
+<h2>Performance &amp; observability notes</h2>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      <strong>Turbopack</strong> reduces developer iteration time substantially;
+      measure before/after with real tasks (cold build, incremental build, Fast
+      Refresh). Some third-party plugins or exotic webpack configurations may
+      need migration or opt-out.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>React Compiler</strong> reduces runtime work but may increase
+      build cost. Use perf profilers to verify real-world improvements on your
+      components.
+    </p>
+  </li>
+  <li>
+    <p>
+      Use the redesigned terminal output and improved error messages in Next.js
+      16 to diagnose slow builds or render blockers — the CLI now surfaces
+      better build metrics.
+    </p>
+  </li>
+</ul>
+<hr />
+<h2>When to wait vs upgrade now</h2>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      <strong>Upgrade now</strong> if you want Turbopack, the new cache APIs,
+      and React Compiler experimentation and you have test coverage to validate
+      changes.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Wait</strong> if your app depends on deprecated experimental flags
+      (PPR) or uses a lot of custom webpack plugins that are not yet compatible.
+      For PPR users, stay pinned to canary until migration docs are available.
+    </p>
+  </li>
+</ul>
+<hr />
+<h2>Final thoughts (practical author&apos;s advice)</h2>
+<p>
+  Next.js 16 is more than incremental: it&apos;s an architectural step that
+  makes caching, prefetching, and bundling more explicit and more performant.
+  The new Server Actions cache APIs (<code>updateTag</code>,
+  <code>refresh</code>) fill a painful gap most apps hacked around for years —
+  read-your-writes and predictable refresh flows — and Turbopack as default will
+  dramatically speed day-to-day developer loops for many teams. That said, the
+  release has breaking changes and new minimums, so treat the beta as a careful
+  upgrade: pin, test, and migrate features in small steps.
+</p>
+<p>If you&apos;d like, I can:</p>
+<ul class="list-disc ml-4">
+  <li>
+    <p>
+      produce a <strong>migration plan tailored to your repo</strong> (search
+      for likely breakpoints like AMP, <code>params</code> usages, or custom
+      webpack plugins), or
+    </p>
+  </li>
+  <li>
+    <p>
+      generate a <strong>codemod checklist</strong> that scans for the exact
+      tokens that changed across your codebase (eg.
+      <code>experimental.ppr</code>, <code>useAmp</code>, synchronous
+      <code>cookies()</code> usage).
+    </p>
+  </li>
+</ul>
+<p>Tell me which you prefer and I&apos;ll draft the next steps.</p>
+<hr />
+<p>
+  <strong>Source:</strong>
+  <a
+    target="_blank"
+    rel="noopener noreferrer nofollow"
+    href="https://nextjs.org/blog/next-16-beta"
+    >Next.js 16 (beta) announcement and release notes.</a
+  >
+</p>
+`,
   },
 ];
 

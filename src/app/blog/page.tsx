@@ -140,7 +140,7 @@ export default async function BlogPage({ searchParams }: Props) {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-svh">
       {/* Hero Section */}
       <HeroAnimated
         title="Blog & Insights"
