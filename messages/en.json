@@ -1,6 +1,29 @@
 {
   "home": {},
-  "header":{},
+  "header": {
+    "home": {
+      "title": "Home"
+    },
+    "about": {
+      "title": "About"
+    },
+    "contact": {
+      "title": "Contact"
+    },
+    "projects": {
+      "title": "Projects"
+    },
+    "blog": {
+      "title": "Blog"
+    },
+    "now": {
+      "title": "Now"
+    }
+  },
+  "footer": {
+    "pl": "Made with",
+    "pr": "by Me"
+  },
   "about": {},
   "blog": {},
   "singleBlog": {},
@@ -13,14 +36,12 @@
         "title": "Now | Amirali Motahari",
         "description": "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
         "url": "/now",
-        "images": 
-          {
-            "url": "/assets/images/amirali-motahari.jpeg",
-            "width": 400,
-            "height": 280,
-            "alt": "Amirali Motahari Portrait"
-          }
-        ,
+        "images": {
+          "url": "/assets/images/amirali-motahari.jpeg",
+          "width": 400,
+          "height": 280,
+          "alt": "Amirali Motahari Portrait"
+        },
         "locale": "en_US",
         "type": "website"
       },

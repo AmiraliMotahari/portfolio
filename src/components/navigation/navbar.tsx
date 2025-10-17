@@ -4,11 +4,13 @@ import NavItem from "./navItem";
 import { motion, TargetAndTransition, Transition } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import Logo from "@/components/icons/logo";
 import { useIsMobile } from "@/hooks/use-mobile";
 import MobileNav from "@/components/navigation/mobile-nav";
 import { ModeToggle } from "../mode-toggle";
+import { Link } from "@/i18n/navigation";
+import { useMemo } from "react";
+import { Messages, useTranslations } from "next-intl";
 
 export type NavigationItem = {
   title: string;
@@ -22,27 +24,27 @@ type Props = {
 const navigationList: NavigationItem[] = [
   {
     href: "/",
-    title: "Home",
+    title: "home",
   },
   {
     href: "/about",
-    title: "About",
+    title: "about",
   },
   {
     href: "/contact",
-    title: "Contact",
+    title: "contact",
   },
   {
     href: "/projects",
-    title: "Projects",
+    title: "projects",
   },
   {
     href: "/blog",
-    title: "Blog",
+    title: "blog",
   },
   {
     href: "/now",
-    title: "Now",
+    title: "now",
   },
 ];
 
@@ -59,6 +61,14 @@ const transition: Transition = {
 
 const Navbar = ({ className }: Props) => {
   const isMobile = useIsMobile();
+  const t = useTranslations("header");
+
+  const nav18: NavigationItem[] = useMemo(() => {
+    return navigationList.map((elem) => ({
+      title: t(`${elem.title as keyof Messages["header"]}.title`),
+      href: elem.href,
+    }));
+  }, [t]);
 
   return (
     <motion.nav
@@ -87,7 +97,7 @@ const Navbar = ({ className }: Props) => {
         </li>
         {isMobile
           ? null
-          : navigationList.map((item) => {
+          : nav18.map((item) => {
               return (
                 <li key={`nav-item-${item.title}`}>
                   <NavItem href={item.href} title={item.title} />
@@ -99,7 +109,7 @@ const Navbar = ({ className }: Props) => {
         </li>
         {isMobile ? (
           <li className="flex justify-center items-center">
-            <MobileNav navigationList={navigationList} />
+            <MobileNav navigationList={nav18} />
           </li>
         ) : null}
       </ul>

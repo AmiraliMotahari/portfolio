@@ -1,6 +1,29 @@
 {
   "home": {},
-  "header": {},
+  "header": {
+    "home": {
+      "title": "خانه"
+    },
+    "about": {
+      "title": "درباره من"
+    },
+    "contact": {
+      "title": "تماس با من"
+    },
+    "projects": {
+      "title": "پروژه ها"
+    },
+    "blog": {
+      "title": "بلاگ"
+    },
+    "now": {
+      "title": "اکنون"
+    }
+  },
+  "footer": {
+    "pl": "ساخته شده با",
+    "pr": "توسط من"
+  },
   "about": {},
   "blog": {},
   "singleBlog": {},
