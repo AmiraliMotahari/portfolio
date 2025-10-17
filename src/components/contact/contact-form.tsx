@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { contactFormSchema, ContactFormSchemaType } from "@/lib/zod-schema";
 import InputWithLabel from "@/components/inputs/input-with-label";
 import TextareaWithLabel from "@/components/inputs/textarea-with-label";
-import { sendMessageAction } from "@/app/actions/send-message";
+import { sendMessageAction } from "@/app/[locale]/actions/send-message";
 import ReactCloudflareTurnstile from "react-cloudflare-turnstile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 

@@ -10,50 +10,48 @@ import {
   Dumbbell,
 } from "lucide-react";
 import type { Metadata } from "next";
+import { getFormatter, getTranslations } from "next-intl/server";
 import Script from "next/script";
 import { BlogPosting, WithContext } from "schema-dts";
 
-export const metadata: Metadata = {
-  title: "Now",
-  description:
-    "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
-  openGraph: {
-    title: "Now | Amirali Motahari",
-    description:
-      "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
-    url: new URL("/now", process.env.NEXT_PUBLIC_URL),
-    images: [
-      {
-        url: new URL(
-          "/assets/images/amirali-motahari.jpeg",
-          process.env.NEXT_PUBLIC_URL
-        ),
-        width: 400,
-        height: 280,
-        alt: "Amirali Motahari Portrait",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Now | Amirali Motahari",
-    description:
-      "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
-    images: [
-      new URL(
-        "/assets/images/amirali-motahari.jpeg",
-        process.env.NEXT_PUBLIC_URL
-      ),
-    ],
-  },
-  alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_URL}/now`,
-  },
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("now");
+  const baseUrl = process.env.NEXT_PUBLIC_URL ?? "";
+  const nowPageUrl = new URL("/now", baseUrl);
+
+  return {
+    title: t("seo.title"),
+    description: t("seo.description"),
+    openGraph: {
+      title: t("seo.openGraph.title"),
+      description: t("seo.openGraph.description"),
+      url: nowPageUrl,
+      images: [
+        {
+          url: new URL("/assets/images/amirali-motahari.jpeg", baseUrl),
+          width: 400,
+          height: 280,
+          alt: t("seo.openGraph.images.alt"),
+        },
+      ],
+      locale: t("seo.openGraph.locale"),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("seo.twitter.title"),
+      description: t("seo.twitter.description"),
+      images: [new URL("/assets/images/amirali-motahari.jpeg", baseUrl)],
+    },
+    alternates: {
+      canonical: nowPageUrl,
+    },
+  };
 };
 
 export default async function NowPage() {
+  const t = await getTranslations("now");
+  const format = await getFormatter();
   const webUrl = process.env.NEXT_PUBLIC_URL ?? "";
   const datePublished = new Date("2025-04-12").toISOString();
   const dateModified = new Date("2025-04-12").toISOString();
@@ -109,21 +107,19 @@ export default async function NowPage() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-svh">
       <section className="mx-auto dynamic-px pt-32 pb-20 relative">
         <GradientBackground />
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
-            Now
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            {t("sections.mainTitle")}
           </h1>
 
           <div className="glass-card p-8 mb-12">
-            <div className="border-l-4 border-neon-green pl-4 italic mb-8">
-              Last updated:
-              {new Date(dateModified).toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
+            <div className="ltr:border-l-4 rtl:border-r-4 border-foreground ltr:pl-4 rtl:pr-4 italic mb-8">
+              {t("sections.lastUpdated")}{" "}
+              {format.dateTime(new Date(dateModified), {
+                dateStyle: "medium",
               })}
             </div>
 
@@ -132,35 +128,29 @@ export default async function NowPage() {
                 <Code className="h-6 w-6 flex-shrink-0 mt-1" />
                 <div>
                   <h2 className="text-xl font-semibold mb-2">
-                    Current Projects
+                    {t("sections.currentProjects.title")}
                   </h2>
-                  <p>
-                    Managing multiple initiatives, including an e-commerce store
-                    and a tax management system using Next.js.
-                  </p>
+                  <p>{t("sections.currentProjects.body")}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <BookOpen className="h-6 w-6 flex-shrink-0 mt-1" />
                 <div>
-                  <h2 className="text-xl font-semibold mb-2">Learning</h2>
-                  <p>
-                    Currently pursuing a Master&apos;s degree in Artificial
-                    Intelligence. Actively developing skills in Next.js and
-                    expanding knowledge in digital marketing strategies
-                  </p>
+                  <h2 className="text-xl font-semibold mb-2">
+                    {t("sections.learning.title")}
+                  </h2>
+                  <p>{t("sections.learning.body")}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Headphones className="h-6 w-6 flex-shrink-0 mt-1" />
                 <div>
-                  <h2 className="text-xl font-semibold mb-2">Listening To</h2>
-                  <p>
-                    Synthwave playlists while coding. Tech podcasts during
-                    commutes.
-                  </p>
+                  <h2 className="text-xl font-semibold mb-2">
+                    {t("sections.listening.title")}
+                  </h2>
+                  <p>{t("sections.listening.body")}</p>
                 </div>
               </div>
 
@@ -168,36 +158,29 @@ export default async function NowPage() {
                 <Dumbbell className="h-6 w-6 flex-shrink-0 mt-1" />
                 <div>
                   <h2 className="text-xl font-semibold mb-2">
-                    Health & Fitness
+                    {t("sections.health.title")}
                   </h2>
-                  <p>
-                    Maintaining a 3-day workout routine. Experimenting with
-                    meditation for better focus and creativity.
-                  </p>
+                  <p>{t("sections.health.body")}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Coffee className="h-6 w-6 flex-shrink-0 mt-1" />
                 <div>
-                  <h2 className="text-xl font-semibold mb-2">Daily Routine</h2>
-                  <p>
-                    Early riser. Morning coding sessions are my most productive.
-                    Taking regular breaks to stay fresh and creative.
-                  </p>
+                  <h2 className="text-xl font-semibold mb-2">
+                    {t("sections.dailyRoutine.title")}
+                  </h2>
+                  <p>{t("sections.dailyRoutine.body")}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <CalendarDays className="h-6 w-6 flex-shrink-0 mt-1" />
                 <div>
-                  <h2 className="text-xl font-semibold mb-2">Future Plans</h2>
-                  <p>
-                    Working toward completing my Master&apos;s degree in
-                    Artificial Intelligence. I aim to combine my expertise in
-                    web development with AI to build smarter, more intuitive
-                    digital experiences.
-                  </p>
+                  <h2 className="text-xl font-semibold mb-2">
+                    {t("sections.futurePlans.title")}
+                  </h2>
+                  <p>{t("sections.futurePlans.body")}</p>
                 </div>
               </div>
             </div>

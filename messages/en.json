@@ -1,0 +1,92 @@
+{
+  "home": {},
+  "header":{},
+  "about": {},
+  "blog": {},
+  "singleBlog": {},
+  "contact": {},
+  "now": {
+    "seo": {
+      "title": "Now",
+      "description": "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
+      "openGraph": {
+        "title": "Now | Amirali Motahari",
+        "description": "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
+        "url": "/now",
+        "images": 
+          {
+            "url": "/assets/images/amirali-motahari.jpeg",
+            "width": 400,
+            "height": 280,
+            "alt": "Amirali Motahari Portrait"
+          }
+        ,
+        "locale": "en_US",
+        "type": "website"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "title": "Now | Amirali Motahari",
+        "description": "Discover what I'm currently working on, my latest projects, tools I use, and goals I'm pursuing as a creative developer.",
+        "images": ["/assets/images/amirali-motahari.jpeg"]
+      },
+      "alternates": {
+        "canonical": "/now"
+      }
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "now": "Now"
+    },
+    "jsonLd": {
+      "heading": "Now",
+      "lastUpdatedLabel": "Last updated:",
+      "articleBody": "I'm currently leading multiple projects, including an e-commerce store and a tax management system built with Next.js. I'm pursuing a Master's degree in Artificial Intelligence while sharpening my skills in web development and digital marketing. My days are driven by early morning coding sessions, sound tracked by synthwave playlists, and balanced with workouts and meditation. I'm passionate about blending AI with intuitive design to create smarter digital experiences.",
+      "keywords": [
+        "Freelance",
+        "Frontend Developer",
+        "Web Development",
+        "Next.js",
+        "Now Page"
+      ]
+    },
+    "sections": {
+      "mainTitle": "Now",
+      "lastUpdated": "Last updated:",
+      "currentProjects": {
+        "title": "Current Projects",
+        "body": "Managing multiple initiatives, including an e-commerce store and a tax management system using Next.js."
+      },
+      "learning": {
+        "title": "Learning",
+        "body": "Currently pursuing a Master's degree in Artificial Intelligence. Actively developing skills in Next.js and expanding knowledge in digital marketing strategies"
+      },
+      "listening": {
+        "title": "Listening To",
+        "body": "Synthwave playlists while coding. Tech podcasts during commutes."
+      },
+      "health": {
+        "title": "Health & Fitness",
+        "body": "Maintaining a 3-day workout routine. Experimenting with meditation for better focus and creativity."
+      },
+      "dailyRoutine": {
+        "title": "Daily Routine",
+        "body": "Early riser. Morning coding sessions are my most productive. Taking regular breaks to stay fresh and creative."
+      },
+      "futurePlans": {
+        "title": "Future Plans",
+        "body": "Working toward completing my Master's degree in Artificial Intelligence. I aim to combine my expertise in web development with AI to build smarter, more intuitive digital experiences."
+      }
+    }
+  },
+  "projects": {},
+  "error": {},
+  "globalError": {},
+  "notfound": {
+    "h1": "404",
+    "h2": "Page Not Found",
+    "paragraph": "Sorry, we couldn&apos;t find the page you&apos;re looking for. It might have been moved or deleted.",
+    "backButton": "Back to Home",
+    "viewButton": "View My Projects"
+  }
+}
