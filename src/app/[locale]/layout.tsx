@@ -10,6 +10,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { getLangDir } from "rtl-detect";
+import { getTranslations } from "next-intl/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,73 +22,60 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Amirali Motahari",
-    template: `%s | Amirali Motahari`,
-  },
-  description:
-    "Explore the portfolio of Amirali Motahari - a web developer specializing in frontend technologies, AI, and full-stack projects. Showcasing web apps, coding projects, and ongoing learning in tech and design.",
-  authors: [{ name: "Amirali Motahari", url: process.env.NEXT_PUBLIC_URL }],
-  creator: "Amirali Motahari",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_URL || ""),
-  openGraph: {
-    title: "Amirali Motahari",
-    description:
-      "Explore the portfolio of Amirali Motahari - a web developer specializing in frontend technologies, AI, and full-stack projects. Showcasing web apps, coding projects, and ongoing learning in tech and design.",
-    url: process.env.NEXT_PUBLIC_URL,
-    siteName: "Amirali Motahari",
-    images: [
-      {
-        url: new URL(
-          "/assets/images/amirali-motahari.jpeg",
-          process.env.NEXT_PUBLIC_URL
-        ),
-        width: 400,
-        height: 280,
-        alt: "Amirali Motahari Portrait",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Amirali Motahari",
-    description:
-      "Explore the portfolio of Amirali Motahari - a web developer specializing in frontend technologies, AI, and full-stack projects. Showcasing web apps, coding projects, and ongoing learning in tech and design.",
-    images: new URL(
-      "/assets/images/amirali-motahari.jpeg",
-      process.env.NEXT_PUBLIC_URL
-    ),
-  },
-  keywords: [
-    "Amirali Motahari",
-    "Creative Developer",
-    "Frontend Engineer",
-    "JavaScript",
-    "Next.js",
-    "React",
-    "Web Development",
-    "Developer Portfolio",
-  ],
-  category: "portfolio",
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("home.seo");
+  const baseUrl = process.env.NEXT_PUBLIC_URL ?? "";
+
+  return {
+    title: {
+      default: t("title"),
+      template: `%s | ${t("title")}`,
+    },
+    description: t("description"),
+    authors: [{ name: t("authors.name"), url: baseUrl }],
+    creator: t("creator"),
+    metadataBase: new URL(baseUrl),
+    openGraph: {
+      title: t("openGraph.title"),
+      description: t("openGraph.description"),
+      url: baseUrl,
+      siteName: t("openGraph.siteName"),
+      images: [
+        {
+          url: new URL("/assets/images/amirali-motahari.jpeg", baseUrl),
+          width: 400,
+          height: 280,
+          alt: t("openGraph.images.alt"),
+        },
+      ],
+      locale: t("openGraph.locale"),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("twitter.title"),
+      description: t("twitter.description"),
+      images: new URL("/assets/images/amirali-motahari.jpeg", baseUrl),
+    },
+    keywords: t.raw("keywords"),
+    category: "portfolio",
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+      },
     },
-  },
-  alternates: {
-    canonical: process.env.NEXT_PUBLIC_URL,
-  },
-  verification: {
-    google: "pzNPuEAjQ8w3lN9Z_NlfKOpf3pqF4nOkeDzVbZ_6Zhc",
-  },
+    alternates: {
+      canonical: baseUrl,
+    },
+    verification: {
+      google: "pzNPuEAjQ8w3lN9Z_NlfKOpf3pqF4nOkeDzVbZ_6Zhc",
+    },
+  };
 };
 
 export default async function RootLayout({

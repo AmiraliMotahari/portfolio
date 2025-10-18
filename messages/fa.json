@@ -1,5 +1,94 @@
 {
-  "home": {},
+  "home": {
+    "seo": {
+      "title": "امیرعلی مطهری",
+      "description": "پورتفولیوی امیرعلی مطهری را کاوش کنید — توسعه‌دهندهٔ وبی که در تکنولوژی‌های فرانت‌اند، هوش مصنوعی و پروژه‌های فول‌استک تخصص دارد. شامل اپلیکیشن‌های وب، پروژه‌های کدنویسی و یادگیری‌های جاری در حوزهٔ تکنولوژی و طراحی.",
+      "authors": {
+        "name": "امیرعلی مطهری",
+        "url": "/"
+      },
+      "creator": "امیرعلی مطهری",
+      "metadataBase": "/",
+      "openGraph": {
+        "title": "امیرعلی مطهری",
+        "description": "پورتفولیوی امیرعلی مطهری را کاوش کنید — توسعه‌دهندهٔ وبی که در تکنولوژی‌های فرانت‌اند، هوش مصنوعی و پروژه‌های فول‌استک تخصص دارد. شامل اپلیکیشن‌های وب، پروژه‌های کدنویسی و یادگیری‌های جاری در حوزهٔ تکنولوژی و طراحی.",
+        "url": "/",
+        "siteName": "امیرعلی مطهری",
+        "images": {
+          "alt": "پرترهٔ امیرعلی مطهری"
+        },
+        "locale": "fa_IR"
+      },
+      "twitter": {
+        "title": "امیرعلی مطهری",
+        "description": "پورتفولیوی امیرعلی مطهری را کاوش کنید — توسعه‌دهندهٔ وبی که در تکنولوژی‌های فرانت‌اند، هوش مصنوعی و پروژه‌های فول‌استک تخصص دارد."
+      },
+      "keywords": [
+        "امیرعلی مطهری",
+        "امیرعلی",
+        "مطهری",
+        "توسعه‌دهنده خلاق",
+        "مهندس فرانت‌اند",
+        "JavaScript",
+        "Next.js",
+        "React",
+        "توسعه وب",
+        "پورتفولیو توسعه‌دهنده"
+      ]
+    },
+    "hero": {
+      "title": "امیرعلی مطهری",
+      "description": "از طراحی تجربه‌های کاربری روان گرفته تا ساخت برنامه‌های مقیاس‌پذیر، من طراحی و فناوری را با هم ترکیب می‌کنم تا راه‌حل‌های نوآورانه خلق کنم. بیایید با هم چیزی شگفت‌انگیز بسازیم.",
+
+      "contactButton": "تماس با من"
+    },
+    "aboutMe": {
+      "heading": "درباره من",
+      "imageAlt": "تصویر پروفایل",
+      "description": {
+        "lead": "من یک توسعه‌دهنده خلاق هستم که اشتیاق زیادی برای ساخت تجربه‌های وب زیبا، کاربردی و قابل‌دسترس دارم. با بیش از ۵ سال تجربه در توسعه وب، در ساخت برنامه‌های تعاملی تخصص دارم که فناوری‌های روز را با طراحی دقیق ترکیب می‌کنند.",
+        "approach": "رویکرد من ترکیبی از تخصص فنی و حل مسئله خلاقانه است که به من اجازه می‌دهد راه‌حل‌هایی ارائه دهم که نه تنها نیازها را برآورده می‌کنند، بلکه از انتظارات فراتر می‌روند."
+      },
+      "abilities": [
+        {
+          "icon": "Code",
+          "title": "کدنویسی تمیز",
+          "description": "نوشتن کدی قابل نگهداری، کارآمد و مستندسازی‌شده"
+        },
+        {
+          "icon": "Palette",
+          "title": "طراحی خلاقانه",
+          "description": "ترکیب زیبایی‌شناسی با کارایی برای خلق تجربه‌های جذاب"
+        },
+        {
+          "icon": "Lightbulb",
+          "title": "حل مسئله",
+          "description": "یافتن راه‌حل‌های نوآورانه برای چالش‌های پیچیده"
+        },
+        {
+          "icon": "Rocket",
+          "title": "تحویل سریع",
+          "description": "رویه‌های کاری مؤثر برای تکمیل پروژه‌ها در زمان مقرر"
+        }
+      ]
+    },
+    "projects": {
+      "heading": "پروژه‌ها",
+      "viewAll": "مشاهده همه پروژه‌ها"
+    },
+    "latestPosts": {
+      "heading": "آخرین مقالات",
+      "description": "ایده ها، فکر ها و آموزش ها در رابطه با توسعه وب، طراحی و کدنویسی خلاقانه.",
+      "viewAllArticlesButton": "مشاهده همه مقالات"
+    },
+    "contact": {
+      "heading": "با من در ارتباط باشید",
+      "card": {
+        "title": "اطلاعات تماس",
+        "description": "اگر سوالی دارید یا می‌خواهید با هم همکاری کنیم، خوشحال می‌شوم از شما بشنوم. من همیشه آماده‌ام دربارهٔ پروژه‌های جدید، ایده‌های خلاقانه یا فرصت‌هایی برای مشارکت در تحقق چشم‌انداز شما گفتگو کنم."
+      }
+    }
+  },
   "header": {
     "home": {
       "title": "خانه"
@@ -109,5 +198,337 @@
     "paragraph": "متاسفانه ما نتوانستیم صفحه مورد نظر را پیدا کنیم. ممکن است جابه جا یا پاک شده باشد.",
     "backButton": "بازگشت به خانه",
     "viewButton": "مشاهده رزومه من"
+  },
+  "cvDownloadButton": {
+    "title": "دانلود رزومه",
+    "loadingTitle": "درحال ساخت..."
+  },
+  "general": {
+    "contactButton": "تماس با من"
+  },
+  "data": {
+    "personalInfo": {
+      "firstName": "امیرعلی",
+      "lastName": "مطهری",
+      "yearOfBirth": 2000,
+      "name": "امیرعلی مطهری",
+      "title": "توسعه‌دهنده خلاق",
+      "email": "amiralimotahari.dev@gmail.com",
+      "location": "تهران، ایران",
+      "website": "amiralimotahari.com",
+      "summary": "توسعه‌دهنده‌ای خلاق با بیش از ۵ سال تجربه در ساخت تجربه‌های وب زیبا، کاربردی و قابل‌دسترس. تخصص در برنامه‌های تعاملی که فناوری‌های نو را با طراحی دقیق ترکیب می‌کنند.",
+      "picture": "/assets/images/amirali-motahari.jpeg",
+      "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAPUlEQVR4nAXBMREAUAQAUHqZhZBCAne/gLNYDEJIoJflvwdVxcyqGhGwu4j43qsquDsimhkzA3cXke7OzA9toxi7H9pdQwAAAABJRU5ErkJggg=="
+    },
+    "socials": [
+      {
+        "title": "LinkedIn",
+        "href": "https://www.linkedin.com/in/amirali-motahari-252a651a7"
+      },
+      {
+        "title": "GitHub",
+        "href": "https://github.com/AmiraliMotahari"
+      }
+    ],
+    "skills": [
+      { "name": "JavaScript/TypeScript", "level": 90 },
+      { "name": "React & Next.js", "level": 85 },
+      { "name": "CSS/Tailwind", "level": 100 },
+      { "name": "Responsive Design", "level": 100 },
+      { "name": "Git/Version Control", "level": 80 },
+      { "name": "Performance Optimization", "level": 75 },
+      { "name": "Accessibility", "level": 70 }
+    ],
+    "experiences": [
+      {
+        "position": "سرپرست توسعه فرانت‌اند",
+        "company": "Mavira",
+        "location": "تهران، ایران",
+        "startDate": "2023-09-01",
+        "endDate": "2024-10-01",
+        "description": "رهبری توسعه فرانت‌اند Doctorize — یک پلتفرم درمانی که به کاربران امکان جستجو برای ارائه‌دهندگان خدمات پزشکی، مشاهده پروفایل‌ها و رزرو وقت بر اساس دسترسی بلادرنگ و موقعیت مکانی را می‌دهد. نظارت بر roadmap فنی، تصمیمات معماری و همکاری تیم فرانت‌اند برای تحویل تجربه‌ای واکنش‌گرا و مقیاس‌پذیر.",
+        "achievements": [
+          "طراحی و پیاده‌سازی کامل معماری فرانت‌اند Doctorize با تمرکز بر عملکرد و مقیاس‌پذیری",
+          "مدیریت تیمی متشکل از ۵ توسعه‌دهنده فرانت‌اند، معرفی بهترین شیوه‌های توسعه و انجام بازبینی‌های منظم کد",
+          "ساخت یک اپلیکیشن تک‌صفحه‌ای با ویژگی‌هایی مانند اسکرول بی‌نهایت، به‌روزرسانی داده‌های بلادرنگ و memoization کامپوننت‌ها",
+          "ادغام APIهای Google Maps برای کشف ارائه‌دهندگان بر اساس مکان کاربر، فیلتر فاصله و نماهای تعاملی نقشه",
+          "ایجاد یک فریم‌ورک UI سفارشی و سیستم اعلان توست برای طراحی یکپارچه و منطق قابل استفاده مجدد",
+          "بهبود کلی عملکرد با lazy loading، dynamic imports و استراتژی‌های بهینه‌سازی رندر",
+          "همکاری با تیم‌های بک‌اند برای اطمینان از یکپارچگی API و منطق رزرو وقت بلادرنگ"
+        ],
+        "technologies": [
+          "JavaScript (ES6+)",
+          "CSS3",
+          "Google Maps JavaScript API",
+          "Google Places API",
+          "Google Geolocation API",
+          "Google Geocoding API",
+          "معماری مبتنی بر کامپوننت",
+          "فریم‌ورک UI سفارشی",
+          "تکنیک‌های memoization",
+          "Debouncing و throttling",
+          "اسکرول بی‌نهایت",
+          "به‌روزرسانی داده‌های بلادرنگ",
+          "Lazy Loading و Code Splitting",
+          "Version Control (Git)",
+          "اصول طراحی واکنش‌گرا",
+          "سیستم اعلان توست سفارشی"
+        ]
+      },
+      {
+        "position": "Fullstack Developer",
+        "company": "Donya L.L.C.",
+        "location": "Bethesda, MD",
+        "startDate": "2024-10-01",
+        "endDate": "Present",
+        "description": "طراحی و توسعه وب‌سایت رسمی شرکت برای نمایش پروژه‌های ساخت‌وساز، برجسته‌سازی خدمات و امکان زمان‌بندی مشاوره برای مشتریان. تمرکز بر عملکرد، دسترسی‌پذیری و تجربه کاربری پالیش‌شده متناسب با صنعت ساخت‌وساز.",
+        "achievements": [
+          "ساخت وب‌سایتی سبک پورتفولیو با Next.js و Tailwind CSS برای ارائه پروژه‌های تکمیل‌شده و در حال انجام",
+          "بهبود SEO و دسترسی‌پذیری که منجر به افزایش ترافیک ارگانیک و تبدیل سرنخ‌ها شد",
+          "توسعه یک سیستم کامپوننت مدولار با استفاده از Shadcn UI و TypeScript برای به‌روزرسانی‌های آینده مقیاس‌پذیر",
+          "اتصال منطق ارسال فرم و رزرو به سرویس‌های بک‌اند با استفاده از RESTful APIها و Zod برای اعتبارسنجی",
+          "استقرار سایت روی Vercel برای عملکرد بهینه و نگهداری آسان"
+        ],
+        "technologies": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Shadcn UI",
+          "Zod",
+          "RESTful API"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "کارشناسی مهندسی کامپیوتر",
+        "institution": "دانشگاه آزاد اسلامی واحد علوم و تحقیقات",
+        "location": "تهران، ایران",
+        "startDate": "2019-09-01",
+        "endDate": "2023-08-01",
+        "description": "تمرکز بر مبانی معماری کامپیوتر، مهندسی نرم‌افزار و طراحی الگوریتم. کسب پایه‌ای قوی در سیستم‌های سخت‌افزاری و نرم‌افزاری با تجربه عملی در سیستم‌های توکار، توسعه وب و شبکه‌های کامپیوتری.",
+        "courses": [
+          "ساختمان داده و الگوریتم‌ها",
+          "سیستم‌عامل",
+          "شبکه‌های کامپیوتری",
+          "برنامه‌نویسی وب",
+          "سیستم‌های پایگاه داده",
+          "ریزپردازنده‌ها و اسمبلی",
+          "مهندسی نرم‌افزار",
+          "هوش مصنوعی",
+          "برنامه‌نویسی شیءگرا (OOP)",
+          "طراحی منطق دیجیتال"
+        ],
+        "achievements": [
+          "فارغ‌التحصیل با افتخارات (جزو ۳ نفر برتر کلاس)",
+          "GPA: 18.73 / 20",
+          "طراحی و توسعه پروژهٔ پایانی کامل فول‌استک با استفاده از Django و js"
+        ]
+      },
+      {
+        "degree": "کارشناسی ارشد هوش مصنوعی",
+        "institution": "دانشگاه آزاد اسلامی واحد علوم و تحقیقات",
+        "location": "تهران، ایران",
+        "startDate": "2024-09-01",
+        "endDate": "In Progress",
+        "description": "در حال تحصیل در مقطع کارشناسی ارشد با محوریت موضوعات پیشرفته در هوش مصنوعی مانند یادگیری ماشین، یادگیری عمیق، علم داده و سیستم‌های هوشمند. برنامه هم مبانی نظری و هم پژوهش عملی را پوشش می‌دهد.",
+        "courses": [
+          "یادگیری ماشین",
+          "یادگیری عمیق",
+          "پردازش زبان طبیعی (NLP)",
+          "داده‌کاوی",
+          "شبکه‌های عصبی",
+          "منطق فازی و سیستم‌های خبره",
+          "شناسایی الگو"
+        ],
+        "achievements": [
+          "شرکت در تحقیقات جاری حول مدل‌های مبتنی بر ترنسفورمر برای درک زبان"
+        ]
+      },
+      {
+        "degree": "بوتکمپ توسعه وب",
+        "institution": "موسسه فناوری تهران",
+        "location": "تهران، ایران",
+        "startDate": "2022-11-01",
+        "endDate": "2023-08-01",
+        "description": "بوتکمپی فشرده و عملی بر روی شیوه‌های مدرن توسعه فرانت‌اند و بک‌اند. کسب تجربه عملی در ساخت برنامه‌های وب واکنش‌گرا، قابل‌دسترس و پرعملکرد با ابزارها و گردش‌کارهای استاندارد صنعتی.",
+        "courses": [
+          "توسعه فرانت‌اند",
+          "HTML",
+          "CSS",
+          "JS/TS",
+          "Git",
+          "طراحی واکنش‌گرا",
+          "Jquery",
+          "Sass",
+          "توسعه RESTful API",
+          "استقرار"
+        ],
+        "achievements": [
+          "امتیاز نهایی: 100/100",
+          "ساخت و استقرار چندین پروژه آماده پورتفولیو",
+          "تکمیل پروژهٔ پایانی: یک اپلیکیشن تجارت الکترونیک فول‌استک",
+          "هدایت پروژهٔ گروهی شبیه‌سازی جریان کاری اجایل با استفاده از Git و GitHub",
+          "ادغام APIهای شخص ثالث برای افزایش کارکردهای واقعی",
+          "دریافت عنوان 'Top Performer' از سوی اساتید"
+        ]
+      },
+      {
+        "degree": "بوتکمپ React",
+        "institution": "Laitec",
+        "location": "تهران، ایران",
+        "startDate": "2023-09-01",
+        "endDate": "2023-12-01",
+        "description": "بوتکمپی پیشرفته متمرکز بر React برای تعمیق درک معماری مبتنی بر کامپوننت، مدیریت حالت، فرم‌ها و ابزارهای مدرن فرانت‌اند.",
+        "courses": [
+          "React.js (Hooks, Context, Routing و غیره)",
+          "Redux.js (Redux Toolkit, Thunk)",
+          "React-hook-form",
+          "React Router",
+          "قابلیت استفاده مجدد و بهینه‌سازی کامپوننت",
+          "ReactQuery"
+        ],
+        "achievements": [
+          "امتیاز نهایی: 100/100",
+          "توسعه یک اپلیکیشن تجارت الکترونیک کاملاً واکنش‌گرا با React و Redux",
+          "ادغام فرم‌ها و جریان‌های اعتبارسنجی پیچیده با react-hook-form",
+          "ساخت پروژه‌های متعدد نشان‌دهندهٔ code splitting مبتنی بر مسیر و lazy loading"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "id": 1,
+        "slug": "donya-llc",
+        "title": "Donya LLC",
+        "description": "Donya LLC یک شرکت ساخت و بازسازی است که در ساخت خانه‌های سفارشی، بازسازی کامل خانه و تعمیرات تخصصی در واشنگتن دی‌سی، مریلند و ویرجینیا تخصص دارد. خدمات آن‌ها شامل طراحی و اجرا، بازسازی و مدیریت ساخت است که همه برای تحقق‌بخشیدن به دیدگاه مشتریان با دقت و کاردانی ارائه می‌شوند.",
+        "image": "/assets/images/projects/donyallc.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/AI6Oi//29/v/7e70/7u9vf8AAwMA/01NTv9zbmz/DQMA/4UpE9caig/nAAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["Next.js", "React", "Motion", "Tailwind CSS", "Shadcn UI"],
+        "demoUrl": "https://donyallc.com",
+        "githubUrl": null,
+        "featured": true,
+        "date": "2024-08-11"
+      },
+      {
+        "id": 2,
+        "slug": "doctorize",
+        "title": "Doctorize",
+        "description": "Doctorize یک پلتفرم آنلاین است که به کاربران کمک می‌کند پزشکان تأییدشده را بر اساس تخصص، مکان و زمان‌های خالی پیدا و نوبت‌گیری کنند. این سرویس حریم خصوصی و امنیت داده‌ها را تضمین می‌کند و تجربه‌ای روان برای بیماران و ارائه‌دهندگان خدمات درمانی فراهم می‌آورد.",
+        "image": "/assets/images/projects/doctorize.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/AFDQ3/+l////lfv//y23yv8AABI0/wArTf8AM1X/ABk6/29cEnFLfjKeAAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["TypeScript", "CSS", "SPA", "Memo", "Google Api"],
+        "demoUrl": "https://doctorize.com/",
+        "githubUrl": null,
+        "featured": false,
+        "date": "2023-09-01"
+      },
+      {
+        "id": 3,
+        "slug": "themtfy",
+        "title": "Themtfy",
+        "description": "Themtfy یک کتابخانهٔ سبک جاوااسکریپت برای نمایش اعلان‌های توست در صفحات وب است. این کتابخانه اجازه می‌دهد تا پیام‌های توست دلخواه با گزینه‌های پیکربندی مختلف به‌راحتی ایجاد کنید.",
+        "image": "/assets/images/projects/themtfy.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAK0lEQVR4nGMw1Nf5X1Ve9j8sNOy/tJT0fwYjQ8P/dXV1//fu3ff/7t17/wEDExIbDBveXAAAAABJRU5ErkJggg==",
+        "category": "وب",
+        "tags": ["TypeScript", "CSS"],
+        "demoUrl": "https://www.npmjs.com/package/themtfy",
+        "githubUrl": "https://github.com/AmiraliMotahari/themtfy",
+        "featured": false,
+        "date": "2024-04-16"
+      },
+      {
+        "id": 4,
+        "slug": "ako-pay",
+        "title": "Ako Pay",
+        "description": "Ako Pay یک برنامهٔ وب سفارشی مدیریت مالیات است. این برنامه گردش‌کارهای داخلی مالیاتی را ساده می‌کند و به کارکنان امکان ورود داده‌های مالی، محاسبهٔ خودکار مالیات، مدیریت ارسال اسناد و دریافت اعلان‌های مهم مهلت‌ها را در یک رابط امن و کاربرپسند می‌دهد.",
+        "image": "/assets/images/projects/akopay.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/ABsmQv8DDSb/CBAj/3t+h/8A6+zs//n6+v/5+vv/7O3x/xuHFdUsJxJmAAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["Next.js", "React", "Motion", "Tailwind CSS", "Shadcn UI"],
+        "demoUrl": null,
+        "githubUrl": null,
+        "featured": false,
+        "date": "2025-02-11"
+      },
+      {
+        "id": 5,
+        "slug": "advance-data-table",
+        "title": "Advance Data Table",
+        "description": "ساخت یک جدول دادهٔ پویا و واکنش‌گرا با استفاده از ShadCN و React Table. این راه‌حل رابطی شهودی برای مشاهده، فیلتر و مرتب‌سازی مجموعه‌داده‌های بزرگ فراهم می‌کند و از مدیریت حالت React و کامپوننت‌های طراحی ShadCN برای تجربه‌ای یکپارچه استفاده می‌کند.",
+        "image": "/assets/images/projects/advance-data-table.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/ANzl8P+fprL/wcrS/4SLlP8ASlBa/zg+R/+AiJH/GR8n/4R+FErqoFkpAAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["Next.js", "Shadcn UI", "React Table"],
+        "demoUrl": null,
+        "githubUrl": "https://github.com/AmiraliMotahari/advance-data-table",
+        "featured": false,
+        "date": "2025-01-18"
+      },
+      {
+        "id": 6,
+        "slug": "rich-text-editor",
+        "title": "Rich Text Editor",
+        "description": "ساخت یک جدول دادهٔ پویا و واکنش‌گرا با استفاده از ShadCN و React Table. این راه‌حل رابطی شهودی برای مشاهده، فیلتر و مرتب‌سازی مجموعه‌داده‌های بزرگ فراهم می‌کند و از مدیریت حالت React و کامپوننت‌های طراحی ShadCN برای تجربه‌ای یکپارچه استفاده می‌کند.",
+        "image": "/assets/images/projects/rich-text-editor.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAJElEQVR4nGPg4eH5z8fH95+XlxeMGbi4uP5zc3P/5+TkBAsAAI/RCRalU6VhAAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["Next.js", "Shadcn UI", "Tiptap", "Novel"],
+        "demoUrl": "https://rich-text-editor-chi-six.vercel.app/",
+        "githubUrl": "https://github.com/AmiraliMotahari/rich-text-editor",
+        "featured": false,
+        "date": "2025-02-09"
+      },
+      {
+        "id": 7,
+        "slug": "grocery-shop",
+        "title": "Grocery Shop",
+        "description": "اولین پروژهٔ من با Django — یک برنامهٔ ساده مدیریت خواربار که برای یادگیری توسعهٔ بک‌اند با پایتون ساخته شد. این برنامه پشتیبانی از مدیریت آیتم‌ها از طریق داشبورد ادمین و استفاده از Pillow برای کار با تصویر را دارد و مقدمه‌ای عالی برای کار با معماری MVC و مهاجرت‌های دیتابیس در Django بود.",
+        "image": "/assets/images/projects/grocery-shop.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/AIuTm/8iJy3/lJ+n/yAlLP8AyNHZ/1RaYv/L1eL/anJ6/zpvE80Sb4C1AAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["Django", "HTML", "CSS", "JS", "Bootstrap"],
+        "demoUrl": null,
+        "githubUrl": "https://github.com/AmiraliMotahari/grocery",
+        "featured": false,
+        "date": "2023-01-27"
+      },
+      {
+        "id": 8,
+        "slug": "oriflame",
+        "title": "Oriflame",
+        "description": "اولین وب‌سایت کاملاً واکنش‌گرای من که با JavaScript (به‌همراه AJAX)، Sass برای استایل‌دهی مدولار و Swiper.js برای اسلایدرهای تعاملی ساخته شد. تمرکز روی تجربهٔ کاربری روان، طراحی مدرن و بارگذاری محتوای پویا بود.",
+        "image": "/assets/images/projects/oriflame.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/AIt4bf+Fd3D/Tgk0/zIAGP8A//jv//nq4P+9h53/q2+M/0EYFNpn3NZZAAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["HTML", "CSS", "JS", "Sass"],
+        "demoUrl": "https://amiralimotahari.github.io/dynamicoriflame/",
+        "githubUrl": "https://github.com/AmiraliMotahari/dynamicoriflame",
+        "featured": false,
+        "date": "2023-02-12"
+      },
+      {
+        "id": 9,
+        "slug": "digikala",
+        "title": "Digikala",
+        "description": "اولین پروژهٔ وب من که با HTML، CSS و JavaScript ساخته شد و پایهٔ مسیر من در توسعهٔ وب را فراهم کرد.",
+        "image": "/assets/images/projects/digikala.png",
+        "blurData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAABYlAAAWJQFJUiTwAAAALUlEQVR4nAEiAN3/APj///9HNzL/oJub//b29v8ApHd+/ygAAP97cHH/49fX/37KFgUtWJ01AAAAAElFTkSuQmCC",
+        "category": "وب",
+        "tags": ["HTML", "CSS", "JS"],
+        "demoUrl": "https://amiralimotahari.github.io/mydigikala/",
+        "githubUrl": "https://github.com/AmiraliMotahari/mydigikala",
+        "featured": false,
+        "date": "2022-12-27"
+      }
+    ],
+    "certifications": [],
+    "languages": [
+      { "name": "فارسی", "proficiency": "زبان مادری" },
+      { "name": "انگلیسی", "proficiency": "پیشرفته" }
+    ]
   }
 }

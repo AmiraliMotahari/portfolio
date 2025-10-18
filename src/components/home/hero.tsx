@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { WarpBackground } from "@/components/ui/warp-background";
 import {
   Card,
@@ -14,8 +13,15 @@ import {
 import { MessageCircle } from "lucide-react";
 import CVDownloadButton from "@/components/cv-download-button";
 import { motion } from "motion/react";
+import { Link } from "@/i18n/navigation";
 
-const Hero = () => {
+type Props = {
+  title: string;
+  description: string;
+  contactButton: string;
+};
+
+const Hero = ({ title, description, contactButton }: Props) => {
   return (
     <section className="w-full h-svh">
       <WarpBackground className="w-full h-full flex justify-center items-center">
@@ -29,22 +35,17 @@ const Hero = () => {
           <Card className="w-full h-full bg-background/30 backdrop-blur-sm">
             <CardHeader className="w-full">
               <CardTitle className="w-full text-center text-xl sm:text-2xl lg:text-4xl ">
-                <h1>Amirali Motahari</h1>
+                <h1>{title}</h1>
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-2 p-4 max-w-lg text-center">
-              <CardDescription>
-                From crafting seamless user experiences to building scalable
-                applications, I combine design and technology to create
-                innovative solutions. Let&apos;s build something amazing
-                together.
-              </CardDescription>
+              <CardDescription>{description}</CardDescription>
             </CardContent>
             <CardFooter className="w-full flex justify-center items-center gap-4">
               <CVDownloadButton />
               <Button asChild variant={"secondary"}>
                 <Link href={"/contact"}>
-                  <span>Contact Me</span>
+                  <span>{contactButton}</span>
                   <MessageCircle />
                 </Link>
               </Button>

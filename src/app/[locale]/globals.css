@@ -138,6 +138,16 @@
   }
   html {
     @apply scroll-smooth scroll-pt-24;
+    /* &:dir(ltr) {
+      body {
+        font-family: var(--font-inter);
+      }
+    }
+    &:dir(rtl) {
+      body {
+        font-family: var(--font-inter);
+      }
+    } */
   }
   body {
     @apply bg-background text-foreground;

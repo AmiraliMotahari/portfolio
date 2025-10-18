@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { user } from "@/lib/data";
 import { jsPDF } from "jspdf";
+import { useTranslations } from "next-intl";
 
 export default function CVDownloadButton() {
+  const t = useTranslations("cvDownloadButton");
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generatePDF = async () => {
@@ -68,10 +70,7 @@ export default function CVDownloadButton() {
       doc.setTextColor(lightGray);
 
       // Split the summary into multiple lines
-      const summaryLines = doc.splitTextToSize(
-        user.personalInfo.summary,
-        170
-      );
+      const summaryLines = doc.splitTextToSize(user.personalInfo.summary, 170);
       doc.text(summaryLines, 20, 80);
 
       // Skills section
@@ -228,7 +227,6 @@ export default function CVDownloadButton() {
 
       // Save the PDF
 
-
       const pdfBlob = doc.output("blob");
       const url = URL.createObjectURL(pdfBlob);
 
@@ -237,7 +235,6 @@ export default function CVDownloadButton() {
 
       // Optionally, revoke the URL later
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-
     } catch (error) {
       console.error("Error generating PDF:", error);
     } finally {
@@ -269,11 +266,12 @@ export default function CVDownloadButton() {
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          Generating...
+          <span>{t("loadingTitle")}</span>
         </span>
       ) : (
-        <span className="flex items-center">
-          Download CV <Download className="ml-2 h-4 w-4" />
+        <span className="flex items-center justify-between gap-2">
+          <span>{t("title")}</span>
+          <Download className="size-4" />
         </span>
       )}
     </Button>

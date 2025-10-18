@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
-import {  ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/types";
 import BlogCardRegular from "@/components/cards/blog-card-regular";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 type Props = {
   recentPosts: BlogPost[];
@@ -32,6 +33,8 @@ const PostCard = ({
 };
 
 export default function LatestPosts({ recentPosts }: Props) {
+  const t = useTranslations("home.latestPosts");
+
   return (
     <section className="py-20 bg-muted/10 dynamic-px">
       <div className="container mx-auto">
@@ -42,12 +45,11 @@ export default function LatestPosts({ recentPosts }: Props) {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon-green to-neon-red">
-            Latest Articles
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text">
+            {t("heading")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Thoughts, ideas, and tutorials on web development, design, and
-            creative coding.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -58,9 +60,10 @@ export default function LatestPosts({ recentPosts }: Props) {
         </div>
 
         <div className="text-center mt-12">
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="rtl:flex-row-reverse">
             <Link href="/blog">
-              View all articles <ChevronRight className="ml-2" size={16} />
+              <span>{t("viewAllArticlesButton")}</span>
+              <ChevronRight className="ml-2" size={16} />
             </Link>
           </Button>
         </div>

@@ -3,16 +3,22 @@ import Contact from "@/components/home/contact";
 import Hero from "@/components/home/hero";
 import LatestPosts from "@/components/home/latest-posts";
 import Projects from "@/components/home/projects";
-import { user } from "@/lib/data";
 import { blogPosts } from "@/lib/data/blog-data";
 import { getWebsiteSchema } from "@/lib/seo/schemas";
+import { PersonalInfoType, ProjectsType, SocialsType } from "@/lib/types";
+import { getTranslations } from "next-intl/server";
 import Script from "next/script";
 import { ProfilePage, WithContext } from "schema-dts";
 
-const Home = () => {
-  const { personalInfo, projects, socials } = user;
+const Home = async () => {
+  const t = await getTranslations("home");
+  const data = await getTranslations("data");
 
-  const topProjects = projects.slice(0, 3);
+  const personalInfo = data.raw("personalInfo") as PersonalInfoType;
+  const socials = data.raw("socials") as SocialsType;
+
+  const topProjects = data.raw("projects").slice(0, 3) as ProjectsType;
+
   const recentPosts = blogPosts
     .sort((a, b) => b.date.getTime() - a.date.getTime())
     .slice(0, 3);
@@ -53,7 +59,11 @@ const Home = () => {
 
   return (
     <div className="min-h-svh">
-      <Hero />
+      <Hero
+        title={t("hero.title")}
+        description={t("hero.description")}
+        contactButton={t("hero.contactButton")}
+      />
       <About personalInfo={personalInfo} />
       <Projects topProjects={topProjects} />
       <LatestPosts recentPosts={recentPosts} />

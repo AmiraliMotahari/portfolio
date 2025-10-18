@@ -122,3 +122,14 @@ export type BreadcrumbItem = {
   name: string;
   url: string;
 };
+
+export type User = {
+  personalInfo: PersonalInfoType;
+  skills: SkillsType;
+  experiences: ExperiencesType;
+  education: EducationType;
+  projects: ProjectsType;
+  certifications: CertificationsType;
+  languages: LanguagesType;
+  socials: SocialsType;
+};
